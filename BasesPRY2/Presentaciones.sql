@@ -2,5 +2,7 @@
 (
 	[Id] INT NOT NULL IDENTITY, 
     [FechaHoraInicio] DATETIME NOT NULL,
-	PRIMARY KEY (Id)
+	[IdProduccion] INT NOT NULL, 
+    PRIMARY KEY (Id),
+	FOREIGN KEY (IdProduccion) REFERENCES Producciones (Id)
 )

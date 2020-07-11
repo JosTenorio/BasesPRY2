@@ -3,6 +3,8 @@
 	[Id] INT NOT NULL IDENTITY, 
     [Nombre] NVARCHAR(50) NOT NULL, 
     [Descripcion] NVARCHAR(100) NULL,
+    [IdTipo] INT NOT NULL, 
     PRIMARY KEY (Id),
-    UNIQUE (Nombre)
+    UNIQUE (Nombre),
+    FOREIGN KEY (IdTipo) REFERENCES Tipos (Id)
 )

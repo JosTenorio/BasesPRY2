@@ -11,9 +11,14 @@
     [TelCasa] NCHAR(8) NOT NULL, 
     [TelCelular] NCHAR(8) NOT NULL, 
     [TelOtro] NCHAR(8) NULL,
+    [Usuario] NVARCHAR(20) NOT NULL, 
+    [Contrasena] NVARCHAR(20) NOT NULL, 
     [Tipo] NCHAR(1) NOT NULL, 
+    [IdTeatro] INT NULL, 
     PRIMARY KEY (Id),
     UNIQUE (Cedula),
     UNIQUE (TelCelular),
-    UNIQUE (Correo)
+    UNIQUE (Correo),
+    UNIQUE (Usuario),
+    FOREIGN KEY (IdTeatro) REFERENCES Teatros (Id)
 )
