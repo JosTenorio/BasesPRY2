@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Bloques]
+(
+	[Id] INT NOT NULL IDENTITY, 
+    [Nombre] NVARCHAR(30) NOT NULL
+	PRIMARY KEY (Id)
+)
