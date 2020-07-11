@@ -68,6 +68,8 @@
     <Build Include="Asientos.sql" />
     <Build Include="AsientosPresentaciones.sql" />
     <Build Include="RegistroPagos.sql" />
+    <Build Include="Empleados.sql" />
+    <Build Include="BloquesProducciones.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
