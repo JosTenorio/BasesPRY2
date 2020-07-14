@@ -71,6 +71,7 @@
     <Build Include="Empleados.sql" />
     <Build Include="BloquesProducciones.sql" />
     <Build Include="Clientes.sql" />
+    <Build Include="ViewProduccionesPublicas.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
