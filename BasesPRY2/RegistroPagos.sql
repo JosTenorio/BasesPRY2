@@ -4,6 +4,7 @@
     [FechaHoraCompra] DATETIME NOT NULL, 
     [Codigo] NCHAR(6) NOT NULL, 
     [CostoTotal] DECIMAL(18, 2) NOT NULL,
-    PRIMARY KEY (Id)
-
+    CONSTRAINT PkRegistroPagos_Id PRIMARY KEY (Id),
+    CONSTRAINT CkRegistroPagos_Codigo CHECK ((LEN(Codigo) = 6) AND (CODIGO NOT LIKE '%[^0-9]%')),
+    CONSTRAINT CkRegistroPagos_CostoTotal CHECK (CostoTotal > 0)
 )

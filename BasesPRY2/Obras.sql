@@ -2,9 +2,10 @@
 (
 	[Id] INT NOT NULL IDENTITY, 
     [Nombre] NVARCHAR(50) NOT NULL, 
-    [Descripcion] NVARCHAR(100) NULL,
+    [Descripcion] NVARCHAR(200) NULL,
     [IdTipo] INT NOT NULL, 
-    PRIMARY KEY (Id),
-    UNIQUE (Nombre),
-    FOREIGN KEY (IdTipo) REFERENCES Tipos (Id)
+    CONSTRAINT PkObras_Id PRIMARY KEY (Id),
+    CONSTRAINT UnObras_Nombre UNIQUE (Nombre),
+    CONSTRAINT CkObras_Nombre CHECK (NOT NOMBRE=''),
+    CONSTRAINT FkObras_IdTipo FOREIGN KEY (IdTipo) REFERENCES Tipos (Id) ON DELETE CASCADE ON UPDATE CASCADE
 )

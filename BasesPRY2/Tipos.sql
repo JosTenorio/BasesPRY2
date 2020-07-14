@@ -2,6 +2,7 @@
 (
 	[Id] INT NOT NULL IDENTITY, 
     [Nombre] NVARCHAR(20) NOT NULL,
-	PRIMARY KEY (Id),
-	UNIQUE (Nombre)
+	CONSTRAINT PkTipos_Id PRIMARY KEY (Id),
+	CONSTRAINT UnTipos_Nombre UNIQUE (Nombre),
+	CONSTRAINT CkTipos_Nombre CHECK (NOT NOMBRE='')
 )

@@ -3,7 +3,8 @@
 	[Id] INT NOT NULL IDENTITY, 
     [Nombre] NVARCHAR(30) NOT NULL,
 	[IdTeatro] INT NOT NULL,
-	PRIMARY KEY (Id),
-	UNIQUE (Nombre, IdTeatro),
-	FOREIGN KEY (IdTeatro) REFERENCES Teatros (Id)
+	CONSTRAINT CkBloques_Nombre CHECK (NOT NOMBRE=''),
+	CONSTRAINT PkBloques_Id PRIMARY KEY (Id),
+	CONSTRAINT UnBloques_NombreYIdTeatro UNIQUE (Nombre, IdTeatro),
+	CONSTRAINT FkBloques_IdTeatro FOREIGN KEY (IdTeatro) REFERENCES Teatros (Id) ON DELETE CASCADE ON UPDATE CASCADE
 )
