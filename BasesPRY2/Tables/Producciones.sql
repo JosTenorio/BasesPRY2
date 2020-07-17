@@ -7,6 +7,7 @@
     [IdObra] INT NOT NULL, 
     [IdEstado] INT NOT NULL, 
     CONSTRAINT PkProducciones_Id PRIMARY KEY (Id),
+    CONSTRAINT UnProducciones_IdTeatroYIdObra UNIQUE (IdTeatro, IdObra),
     CONSTRAINT FkProducciones_IdTeatro FOREIGN KEY (IdTeatro) REFERENCES Teatros (Id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT FkProducciones_IdObra FOREIGN KEY (IdObra) REFERENCES Obras (Id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT FkProducciones_IdEstado FOREIGN KEY (IdEstado) REFERENCES Estados (Id) ON DELETE CASCADE ON UPDATE CASCADE,
