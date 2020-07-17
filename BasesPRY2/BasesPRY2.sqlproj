@@ -84,6 +84,8 @@
     <Build Include="Procedures\AdmTeReadObras.sql" />
     <Build Include="Procedures\AdmTeCreateObra.sql" />
     <Build Include="Procedures\AdmTeReadTeatros.sql" />
+    <Build Include="Procedures\AdmTeReadProducciones.sql" />
+    <Build Include="Procedures\AdmTeCreatePresentacion.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
