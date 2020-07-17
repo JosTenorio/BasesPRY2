@@ -2,7 +2,7 @@
 (
 	[Id] INT NOT NULL IDENTITY, 
     [Nombre] NVARCHAR(50) NOT NULL, 
-    [Descripcion] NVARCHAR(200) NULL,
+    [Descripcion] NVARCHAR(200) NOT NULL,
     [IdTipo] INT NOT NULL, 
     CONSTRAINT PkObras_Id PRIMARY KEY (Id),
     CONSTRAINT UnObras_Nombre UNIQUE (Nombre),

@@ -56,24 +56,39 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Tables" />
+    <Folder Include="Procedures" />
+    <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Teatros.sql" />
-    <Build Include="Producciones.sql" />
-    <Build Include="Tipos.sql" />
-    <Build Include="Estados.sql" />
-    <Build Include="Presentaciones.sql" />
-    <Build Include="Bloques.sql" />
-    <Build Include="Obras.sql" />
-    <Build Include="Asientos.sql" />
-    <Build Include="AsientosPresentaciones.sql" />
-    <Build Include="RegistroPagos.sql" />
-    <Build Include="Empleados.sql" />
-    <Build Include="BloquesProducciones.sql" />
-    <Build Include="Clientes.sql" />
-    <Build Include="ViewProduccionesPublicas.sql" />
+    <Build Include="Tables\Asientos.sql" />
+    <Build Include="Tables\AsientosPresentaciones.sql" />
+    <Build Include="Tables\Bloques.sql" />
+    <Build Include="Tables\BloquesProducciones.sql" />
+    <Build Include="Tables\Clientes.sql" />
+    <Build Include="Tables\Empleados.sql" />
+    <Build Include="Tables\Estados.sql" />
+    <Build Include="Tables\Obras.sql" />
+    <Build Include="Tables\Presentaciones.sql" />
+    <Build Include="Tables\Producciones.sql" />
+    <Build Include="Tables\RegistroPagos.sql" />
+    <Build Include="Tables\Teatros.sql" />
+    <Build Include="Views\VwProduccionesPublicas.sql" />
+    <Build Include="Procedures\PubReadProducciones.sql" />
+    <Build Include="Procedures\PubReadPresentaciones.sql" />
+    <Build Include="Procedures\PubReadBloquesProducciones.sql" />
+    <Build Include="Procedures\PubReadAsientos.sql" />
+    <Build Include="Procedures\AdmTeCreateProduccion.sql" />
+    <Build Include="Procedures\AdmTeReadTipos.sql" />
+    <Build Include="Procedures\AdmTeCreateTipo.sql" />
+    <Build Include="Procedures\AdmTeReadObras.sql" />
+    <Build Include="Procedures\AdmTeCreateObra.sql" />
+    <Build Include="Procedures\AdmTeReadTeatros.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Tipos.sql" />
   </ItemGroup>
 </Project>

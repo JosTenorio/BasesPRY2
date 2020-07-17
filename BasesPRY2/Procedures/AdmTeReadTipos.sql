@@ -1,0 +1,7 @@
+﻿CREATE PROCEDURE [dbo].[AdmTeReadTipos]
+
+AS
+	SET NOCOUNT ON
+	SELECT Id, Nombre
+	FROM Tipos
+GO
