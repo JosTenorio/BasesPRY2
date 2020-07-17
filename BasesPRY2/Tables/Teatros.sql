@@ -13,8 +13,8 @@
     CONSTRAINT UnTeatros_Correo UNIQUE (Correo),
     CONSTRAINT UnTeatros_Link UNIQUE (Link),
     CONSTRAINT UnTeatros_TelAdmin UNIQUE (TelAdmin),
-    CONSTRAINT CkTeatros_Capacidad CHECK (Capacidad > 0),
-    CONSTRAINT CkTeatros_Nombre CHECK (NOT NOMBRE=''),
+    CONSTRAINT CkTeatros_Capacidad CHECK (Capacidad > -1),
+    CONSTRAINT CkTeatros_Nombre CHECK (NOT Nombre=''),
     CONSTRAINT CkTeatros_TelBoleteria CHECK (LEN(TelBoleteria) = 8 AND (TelBoleteria NOT LIKE '%[^0-9]%')),
     CONSTRAINT CkTeatros_TelAdmin CHECK (LEN(TelAdmin ) = 8 AND (TelAdmin  NOT LIKE '%[^0-9]%')),
 )
