@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Importación de datos", "Importación de datos.dtproj", "{7A2D42B5-F806-42F7-A191-80F7C2D6F9F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A2D42B5-F806-42F7-A191-80F7C2D6F9F7}.Development|Default.ActiveCfg = Development
+		{7A2D42B5-F806-42F7-A191-80F7C2D6F9F7}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {805B7FE4-A514-402C-81A5-1749FC045ADE}
+	EndGlobalSection
+EndGlobal
