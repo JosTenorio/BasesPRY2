@@ -19,7 +19,7 @@
     CONSTRAINT UnEmpleados_TelCelular UNIQUE (TelCelular),
     CONSTRAINT UnEmpleados_Correo UNIQUE (Correo),
     CONSTRAINT UnEmpleados_Usuario UNIQUE (Usuario),
-    CONSTRAINT FkEmpleados_IdTeatro FOREIGN KEY (IdTeatro) REFERENCES Teatros (Id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FkEmpleados_IdTeatro FOREIGN KEY (IdTeatro) REFERENCES Teatros (Id) ON DELETE SET NULL ON UPDATE CASCADE,
     CONSTRAINT CkEmpleados_IdTeatro CHECK (NOT ((Tipo=3 AND (IdTeatro IS NOT NULL)))),
     CONSTRAINT CkEmpleados_Cedula CHECK ((LEN(CEDULA) = 9) AND (CEDULA NOT LIKE '%[^0-9]%')),
     CONSTRAINT CkEmpleados_Sexo CHECK (Sexo = 'm' OR Sexo = 'f'),
