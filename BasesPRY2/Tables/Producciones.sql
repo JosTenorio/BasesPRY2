@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[Producciones]
 (
 	[Id] INT NOT NULL IDENTITY, 
-    [FechaInicio] DATE NULL, 
-    [FechaFin] DATE NULL,
+    [FechaInicio] DATETIME NULL, 
+    [FechaFin] DATETIME NULL,
     [IdTeatro] INT NOT NULL, 
     [IdObra] INT NOT NULL, 
     [IdEstado] INT NOT NULL, 
