@@ -1,4 +1,4 @@
-﻿CREATE TRIGGER [Trg_PresentacionesDel]
+﻿CREATE TRIGGER [TrgPresentacionesDel]
 	ON [dbo].[Presentaciones]
 	AFTER DELETE
 	AS

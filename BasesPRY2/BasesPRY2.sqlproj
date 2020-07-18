@@ -59,6 +59,7 @@
     <Folder Include="Tables" />
     <Folder Include="Procedures" />
     <Folder Include="Views" />
+    <Folder Include="Triggers" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Asientos.sql" />
@@ -90,10 +91,10 @@
     <Build Include="Procedures\AdmTeUpdateProduccionEstado.sql" />
     <Build Include="Procedures\AdmTeReadEstados.sql" />
     <Build Include="Procedures\SisGetTeatro.sql" />
-    <Build Include="Trg_AsientosIns.sql" />
-    <Build Include="Trg_AsientosDel.sql" />
-    <Build Include="Trg_PresentacionesInsUpd.sql" />
-    <Build Include="Trg_PresentacionesDel.sql" />
+    <Build Include="Triggers\TrgAsientosDel.sql" />
+    <Build Include="Triggers\TrgAsientosIns.sql" />
+    <Build Include="Triggers\TrgPresentacionesDel.sql" />
+    <Build Include="Triggers\TrgPresentacionesInsUpd.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />

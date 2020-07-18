@@ -1,4 +1,4 @@
-﻿CREATE TRIGGER [Trg_PresentacionesInsUpd]
+﻿CREATE TRIGGER [TrgPresentacionesInsUpd]
 	ON [dbo].[Presentaciones]
 	AFTER INSERT, UPDATE
 	AS
