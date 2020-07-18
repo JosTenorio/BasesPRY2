@@ -77,7 +77,7 @@
     <Build Include="Procedures\PubReadProducciones.sql" />
     <Build Include="Procedures\PubReadPresentaciones.sql" />
     <Build Include="Procedures\PubReadBloquesProducciones.sql" />
-    <Build Include="Procedures\PubReadAsientos.sql" />
+    <Build Include="Procedures\PubReadAsientosPresentaciones.sql" />
     <Build Include="Procedures\AdmTeCreateProduccion.sql" />
     <Build Include="Procedures\AdmTeReadTipos.sql" />
     <Build Include="Procedures\AdmTeCreateTipo.sql" />
