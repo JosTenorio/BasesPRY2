@@ -88,6 +88,8 @@
     <Build Include="Procedures\AdmTeCreatePresentacion.sql" />
     <Build Include="Procedures\AdmTeReadBloques.sql" />
     <Build Include="Procedures\AdmTeCreateBloqueProduccion.sql" />
+    <Build Include="Procedures\AdmTeUpdateProduccionEstado.sql" />
+    <Build Include="Procedures\AdmTeReadEstados.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
