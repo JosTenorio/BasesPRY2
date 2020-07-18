@@ -1,7 +1,12 @@
 ﻿CREATE PROCEDURE [dbo].[AdmTeReadProducciones]
-	@IdTeatro INT
+	@User NVARCHAR(20),
+	@Password NVARCHAR(20)
 AS
 	SET NOCOUNT ON
+
+	DECLARE @IdTeatro INT
+	EXEC SisGetTeatro @User, @Password, @IdTeatro
+
 	SELECT p.Id, o.Nombre as Obra, e.Nombre as Estado
 	FROM Producciones p 
 	INNER JOIN Obras o ON p.IdObra = o.Id
