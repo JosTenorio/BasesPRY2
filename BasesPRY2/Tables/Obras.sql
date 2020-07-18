@@ -6,6 +6,6 @@
     [IdTipo] INT NOT NULL, 
     CONSTRAINT PkObras_Id PRIMARY KEY (Id),
     CONSTRAINT UnObras_Nombre UNIQUE (Nombre),
-    CONSTRAINT CkObras_Nombre CHECK (NOT NOMBRE=''),
+    CONSTRAINT CkObras_Nombre CHECK (NOT Nombre=''),
     CONSTRAINT FkObras_IdTipo FOREIGN KEY (IdTipo) REFERENCES Tipos (Id) ON DELETE NO ACTION ON UPDATE CASCADE
 )

@@ -90,6 +90,10 @@
     <Build Include="Procedures\AdmTeUpdateProduccionEstado.sql" />
     <Build Include="Procedures\AdmTeReadEstados.sql" />
     <Build Include="Procedures\SisGetTeatro.sql" />
+    <Build Include="Trg_AsientosIns.sql" />
+    <Build Include="Trg_AsientosDel.sql" />
+    <Build Include="Trg_PresentacionesInsUpd.sql" />
+    <Build Include="Trg_PresentacionesDel.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
