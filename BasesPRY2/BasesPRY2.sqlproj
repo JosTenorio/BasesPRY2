@@ -95,6 +95,12 @@
     <Build Include="Triggers\TrgAsientosIns.sql" />
     <Build Include="Triggers\TrgPresentacionesDel.sql" />
     <Build Include="Triggers\TrgPresentacionesInsUpd.sql" />
+    <Build Include="Procedures\AdmSisCreateTeatro.sql" />
+    <Build Include="Procedures\AdmSisReadBloques.sql" />
+    <Build Include="Procedures\AdmSisReadTeatros.sql" />
+    <Build Include="Procedures\AdmSisCreateBloque.sql" />
+    <Build Include="Procedures\AdmSisReadAsientos.sql" />
+    <Build Include="Procedures\AdmSisCreateAsiento.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
