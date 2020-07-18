@@ -1,9 +1,14 @@
 ﻿CREATE PROCEDURE [dbo].[AdmTeUpdateProduccionEstado]
 	@IdProduccion INT,
-	@IdEstado INT
+	@IdEstado INT,
+	@User NVARCHAR(20),
+	@Password NVARCHAR(20)
 AS
 	SET NOCOUNT ON
 	
+	DECLARE @IdTeatro INT
+	EXEC SisGetTeatro @User, @Password, @IdTeatro
+
 	IF NOT (
 	(
 		SELECT Nombre
@@ -14,7 +19,12 @@ AS
 		SELECT FechaInicio	
 		FROM Producciones
 		WHERE Id = @IdProduccion
-	) IS NULL )
+	) IS NULL ) AND
+	(
+		SELECT p.IdTeatro
+		FROM Producciones p
+		WHERE p.Id = @IdProduccion
+	) = @IdTeatro 
 	BEGIN
 		UPDATE Producciones
 		SET IdEstado = @IdEstado
