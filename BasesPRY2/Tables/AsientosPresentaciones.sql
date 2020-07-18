@@ -9,6 +9,6 @@
     CONSTRAINT UnAsientosPresentaciones_IdPresentacionYIdAsiento UNIQUE (IdPresentacion, IdAsiento),
     CONSTRAINT FkAsientosPresentaciones_IdPresentacion FOREIGN KEY (IdPresentacion) REFERENCES Presentaciones (Id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT FkAsientosPresentaciones_IdAsiento FOREIGN KEY (IdAsiento) REFERENCES Asientos (Id) ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT FkAsientosPresentaciones_IdRegistroPago FOREIGN KEY (IdRegistroPago) REFERENCES RegistroPagos (Id) ON DELETE SET NULL ON UPDATE CASCADE,
-    CONSTRAINT CkAsientosPresentaciones_EstaOcupado CHECK (NOT ((IdRegistroPago IS NOT NULL) AND (EstaOcupado = 0)))
+    CONSTRAINT CkAsientosPresentaciones_EstaOcupado CHECK (NOT ((IdRegistroPago IS NOT NULL) AND (EstaOcupado = 0))),
+    CONSTRAINT CkAsientosPresentaciones_IdRegistroPago CHECK (IdRegistroPago > = 0)
 )
