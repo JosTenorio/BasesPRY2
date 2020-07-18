@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[BloquesProducciones]
 (
-	[Id] INT NOT NULL, 
+	[Id] INT NOT NULL IDENTITY, 
     [Precio] DECIMAL(18, 2) NOT NULL, 
     [IdBloque] INT NOT NULL, 
     [IdProduccion] INT NOT NULL,

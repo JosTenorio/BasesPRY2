@@ -27,6 +27,6 @@
     CONSTRAINT CkEmpleados_TelCasa CHECK (LEN(TelCasa) = 8 AND (TelCasa NOT LIKE '%[^0-9]%')),
     CONSTRAINT CkEmpleados_TelCelular CHECK (LEN(TelCelular) = 8 AND (TelCelular NOT LIKE '%[^0-9]%')),
     CONSTRAINT CkEmpleados_TelOtro CHECK (LEN(TelOtro) = 8 AND (TelOtro NOT LIKE '%[^0-9]%')),
-    CONSTRAINT CkEmpleados_Nombre CHECK (NOT NOMBRE=''),
-    CONSTRAINT CkEmpleados_Tipo CHECK (TIPO = 1 OR TIPO = 2 OR TIPO = 3)
+    CONSTRAINT CkEmpleados_Nombre CHECK (NOT Nombre=''),
+    CONSTRAINT CkEmpleados_Tipo CHECK (Tipo = 1 OR TIPO = 2 OR Tipo = 3)
 )
