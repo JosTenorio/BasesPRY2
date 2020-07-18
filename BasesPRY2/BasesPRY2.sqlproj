@@ -77,15 +77,19 @@
     <Build Include="Procedures\PubReadProducciones.sql" />
     <Build Include="Procedures\PubReadPresentaciones.sql" />
     <Build Include="Procedures\PubReadBloquesProducciones.sql" />
-    <Build Include="Procedures\PubReadAsientos.sql" />
+    <Build Include="Procedures\PubReadAsientosPresentaciones.sql" />
     <Build Include="Procedures\AdmTeCreateProduccion.sql" />
     <Build Include="Procedures\AdmTeReadTipos.sql" />
     <Build Include="Procedures\AdmTeCreateTipo.sql" />
     <Build Include="Procedures\AdmTeReadObras.sql" />
     <Build Include="Procedures\AdmTeCreateObra.sql" />
-    <Build Include="Procedures\AdmTeReadTeatros.sql" />
     <Build Include="Procedures\AdmTeReadProducciones.sql" />
     <Build Include="Procedures\AdmTeCreatePresentacion.sql" />
+    <Build Include="Procedures\AdmTeReadBloques.sql" />
+    <Build Include="Procedures\AdmTeCreateBloqueProduccion.sql" />
+    <Build Include="Procedures\AdmTeUpdateProduccionEstado.sql" />
+    <Build Include="Procedures\AdmTeReadEstados.sql" />
+    <Build Include="Procedures\SisGetTeatro.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />

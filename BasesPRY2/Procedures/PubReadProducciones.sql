@@ -14,7 +14,17 @@ AS
 
 	ELSE IF @FechaInicio IS NULL AND @FechaFin IS NULL
 	BEGIN
-		SELECT v.Id, v.Obra, v.Teatro, v.Estado, ISNULL(v.FechaInicio, 'Indefinido') AS FechaInicio, ISNULL(v.FechaFin, 'Indefinido') AS FechaFin, v.Tipo, v.Descripcion
+		SELECT v.Id, v.Obra, v.Teatro, v.Estado, 
+		CASE
+			WHEN v.Estado = 'Adelantada' THEN 'Por Definir'
+			WHEN v.Estado IN ('Cancelada', 'Concluida') THEN 'No Aplica'
+			ELSE v.FechaInicio
+		END AS FechaInicio, 
+		CASE
+			WHEN v.Estado = 'Adelantada' THEN 'Por Definir'
+			WHEN v.Estado IN ('Cancelada', 'Concluida') THEN 'No Aplica'
+			ELSE v.FechaFin
+		END AS FechaFin, v.Tipo, v.Descripcion
 		FROM VwProduccionesPublicas v
 		ORDER BY v.Obra
 	END

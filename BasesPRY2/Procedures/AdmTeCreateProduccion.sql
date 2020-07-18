@@ -1,8 +1,12 @@
 ﻿CREATE PROCEDURE [dbo].[AdmTeCreateProduccion]
 	@IdObra INT,
-	@IdTeatro INT
+	@User NVARCHAR(20),
+	@Password NVARCHAR(20)
 AS
 	SET NOCOUNT ON
+
+	DECLARE @IdTeatro INT
+	EXEC SisGetTeatro @User, @Password, @IdTeatro
 
 	DECLARE @IdEstado INT
 
