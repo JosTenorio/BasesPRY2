@@ -28,4 +28,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Contrasena" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="b5fc3e48-6450-401c-a4b3-9e310a1b6340" ChangeDateTime="07/19/2020 19:45:31">
+    <Property Name="ElementName" Value="[dbo].[Producciones].[FechaInicio]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Producciones]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FechaHoraInicio" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e47de558-b9ea-4d85-a0fd-44684cb7d622" ChangeDateTime="07/19/2020 19:45:35">
+    <Property Name="ElementName" Value="[dbo].[Producciones].[FechaFin]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Producciones]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FechaHoraFin" />
+  </Operation>
 </Operations>
