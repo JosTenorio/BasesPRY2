@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="50"
-  DTS:VersionGUID="{DE1A89BE-DAB0-46B4-9BFE-531812F23EA8}">
+  DTS:VersionBuild="51"
+  DTS:VersionGUID="{4E51DFAC-0C59-457F-A357-5ACAB3E0020B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="DestinationConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=JOTA-PC;User ID=;Initial Catalog=BasesPRY2;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Initial File Name=;Server SPN=;Authentication=;Access Token=;Application Name=SSIS-Package-{E02BA336-C7DA-4B32-A7D8-0FA371E0DF29}DestinationConnectionOLEDB;" />
+          DTS:ConnectionString="Data Source=JOTA-PC;Initial Catalog=BasesPRY2;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Application Name=SSIS-Package-{E02BA336-C7DA-4B32-A7D8-0FA371E0DF29}DestinationConnectionOLEDB;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager

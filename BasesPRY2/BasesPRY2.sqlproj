@@ -102,7 +102,7 @@
     <Build Include="Procedures\AdmSisReadAsientos.sql" />
     <Build Include="Procedures\AdmSisCreateAsiento.sql" />
     <Build Include="Triggers\TrgRegistroPagosInsUpd.sql" />
-    <Build Include="Triggers\TrgAsientosPresentacionesInsUpd.sql" />
+    <Build Include="Triggers\TrgAsientosPresentacionesUpd.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
@@ -112,5 +112,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="BasesPRY2.publish.xml" />
+    <None Include="BasesPRY2_1.publish.xml" />
   </ItemGroup>
 </Project>
