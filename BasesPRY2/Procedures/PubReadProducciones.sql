@@ -6,9 +6,9 @@ AS
 
 	IF @FechaInicio IS NOT NULL AND @FechaFin IS NOT NULL AND @FechaInicio <= @FechaFin
 	BEGIN
-		SELECT v.Id, v.Obra, v.Teatro, v.Estado, v.FechaInicio, v.FechaFin, v.Tipo, v.Descripcion
+		SELECT v.Id, v.Obra, v.Teatro, v.Estado, v.FechaHoraInicio, v.FechaHoraFin, v.Tipo, v.Descripcion
 		FROM VwProduccionesPublicas v
-		WHERE v.FechaInicio IS NOT NULL AND v.FechaInicio BETWEEN @FechaInicio AND @FechaFin
+		WHERE v.FechaHoraInicio IS NOT NULL AND v.FechaHoraInicio BETWEEN @FechaInicio AND @FechaFin
 		ORDER BY v.Obra
 	END
 
@@ -18,13 +18,13 @@ AS
 		CASE
 			WHEN v.Estado = 'Adelantada' THEN 'Por Definir'
 			WHEN v.Estado IN ('Cancelada', 'Concluida') THEN 'No Aplica'
-			ELSE v.FechaInicio
-		END AS FechaInicio, 
+			ELSE v.FechaHoraInicio
+		END AS FechaHoraInicio, 
 		CASE
 			WHEN v.Estado = 'Adelantada' THEN 'Por Definir'
 			WHEN v.Estado IN ('Cancelada', 'Concluida') THEN 'No Aplica'
-			ELSE v.FechaFin
-		END AS FechaFin, v.Tipo, v.Descripcion
+			ELSE v.FechaHoraFin
+		END AS FechaHoraFin, v.Tipo, v.Descripcion
 		FROM VwProduccionesPublicas v
 		ORDER BY v.Obra
 	END

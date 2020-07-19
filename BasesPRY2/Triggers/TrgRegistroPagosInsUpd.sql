@@ -17,13 +17,10 @@
 				RAISERROR('Debe agregar el identificador del registro de pagos a uno o más asientos antes de almacenarlo', 16, 1)
 				DELETE FROM RegistroPagos WHERE Id = @inserted_Id
 			END
-			ELSE
+			ELSE IF (@inserted_Id NOT IN (SELECT IdRegistroPago FROM AsientosPresentaciones))
 			BEGIN
-				IF (@inserted_Id NOT IN (SELECT IdRegistroPago FROM AsientosPresentaciones))
-				BEGIN
-					RAISERROR('Debe agregar el identificador del registro de pagos a uno o más asientos antes de almacenarlo', 16, 1);
-					DELETE FROM RegistroPagos WHERE Id = @inserted_Id
-				END
+				RAISERROR('Debe agregar el identificador del registro de pagos a uno o más asientos antes de almacenarlo', 16, 1);
+				DELETE FROM RegistroPagos WHERE Id = @inserted_Id
 			END
 			FETCH NEXT FROM curInserted INTO @inserted_Id
 		END

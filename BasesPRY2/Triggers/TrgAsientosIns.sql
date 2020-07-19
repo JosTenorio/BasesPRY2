@@ -4,19 +4,21 @@
 	AS
 	BEGIN
 		SET NOCOUNT ON
-		DECLARE @Id_Teatro int
-		DECLARE @inserted_IdBloque int
+		DECLARE @Id_Teatro INT
+		DECLARE @inserted_IdBloque INT
 		DECLARE curInserted CURSOR FAST_FORWARD FOR
 			SELECT IdBloque
-			FROM   inserted
+			FROM inserted
 		OPEN curInserted
 		FETCH NEXT FROM curInserted INTO @inserted_IdBloque
 		WHILE @@FETCH_STATUS = 0
 		BEGIN
-		   SET @Id_Teatro = (SELECT Teatros.Id 
-						  FROM Bloques INNER JOIN Teatros 
-						  ON Bloques.IdTeatro = Teatros.Id, inserted
-						  WHERE inserted.IdBloque = Bloques.Id)   
+		   SET @Id_Teatro = 
+				(
+				SELECT Bloques.IdTeatro
+				FROM Bloques
+				WHERE @inserted_IdBloque = Bloques.Id
+				)   
 		   UPDATE Teatros 
 	       SET Capacidad += 1
 	       WHERE Teatros.Id = @Id_Teatro

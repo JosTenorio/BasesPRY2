@@ -16,7 +16,7 @@ AS
 		WHERE Id = @IdEstado
 	) IN ('Anunciada', 'Abierta') AND 
 	(
-		SELECT FechaInicio	
+		SELECT FechaHoraInicio	
 		FROM Producciones
 		WHERE Id = @IdProduccion
 	) IS NULL ) AND
