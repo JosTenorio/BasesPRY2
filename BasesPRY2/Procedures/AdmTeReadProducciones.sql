@@ -5,7 +5,7 @@ AS
 	SET NOCOUNT ON
 
 	DECLARE @IdTeatro INT
-	EXEC SisGetTeatro @User, @Password, @IdTeatro
+	EXEC SisGetTeatro @User, @Password, @IdTeatro OUTPUT
 
 	SELECT p.Id, o.Nombre as Obra, e.Nombre as Estado
 	FROM Producciones p 

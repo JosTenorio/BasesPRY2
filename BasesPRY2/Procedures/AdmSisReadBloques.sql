@@ -6,4 +6,5 @@ AS
 	SELECT b.Id, b.Nombre
 	FROM Bloques b
 	WHERE b.IdTeatro = @IdTeatro
+	ORDER BY b.Id
 GO

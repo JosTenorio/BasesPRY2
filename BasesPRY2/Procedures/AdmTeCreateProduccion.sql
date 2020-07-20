@@ -6,7 +6,7 @@ AS
 	SET NOCOUNT ON
 
 	DECLARE @IdTeatro INT
-	EXEC SisGetTeatro @User, @Password, @IdTeatro
+	EXEC SisGetTeatro @User, @Password, @IdTeatro OUTPUT
 
 	DECLARE @IdEstado INT
 

@@ -110,8 +110,4 @@
   <ItemGroup>
     <Build Include="Tables\Tipos.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="BasesPRY2.publish.xml" />
-    <None Include="BasesPRY2_1.publish.xml" />
-  </ItemGroup>
 </Project>
