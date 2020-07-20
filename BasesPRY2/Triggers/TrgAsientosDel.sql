@@ -4,26 +4,12 @@
 	AS
 	BEGIN
 		SET NOCOUNT ON
-		DECLARE @Id_Teatro INT
-		DECLARE @deleted_idBloque INT
-		DECLARE curDeleted CURSOR FAST_FORWARD FOR
-			SELECT IdBloque
-			FROM deleted
-		OPEN curDeleted
-		FETCH NEXT FROM curDeleted INTO @deleted_idBloque
-		WHILE @@FETCH_STATUS = 0
-		BEGIN
-		   SET @Id_Teatro = 
-				(
-				SELECT Bloques.IdTeatro
-				FROM Bloques
-				WHERE @deleted_idBloque = Bloques.Id
-				)
-		   UPDATE Teatros 
-		   SET Capacidad -= 1
-		   WHERE Teatros.Id = @Id_Teatro
-		   FETCH NEXT FROM curDeleted INTO @deleted_idBloque
-		END
-		CLOSE curDeleted
-		DEALLOCATE curDeleted
+		UPDATE Teatros
+		SET Teatros.Capacidad -= CantidadesBorradas.AsientosBorrados
+		FROM 
+			(SELECT Bloques.IdTeatro, COUNT (*) as AsientosBorrados
+			FROM deleted INNER JOIN Bloques
+			ON deleted.IdBloque = Bloques.Id
+			GROUP BY Bloques.IdTeatro) as  CantidadesBorradas
+			INNER JOIN Teatros ON CantidadesBorradas.IdTeatro = Teatros.Id 
 	END
