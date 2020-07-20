@@ -37,4 +37,23 @@
 		END
 		CLOSE CurInserted
 		DEALLOCATE CurInserted
+		IF ((SELECT COUNT(*) AS RowCnt FROM deleted) = 0)
+		BEGIN
+			INSERT INTO AsientosPresentaciones
+			SELECT 0, RelacionesValidas.IdPresentaciones, RelacionesValidas.IdAsientos, NULL
+			FROM (SELECT idAsientos, IdPresentaciones
+				  FROM 	(SELECT Teatros.Id AS IdTeatroPresentaciones, inserted.Id AS IdPresentaciones
+						FROM inserted INNER JOIN Producciones ON
+						inserted.IdProduccion = Producciones.Id INNER JOIN Teatros
+						ON Teatros.Id = Producciones.IdTeatro) AS PresentacionesInsertadas
+						CROSS JOIN
+						(SELECT Teatros.Id AS IdTeatroAsientos, Asientos.Id AS IdAsientos
+						FROM Asientos INNER JOIN Bloques ON
+						Bloques.Id = Asientos.IdBloque INNER JOIN Teatros 
+						ON Teatros.Id = Bloques.IdTeatro) AS AsientosValidos
+				 WHERE IdTeatroAsientos = IdTeatroPresentaciones
+				 EXCEPT
+				 SELECT AsientosPresentaciones.IdAsiento, AsientosPresentaciones.IdPresentacion
+				 FROM AsientosPresentaciones) AS RelacionesValidas
+		END
 	END
