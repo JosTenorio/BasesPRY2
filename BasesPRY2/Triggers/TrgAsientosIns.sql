@@ -15,8 +15,8 @@
 			) AS  CantidadesInsertadas
 			INNER JOIN Teatros ON CantidadesInsertadas.IdTeatro = Teatros.Id
 
-		INSERT INTO AsientosPresentaciones
-			SELECT 0, RelacionesValidas.IdPresentaciones, RelacionesValidas.IdAsientos, NULL
+		INSERT INTO AsientosPresentaciones (IdPresentacion, IdAsiento)
+			SELECT RelacionesValidas.IdPresentaciones, RelacionesValidas.IdAsientos
 			FROM 
 				(
 				SELECT idAsientos, IdPresentaciones

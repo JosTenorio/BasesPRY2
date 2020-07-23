@@ -14,7 +14,7 @@ AS
 	BEGIN
 		IF @FechaHoraInicio IS NOT NULL AND @FechaHoraFin IS NOT NULL AND @FechaHoraInicio <= @FechaHoraFin
 		BEGIN
-			SELECT p.Id, p.FechaHoraInicio
+			SELECT p.Id, CONVERT(NVARCHAR, p.FechaHoraInicio) AS FechaHoraInicio
 			FROM Presentaciones p
 			WHERE p.IdProduccion = @IdProduccion AND p.FechaHoraInicio BETWEEN @FechaHoraInicio AND @FechaHoraFin
 			ORDER BY p.FechaHoraInicio
@@ -22,7 +22,7 @@ AS
 
 		ELSE IF @FechaHoraInicio IS NULL AND @FechaHoraFin IS NULL
 		BEGIN
-			SELECT p.Id, p.FechaHoraInicio
+			SELECT p.Id, CONVERT(NVARCHAR, p.FechaHoraInicio) AS FechaHoraInicio
 			FROM Presentaciones p
 			WHERE p.IdProduccion = @IdProduccion
 			ORDER BY p.FechaHoraInicio

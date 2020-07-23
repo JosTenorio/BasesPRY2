@@ -103,8 +103,6 @@
     <Build Include="Procedures\AdmSisCreateBloque.sql" />
     <Build Include="Procedures\AdmSisReadAsientos.sql" />
     <Build Include="Procedures\AdmSisCreateAsiento.sql" />
-    <Build Include="Triggers\TrgRegistroPagosInsUpd.sql" />
-    <Build Include="Triggers\TrgAsientosPresentacionesUpd.sql" />
     <Build Include="Views\VwCantidadAsientosPorFila.sql" />
     <Build Include="Tables\Reportes.sql" />
     <Build Include="Procedures\SisCreateDailyReport.sql" />

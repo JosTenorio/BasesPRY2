@@ -38,8 +38,8 @@
 
 		IF ((SELECT COUNT(*) AS RowCnt FROM deleted) = 0)
 		BEGIN
-			INSERT INTO AsientosPresentaciones
-			SELECT 0, RelacionesValidas.IdPresentaciones, RelacionesValidas.IdAsientos, NULL
+			INSERT INTO AsientosPresentaciones (IdPresentacion, IdAsiento)
+			SELECT RelacionesValidas.IdPresentaciones, RelacionesValidas.IdAsientos
 			FROM (SELECT idAsientos, IdPresentaciones
 				  FROM 	(SELECT Teatros.Id AS IdTeatroPresentaciones, inserted.Id AS IdPresentaciones
 						FROM inserted INNER JOIN Producciones ON
