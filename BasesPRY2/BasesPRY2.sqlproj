@@ -115,6 +115,8 @@
     <Build Include="TableTypeListaAsientos.sql" />
     <Build Include="Procedures\SisCreateClient.sql" />
     <Build Include="Procedures\SisGetCodigoAprobacion.sql" />
+    <Build Include="Procedures\SisLoginAdmTe.sql" />
+    <Build Include="Roles\InitialRole.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
