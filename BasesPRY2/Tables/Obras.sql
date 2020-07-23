@@ -5,7 +5,7 @@
     [Descripcion] NVARCHAR(200) NOT NULL,
     [IdTipo] INT NOT NULL, 
     CONSTRAINT PkObras_Id PRIMARY KEY (Id),
-    CONSTRAINT UnObras_Nombre UNIQUE (Nombre),
+    CONSTRAINT UnObras_NombreYIdTipo UNIQUE (Nombre, IdTipo),
     CONSTRAINT CkObras_Nombre CHECK (NOT Nombre=''),
     CONSTRAINT FkObras_IdTipo FOREIGN KEY (IdTipo) REFERENCES Tipos (Id) ON DELETE NO ACTION ON UPDATE CASCADE
 )

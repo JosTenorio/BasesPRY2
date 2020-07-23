@@ -1,5 +1,6 @@
 ﻿CREATE VIEW [dbo].[VwProduccionesPublicas]
-	AS SELECT p.Id, p.FechaHoraInicio, p.FechaHoraFin, e.Nombre AS Estado, te.Nombre AS Teatro, o.Nombre AS Obra, ti.Nombre AS Tipo, o.Descripcion
+	AS 
+	SELECT p.Id, p.FechaHoraInicio, p.FechaHoraFin, e.Nombre AS Estado, te.Nombre AS Teatro, o.Nombre AS Obra, ti.Nombre AS Tipo, o.Descripcion
 	FROM Producciones p
 	INNER JOIN Estados e ON p.IdEstado = e.Id 
 	INNER JOIN Teatros  te ON p.IdTeatro = te.Id

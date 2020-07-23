@@ -1,5 +1,0 @@
-﻿CREATE PROCEDURE [dbo].[CreateDailyReport]
-AS
-	INSERT INTO Reportes
-	VALUES (CONVERT (DATE, (DATEADD(day, (ABS(CHECKSUM(NEWID())) % 65530), 0))), 4578, 125.00)		
-RETURN 0

@@ -61,6 +61,7 @@
     <Folder Include="Views" />
     <Folder Include="Triggers" />
     <Folder Include="Roles" />
+    <Folder Include="Logins" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Asientos.sql" />
@@ -104,14 +105,14 @@
     <Build Include="Procedures\AdmSisCreateAsiento.sql" />
     <Build Include="Triggers\TrgRegistroPagosInsUpd.sql" />
     <Build Include="Triggers\TrgAsientosPresentacionesUpd.sql" />
-    <Build Include="Views\VwNumeroAsientosPorFila.sql" />
+    <Build Include="Views\VwCantidadAsientosPorFila.sql" />
     <Build Include="Tables\Reportes.sql" />
-    <Build Include="Procedures\CreateDailyReport.sql" />
+    <Build Include="Procedures\SisCreateDailyReport.sql" />
     <Build Include="Roles\TheaterAdmin.sql" />
     <Build Include="Roles\SystemAdmin.sql" />
     <Build Include="Roles\TheaterAgent.sql" />
-    <Build Include="ApplicationLogin.sql" />
-    <Build Include="ApplicationUser.sql" />
+    <Build Include="Logins\ApplicationUser.sql" />
+    <Build Include="Logins\ApplicationLogin.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
