@@ -27,3 +27,4 @@
 		CLOSE curInserted
 		DEALLOCATE curInserted
 	END
+	-- no se ocupa, se valida en la transaccion

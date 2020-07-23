@@ -31,12 +31,11 @@
 				SET Producciones.FechaHoraFin  = @FechaInsertada
 				WHERE Producciones.Id = @IdProduccion
 			END
-
 		   FETCH NEXT FROM CurInserted INTO @FechaInsertada, @IdProduccion
-
 		END
 		CLOSE CurInserted
 		DEALLOCATE CurInserted
+
 		IF ((SELECT COUNT(*) AS RowCnt FROM deleted) = 0)
 		BEGIN
 			INSERT INTO AsientosPresentaciones

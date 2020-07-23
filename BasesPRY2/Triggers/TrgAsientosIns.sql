@@ -13,7 +13,8 @@
 			ON inserted.IdBloque = Bloques.Id
 			GROUP BY Bloques.IdTeatro
 			) AS  CantidadesInsertadas
-			INNER JOIN Teatros ON CantidadesInsertadas.IdTeatro = Teatros.Id 
+			INNER JOIN Teatros ON CantidadesInsertadas.IdTeatro = Teatros.Id
+
 		INSERT INTO AsientosPresentaciones
 			SELECT 0, RelacionesValidas.IdPresentaciones, RelacionesValidas.IdAsientos, NULL
 			FROM 

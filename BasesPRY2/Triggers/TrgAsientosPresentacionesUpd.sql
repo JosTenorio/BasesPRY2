@@ -24,3 +24,4 @@
 			FETCH NEXT FROM curInserted INTO @NuevoIdAsientosPresentaciones, @NuevoIDRegistroPagos
 		END
 	END
+	--no se ocupa, devolver el FK
