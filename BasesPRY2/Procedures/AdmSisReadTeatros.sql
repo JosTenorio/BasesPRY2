@@ -5,4 +5,5 @@ AS
 
 	SELECT Id, Nombre
 	FROM Teatros
+	ORDER BY Nombre
 GO

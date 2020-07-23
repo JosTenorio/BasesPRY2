@@ -6,5 +6,5 @@ AS
 	SELECT a.Id, a.Fila, a.Columna
 	FROM Asientos a
 	WHERE a.IdBloque = @IdBloque
-	ORDER BY a.Fila
+	ORDER BY a.Fila, a.Columna
 GO

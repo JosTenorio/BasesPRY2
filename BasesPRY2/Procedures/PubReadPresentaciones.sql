@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[PubReadPresentaciones]
 	@IdProduccion INT,
-	@FechaInicio DATETIME = NULL,
-	@FechaFin DATETIME = NULL
+	@FechaHoraInicio DATETIME = NULL,
+	@FechaHoraFin DATETIME = NULL
 AS
 	SET NOCOUNT ON
 
@@ -12,15 +12,15 @@ AS
 		WHERE v.Id = @IdProduccion AND v.Estado IN ('Abierta', 'Anunciada')
 	)
 	BEGIN
-		IF @FechaInicio IS NOT NULL AND @FechaFin IS NOT NULL AND @FechaInicio <= @FechaFin
+		IF @FechaHoraInicio IS NOT NULL AND @FechaHoraFin IS NOT NULL AND @FechaHoraInicio <= @FechaHoraFin
 		BEGIN
 			SELECT p.Id, p.FechaHoraInicio
 			FROM Presentaciones p
-			WHERE p.IdProduccion = @IdProduccion AND p.FechaHoraInicio BETWEEN @FechaInicio AND @FechaFin
+			WHERE p.IdProduccion = @IdProduccion AND p.FechaHoraInicio BETWEEN @FechaHoraInicio AND @FechaHoraFin
 			ORDER BY p.FechaHoraInicio
 		END
 
-		ELSE IF @FechaInicio IS NULL AND @FechaFin IS NULL
+		ELSE IF @FechaHoraInicio IS NULL AND @FechaHoraFin IS NULL
 		BEGIN
 			SELECT p.Id, p.FechaHoraInicio
 			FROM Presentaciones p
