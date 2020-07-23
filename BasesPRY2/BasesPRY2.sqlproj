@@ -111,6 +111,8 @@
     <Build Include="Roles\TheaterAgent.sql" />
     <Build Include="Logins\ApplicationUser.sql" />
     <Build Include="Logins\ApplicationLogin.sql" />
+    <Build Include="Procedures\PubCreateCompra.sql" />
+    <Build Include="TableTypeListaAsientos.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
