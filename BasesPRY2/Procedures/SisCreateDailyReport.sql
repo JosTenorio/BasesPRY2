@@ -1,5 +1,12 @@
 ﻿CREATE PROCEDURE [dbo].[SisCreateDailyReport]
 AS
-	INSERT INTO Reportes
-	VALUES (CONVERT (DATE, (DATEADD(day, (ABS(CHECKSUM(NEWID())) % 65530), 0))), 4578, 125.00)		
+	SET NOCOUNT ON
+
+	DECLARE @Fecha DATE
+	SET @Fecha = CONVERT(DATE, GETDATE())
+
+	INSERT INTO Reportes (Fecha, TiquetesVendidos, CostoPromedio)
+	SELECT @Fecha, SUM(r.CantidadAsientos), SUM(r.CostoTotal) / SUM(r.CantidadAsientos) AS Promedio
+	FROM RegistroPagos r
+	WHERE CONVERT(DATE, r.FechaHoraCompra) = @Fecha
 GO
