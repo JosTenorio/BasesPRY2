@@ -9,7 +9,19 @@
 	@Aprobado BIT OUTPUT
 AS
 	SET NOCOUNT ON
-	SELECT @Codigo = '123456'
-	SELECT @FechaHora = GETDATE()
-	SELECT @Aprobado = 1
+
+	SET @FechaHora = GETDATE()
+
+	IF (CONVERT(INT, @Monto) % 2) != (CONVERT(INT, @CVV) % 2)
+	BEGIN
+		SET @Aprobado = 1
+		SET @Codigo = FORMAT(FLOOR(RAND()*(999999-1+1))+1, '00000#')
+	END
+
+	ELSE
+	BEGIN
+		SET @Aprobado = 0
+		SET @Codigo = '000000'
+	END
+
 GO
