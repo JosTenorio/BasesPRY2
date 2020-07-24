@@ -115,16 +115,24 @@
     <Build Include="Procedures\PubCreateCompraTarjeta.sql" />
     <Build Include="Procedures\SisCreateCliente.sql" />
     <Build Include="Procedures\SisGetCodigoAprobacion.sql" />
-    <Build Include="Procedures\SisLoginAdmTe.sql" />
+    <Build Include="Procedures\PubLoginAdmTe.sql" />
     <Build Include="Roles\InitialRole.sql" />
     <Build Include="Procedures\SisCreateRegistroPago.sql" />
     <Build Include="Users\ApplicationUser1.sql" />
     <Build Include="Logins\ApplicationLogin2.sql" />
     <Build Include="Users\ApplicationUser2.sql" />
-    <Build Include="Procedures\SisLoginAdmSis.sql" />
-    <Build Include="Procedures\SisLoginAgnTe.sql" />
+    <Build Include="Procedures\PubLoginAdmSis.sql" />
+    <Build Include="Procedures\PubLoginAgente.sql" />
     <Build Include="Procedures\SisUpdateUserRoles.sql" />
     <Build Include="Types\TableTypeListaAsientos.sql" />
+    <Build Include="Logins\ApplicationLogin3.sql" />
+    <Build Include="Logins\ApplicationLogin4.sql" />
+    <Build Include="Logins\ApplicationLogin5.sql" />
+    <Build Include="Users\ApplicationUser3.sql" />
+    <Build Include="Users\ApplicationUser4.sql" />
+    <Build Include="Users\ApplicationUser5.sql" />
+    <Build Include="ActualizacionRoles.sql" />
+    <Build Include="ReporteDiario.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />

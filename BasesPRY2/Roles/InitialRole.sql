@@ -1,12 +1,12 @@
 ﻿CREATE ROLE [InitialRole]
 GO
-GRANT EXECUTE ON OBJECT::SisLoginAdmTe 
+GRANT EXECUTE ON OBJECT::PubLoginAdmTe 
     TO InitialRole;  
 GO 
-GRANT EXECUTE ON OBJECT::SisLoginAdmSis
+GRANT EXECUTE ON OBJECT::PubLoginAdmSis
     TO InitialRole;  
 GO 
-GRANT EXECUTE ON OBJECT::SisLoginAgent
+GRANT EXECUTE ON OBJECT::PubLoginAgente
     TO InitialRole;  
 GO 
 GRANT EXECUTE ON OBJECT::PubCreateCompraTarjeta 

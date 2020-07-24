@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 public class ConnectionManager {
-    private static Connection connection = null;
+    public static Connection connection = null;
     private static Statement statement = null;
     private static String IP;
     private static String USERNAME;
@@ -24,9 +24,9 @@ public class ConnectionManager {
     }
     
     public static void connect() throws SQLException {
-        String url = "jdbc:sqlserver://" + IP  + ":1433;databaseName=BasesPRY1;user=" + USERNAME + ";password=" + PASSWORD;
+        String url = "jdbc:sqlserver://" + IP  + ";databaseName=BasesPRY2;user=" + USERNAME + ";password=" + PASSWORD;
         connection = DriverManager.getConnection(url);
-        statement = connection.createStatement ();
+        //statement = connection.createStatement ();
     }
     
     private static void executeActionQuery(String query) throws SQLException {

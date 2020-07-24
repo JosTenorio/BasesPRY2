@@ -2,6 +2,10 @@
 package Model;
 
 import Controller.MainMenuController;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
     
@@ -10,7 +14,19 @@ public class Main {
         //Para hacer log in a la base de datos se debe especificar la direccion ip, el nombre del administrador y la contrasena de esta
         
         //ConnectionManager.logIn("192.168.0.5", "sa", "2019064588");
-        ConnectionManager.logIn("192.168.100.45", "sa", "12345");
-        MainMenuController.getInstance().makeVisible(true);
+        ConnectionManager.logIn("192.168.0.2", "ApplicationLogin1", "ElGalloDeDatos25");
+        try {
+            System.setProperty("java.net.preferIPv4Addresses", "true");  
+            ConnectionManager.connect();
+            System.out.println ("Conectado");
+            try {
+                int x = System.in.read();
+                ConnectionManager.connection.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     } 
 }
