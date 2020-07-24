@@ -14,12 +14,17 @@ AS
 		SELECT Nombre
 		FROM Estados
 		WHERE Id = @IdEstado
-	) IN ('Anunciada', 'Abierta') AND 
+	) IN ('Anunciada', 'Abierta') AND (
 	(
 		SELECT FechaHoraInicio	
 		FROM Producciones
 		WHERE Id = @IdProduccion
-	) IS NULL ) AND
+	) IS NULL OR NOT EXISTS
+	(
+		SELECT 'True'
+		FROM BloquesProducciones
+		WHERE IdProduccion = @IdProduccion
+	))) AND
 	(
 		SELECT p.IdTeatro
 		FROM Producciones p
