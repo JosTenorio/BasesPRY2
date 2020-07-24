@@ -111,12 +111,13 @@
     <Build Include="Roles\SystemAdmin.sql" />
     <Build Include="Roles\TheaterAgent.sql" />
     <Build Include="Logins\ApplicationLogin1.sql" />
-    <Build Include="Procedures\PubCreateCompra.sql" />
+    <Build Include="Procedures\PubCreateCompraTarjeta.sql" />
     <Build Include="TableTypeListaAsientos.sql" />
-    <Build Include="Procedures\SisCreateClient.sql" />
+    <Build Include="Procedures\SisCreateCliente.sql" />
     <Build Include="Procedures\SisGetCodigoAprobacion.sql" />
     <Build Include="Procedures\SisLoginAdmTe.sql" />
     <Build Include="Roles\InitialRole.sql" />
+    <Build Include="Procedures\SisCreateRegistroPago.sql" />
     <Build Include="Users\ApplicationUser1.sql" />
     <Build Include="Logins\ApplicationLogin2.sql" />
     <Build Include="Users\ApplicationUser2.sql" />

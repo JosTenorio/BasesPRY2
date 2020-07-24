@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="81"
-  DTS:VersionGUID="{168C8AF7-9ACE-4A64-BAD4-B329BD8F26FD}">
+  DTS:VersionBuild="82"
+  DTS:VersionGUID="{62D534EC-6BD9-402D-AB1D-551F04956BF4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="DestinationConnectionOLEDB">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=JOS-PC\SERVER;Initial Catalog=BasesPRY2;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Application Name=SSIS-Package-{E02BA336-C7DA-4B32-A7D8-0FA371E0DF29}DestinationConnectionOLEDB;" />
+          DTS:ConnectionString="Data Source=JOTA-PC;Initial Catalog=BasesPRY2;Provider=MSOLEDBSQL.1;Persist Security Info=False;Integrated Security=SSPI;Application Name=SSIS-Package-{E02BA336-C7DA-4B32-A7D8-0FA371E0DF29}DestinationConnectionOLEDB;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -33,7 +33,7 @@
       DTS:ObjectName="SourceConnectionExcel">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\JOS\Desktop\BasesPRY2\TP2 2020i - datos prueba.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\SQL 2019\Projects\BasesPRY2\TP2 2020i - datos prueba.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -6023,139 +6023,139 @@
       <GraphLayout
         Capacity="128" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="214,42"
+          Size="214.4,41.6"
           Id="Package\Borrado de tablas temporales"
           TopLeft="1368.26663707627,154.195558112251" />
         <NodeLayout
-          Size="244,42"
+          Size="244,41.6"
           Id="Package\Creación tabla temporal de Agentes"
           TopLeft="640.761879300315,347.961907438248" />
         <NodeLayout
-          Size="245,42"
+          Size="244.8,41.6"
           Id="Package\Creación tabla temporal de asientos"
           TopLeft="365.333318816291,109.546667537265" />
         <NodeLayout
-          Size="243,42"
+          Size="243.2,41.6"
           Id="Package\Creación tabla temporal de Bloques"
           TopLeft="367.999985376994,405.600003223419" />
         <NodeLayout
-          Size="254,42"
+          Size="254.4,41.6"
           Id="Package\Creación tabla temporal de Clientes"
           TopLeft="880,404.444444444444" />
         <NodeLayout
-          Size="241,42"
+          Size="240.8,41.6"
           Id="Package\Creación tabla temporal de Precios"
           TopLeft="372.666651858224,261.386668743981" />
         <NodeLayout
-          Size="277,42"
+          Size="276.8,41.6"
           Id="Package\Creación tabla temporal de presentaciones"
           TopLeft="36.6666652096642,315.46666917377" />
         <NodeLayout
-          Size="268,42"
+          Size="268,41.6"
           Id="Package\Creacion tabla temporal de producciones"
           TopLeft="34.1333324856228,174.026668049706" />
         <NodeLayout
-          Size="255,42"
+          Size="255.2,41.6"
           Id="Package\Creación tabla temporal de SisAdmins"
           TopLeft="631.333308246402,37.4400002975464" />
         <NodeLayout
-          Size="238,42"
+          Size="238.4,41.6"
           Id="Package\Creación tabla temporal de teatros"
           TopLeft="42.1333321677314,31.2000002479553" />
         <NodeLayout
-          Size="256,42"
+          Size="256,41.6"
           Id="Package\Creación tabla temporal TeatroAdmins"
           TopLeft="626.666641765172,182.453334694333" />
         <NodeLayout
-          Size="188,42"
+          Size="188,41.6"
           Id="Package\Importación de Agentes"
           TopLeft="665.866640811497,413.013335719215" />
         <NodeLayout
-          Size="189,42"
+          Size="188.8,41.6"
           Id="Package\Importación de asientos"
           TopLeft="394.533318259982,36.4266661487155" />
         <NodeLayout
-          Size="186,42"
+          Size="185.6,41.6"
           Id="Package\Importación de bloques"
           TopLeft="399.199984741212,333.173335173713" />
         <NodeLayout
-          Size="194,42"
+          Size="193.6,41.6"
           Id="Package\Importación de Clientes"
           TopLeft="910.944444444444,330.888888888889" />
         <NodeLayout
-          Size="183,42"
+          Size="183.2,41.6"
           Id="Package\Importacion de precios"
           TopLeft="399.199984741212,182.02666730584" />
         <NodeLayout
-          Size="221,42"
+          Size="220.8,41.6"
           Id="Package\Importación de presentaciones"
           TopLeft="66.53333129353,405.280002413432" />
         <NodeLayout
-          Size="199,42"
+          Size="199.2,41.6"
           Id="Package\Importación de SisAdmins"
           TopLeft="661.866640970443,113.386666760339" />
         <NodeLayout
-          Size="214,42"
+          Size="214.4,41.6"
           Id="Package\Importación de TeatroAdmins"
           TopLeft="649.199974807104,254.636191603404" />
         <NodeLayout
-          Size="281,42"
+          Size="280.8,41.6"
           Id="Package\Importacion tabla temporal de producciones"
           TopLeft="34.6666664017571,239.573334429846" />
         <NodeLayout
-          Size="261,42"
+          Size="260.8,41.6"
           Id="Package\Importación tabla temporal de teatros"
           TopLeft="40.4444439940984,99.9377777557366" />
         <NodeLayout
-          Size="176,42"
+          Size="176,41.6"
           Id="Package\Inserción de Agentes"
           TopLeft="1168.73011471733,250.800001542834" />
         <NodeLayout
-          Size="178,42"
+          Size="177.6,41.6"
           Id="Package\Inserción de Asientos"
           TopLeft="1390.79995766746,309.466667961544" />
         <NodeLayout
-          Size="174,42"
+          Size="174.4,41.6"
           Id="Package\Inserción de bloques"
           TopLeft="1171.90471758919,328.419049752251" />
         <NodeLayout
-          Size="182,42"
+          Size="182.4,41.6"
           Id="Package\Inserción de Clientes"
           TopLeft="1385.55555555556,227.777777777778" />
         <NodeLayout
-          Size="175,42"
+          Size="175.2,41.6"
           Id="Package\Inserción de Estados"
           TopLeft="898.888853391014,35.4031755556375" />
         <NodeLayout
-          Size="166,42"
+          Size="166.4,41.6"
           Id="Package\Inserción de Obras"
           TopLeft="898.571392997864,103.89206505064" />
         <NodeLayout
-          Size="171,42"
+          Size="171.2,41.6"
           Id="Package\Inserción de precios"
           TopLeft="1172.38090817891,395.112383642106" />
         <NodeLayout
-          Size="210,42"
+          Size="209.6,41.6"
           Id="Package\Inserción de Presentaciones"
           TopLeft="1381.55552728971,390.222225280338" />
         <NodeLayout
-          Size="175,42"
+          Size="175.2,41.6"
           Id="Package\Inserción de Producciones"
           TopLeft="1166.50790097222,29.8603177594382" />
         <NodeLayout
-          Size="187,42"
+          Size="187.2,41.6"
           Id="Package\Inserción de SisAdmins"
           TopLeft="1160.95233720447,98.7492066483271" />
         <NodeLayout
-          Size="202,42"
+          Size="201.6,41.6"
           Id="Package\Inserción de TeatroAdmins"
           TopLeft="1154.76186112753,175.765080293928" />
         <NodeLayout
-          Size="173,42"
+          Size="172.8,41.6"
           Id="Package\Inserción de Teatros"
           TopLeft="920.888858715695,253.360002567716" />
         <NodeLayout
-          Size="163,42"
+          Size="163.2,41.6"
           Id="Package\Inserción de Tipos"
           TopLeft="909.206313519252,171.993652911111" />
         <EdgeLayout
