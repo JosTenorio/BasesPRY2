@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[SisLoginAdmTe]
 	@AdminLogin nvarchar (20),
 	@password nvarchar (20)
+WITH EXECUTE AS OWNER
 AS
 	IF (EXISTS (SELECT 'True'
 				FROM Empleados
@@ -8,10 +9,17 @@ AS
 				AND Empleados.Usuario = @AdminLogin
 				AND Empleados.Contrasena = @password))
 	BEGIN
-		DECLARE @User sysname
-		SET @User = CURRENT_USER
-		EXEC sp_droprolemember 'InitialRole', @User
-		RETURN EXEC sp_addrolemember 'TheaterAdmin', @User
+		IF (ORIGINAL_LOGIN = 'ApplicationLogin')
+		BEGIN
+			ALTER ROLE TheaterAdmin ADD MEMBER ApplicationUser
+			DENY ALTER ON ROLE::TheaterAdmin TO ApplicationUser
+			ALTER ROLE InitialRole DROP MEMBER ApplicationUser
+			RETURN 1
+		END
+		ELSE
+		BEGIN
+			RETURN 0
+		END
 	END
 	ELSE
 	BEGIN
