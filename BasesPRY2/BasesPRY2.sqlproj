@@ -131,8 +131,6 @@
     <Build Include="Users\ApplicationUser3.sql" />
     <Build Include="Users\ApplicationUser4.sql" />
     <Build Include="Users\ApplicationUser5.sql" />
-    <Build Include="ActualizacionRoles.sql" />
-    <Build Include="ReporteDiario.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />

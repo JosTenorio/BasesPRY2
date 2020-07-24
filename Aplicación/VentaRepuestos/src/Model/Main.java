@@ -14,9 +14,8 @@ public class Main {
         //Para hacer log in a la base de datos se debe especificar la direccion ip, el nombre del administrador y la contrasena de esta
         
         //ConnectionManager.logIn("192.168.0.5", "sa", "2019064588");
-        ConnectionManager.logIn("192.168.0.2", "ApplicationLogin1", "ElGalloDeDatos25");
+        ConnectionManager.logIn("25.12.222.208", "ApplicationLogin1", "ElGalloDeDatos25");
         try {
-            System.setProperty("java.net.preferIPv4Addresses", "true");  
             ConnectionManager.connect();
             System.out.println ("Conectado");
             try {
