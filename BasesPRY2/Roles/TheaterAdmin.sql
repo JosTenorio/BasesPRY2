@@ -12,7 +12,7 @@ GO
 GRANT EXECUTE ON OBJECT::AdmTeCreatePresentacion
 	TO TheaterAdmin
 GO
-GRANT EXECUTE ON OBJECT::AdmTeCreateProduccion
+GRANT EXECUTE ON OBJECT::AdmTeCreateObra
 	TO TheaterAdmin
 GO
 GRANT EXECUTE ON OBJECT::AdmTeReadBloques
