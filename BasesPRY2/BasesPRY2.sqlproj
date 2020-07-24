@@ -63,6 +63,7 @@
     <Folder Include="Roles" />
     <Folder Include="Logins" />
     <Folder Include="Users" />
+    <Folder Include="Types" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Asientos.sql" />
@@ -106,13 +107,12 @@
     <Build Include="Procedures\AdmSisCreateAsiento.sql" />
     <Build Include="Views\VwCantidadAsientosPorFila.sql" />
     <Build Include="Tables\Reportes.sql" />
-    <Build Include="Procedures\SisCreateDailyReport.sql" />
+    <Build Include="Procedures\SisCreateReporteDiario.sql" />
     <Build Include="Roles\TheaterAdmin.sql" />
     <Build Include="Roles\SystemAdmin.sql" />
     <Build Include="Roles\TheaterAgent.sql" />
     <Build Include="Logins\ApplicationLogin1.sql" />
     <Build Include="Procedures\PubCreateCompraTarjeta.sql" />
-    <Build Include="TableTypeListaAsientos.sql" />
     <Build Include="Procedures\SisCreateCliente.sql" />
     <Build Include="Procedures\SisGetCodigoAprobacion.sql" />
     <Build Include="Procedures\SisLoginAdmTe.sql" />
@@ -122,8 +122,9 @@
     <Build Include="Logins\ApplicationLogin2.sql" />
     <Build Include="Users\ApplicationUser2.sql" />
     <Build Include="Procedures\SisLoginAdmSis.sql" />
-    <Build Include="Procedures\SisLoginAgent.sql" />
+    <Build Include="Procedures\SisLoginAgnTe.sql" />
     <Build Include="Procedures\SisUpdateUserRoles.sql" />
+    <Build Include="Types\TableTypeListaAsientos.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />

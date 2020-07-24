@@ -1,13 +1,16 @@
 ﻿CREATE PROCEDURE [dbo].[SisLoginAdmSis]
 	@AdminLogin nvarchar (20),
-	@password nvarchar (20)
+	@Password nvarchar (20)
 WITH EXECUTE AS OWNER
 AS
-	IF (EXISTS (SELECT 'True'
-				FROM Empleados
-				WHERE Empleados.Tipo = 3
-				AND Empleados.Usuario = @AdminLogin
-				AND Empleados.Contrasena = @password))
+	IF EXISTS 
+	(
+		SELECT 'True'
+		FROM Empleados
+		WHERE Empleados.Tipo = 3
+		AND Empleados.Usuario = @AdminLogin
+		AND Empleados.Contrasena = @Password
+	)
 	BEGIN
 		IF (ORIGINAL_LOGIN() = 'ApplicationLogin1')
 		BEGIN
@@ -24,13 +27,10 @@ AS
 			RETURN 1
 		END
 		ELSE
-		BEGIN
 			RETURN 0
-		END
 	END
 	ELSE
-	BEGIN
 		RETURN 0
-END
+GO
 
 

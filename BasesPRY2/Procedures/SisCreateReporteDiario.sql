@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[SisCreateDailyReport]
+﻿CREATE PROCEDURE [dbo].[SisCreateReporteDiario]
 AS
 	SET NOCOUNT ON
 
