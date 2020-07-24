@@ -62,6 +62,7 @@
     <Folder Include="Triggers" />
     <Folder Include="Roles" />
     <Folder Include="Logins" />
+    <Folder Include="Users" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Asientos.sql" />
@@ -109,8 +110,7 @@
     <Build Include="Roles\TheaterAdmin.sql" />
     <Build Include="Roles\SystemAdmin.sql" />
     <Build Include="Roles\TheaterAgent.sql" />
-    <Build Include="Logins\ApplicationUser.sql" />
-    <Build Include="Logins\ApplicationLogin.sql" />
+    <Build Include="Logins\ApplicationLogin1.sql" />
     <Build Include="Procedures\PubCreateCompraTarjeta.sql" />
     <Build Include="TableTypeListaAsientos.sql" />
     <Build Include="Procedures\SisCreateCliente.sql" />
@@ -118,6 +118,12 @@
     <Build Include="Procedures\SisLoginAdmTe.sql" />
     <Build Include="Roles\InitialRole.sql" />
     <Build Include="Procedures\SisCreateRegistroPago.sql" />
+    <Build Include="Users\ApplicationUser1.sql" />
+    <Build Include="Logins\ApplicationLogin2.sql" />
+    <Build Include="Users\ApplicationUser2.sql" />
+    <Build Include="Procedures\SisLoginAdmSis.sql" />
+    <Build Include="Procedures\SisLoginAgent.sql" />
+    <Build Include="Procedures\SisUpdateUserRoles.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
