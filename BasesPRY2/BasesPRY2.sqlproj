@@ -142,6 +142,8 @@
     <Build Include="Procedures\AgnTeReadPresentaciones.sql" />
     <Build Include="Procedures\AgnTeReadBloquesProducciones.sql" />
     <Build Include="Procedures\AgnTeCreateCompraTarjeta.sql" />
+    <Build Include="Procedures\AdmSisReadRegistroPagos.sql" />
+    <Build Include="Procedures\AdmSisReadEmpleados.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
