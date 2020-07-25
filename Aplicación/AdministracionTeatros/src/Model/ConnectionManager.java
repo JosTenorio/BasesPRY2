@@ -28,9 +28,11 @@ public class ConnectionManager {
             Username += Integer.toString (i);
             try {
                 connect();
+                System.out.println ("Conectado con: " + Username + ", " + Password);
                 return;
             } catch (SQLException ex) {
                 System.out.println (ex.getMessage());
+                Username = Username.substring(0, Username.length() - 1);
             }  
         }
         infoBox ("Hay muchos usuarios conectados en este momento, intente de nuevo más tarde", "Ingreso denegado");

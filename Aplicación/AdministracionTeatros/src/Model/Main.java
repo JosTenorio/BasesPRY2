@@ -17,7 +17,6 @@ public class Main {
             //ConnectionManager.logIn("192.168.0.5", "sa", "2019064588");
             ConnectionManager.InitialLogIn("25.79.234.220");
             //ConnectionManager.executePubLoginAdmTe("nangulo","ped7Kie");
-            System.out.println ("Conectado");
             try {
                 int x = System.in.read();
             } catch (IOException ex) {

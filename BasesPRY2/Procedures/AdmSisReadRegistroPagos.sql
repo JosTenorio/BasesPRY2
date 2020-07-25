@@ -15,5 +15,4 @@ AS
 	INNER JOIN VwProduccionesPublicas v ON v.Id = p.IdProduccion
 	INNER JOIN Asientos a ON a.Id = ap.IdAsiento
 	INNER JOIN Bloques b ON b.Id = a.IdBloque
-	ORDER BY r.FechaHoraCompra, c.Nombre
 GO
