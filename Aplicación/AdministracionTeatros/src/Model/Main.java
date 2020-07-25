@@ -13,9 +13,7 @@ public class Main {
         
         try {
             //Para hacer log in a la base de datos se debe especificar la direccion ip
-            
-            //ConnectionManager.logIn("192.168.0.5", "sa", "2019064588");
-            ConnectionManager.InitialLogIn("25.79.234.220");
+            ConnectionManager.LogIn("25.79.234.220");
             /*
             if (ConnectionManager.executePubLoginAdmTe("nangulo","ped7Kie") == 1) {
                 System.out.println("Logueado como administrador");
