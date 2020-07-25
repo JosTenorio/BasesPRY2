@@ -1,11 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[PubCreateCompraTarjeta]
+﻿CREATE PROCEDURE [dbo].[AgnTeCreateCompraEfectivo]
 	@IdsAsientosPresentaciones ListaAsientos READONLY,
 	@Nombre NVARCHAR(50),
 	@Telefono NCHAR(8),
-	@Correo NVARCHAR(80),
-	@Tarjeta NCHAR(16),
-	@Expira DATE,
-	@CVV NCHAR(3)
+	@Correo NVARCHAR(80) = NULL
 AS
 	SET NOCOUNT ON
 
@@ -74,18 +71,16 @@ AS
 	) * @CantidadAsientos
 
 	DECLARE @FechaHora DATETIME
-	DECLARE @Codigo NCHAR(6)
-	DECLARE @Aprobado BIT
 	DECLARE @IdCliente INT
 	DECLARE @IdRegistro INT
 
 	BEGIN TRAN Compra
 
-	EXEC SisGetCodigoAprobacion @Nombre, @Tarjeta, @Expira, @CVV, @Monto, @Codigo OUTPUT, @FechaHora OUTPUT, @Aprobado OUTPUT
-
 	EXEC SisCreateCliente @Nombre, @Telefono, @Correo, @IdCliente OUTPUT
 
-	EXEC SisCreateRegistroPago @FechaHora, @Codigo, @CantidadAsientos, @Monto, 1, @IdCliente, @IdRegistro OUTPUT
+	SET @FechaHora = GETDATE()
+
+	EXEC SisCreateRegistroPago @FechaHora, NULL, @CantidadAsientos, @Monto, 0, @IdCliente, @IdRegistro OUTPUT
 
 	UPDATE AsientosPresentaciones
 	SET IdRegistroPago = @IdRegistro, EstaOcupado = 1
@@ -95,11 +90,8 @@ AS
 		FROM @IdsAsientosPresentaciones i
 	)
 
-	IF @Aprobado = 1
-	BEGIN
-		COMMIT TRAN Compra
-		EXEC SisCreateCompraResumen @IdsAsientosPresentaciones, @IdProduccion, @IdPresentacion, @IdBloque, @Monto, @FechaHora
-	END
-	ELSE
-		ROLLBACK TRAN Compra
+	COMMIT TRAN Compra
+	EXEC SisCreateCompraResumen @IdsAsientosPresentaciones, @IdProduccion, @IdPresentacion, @IdBloque, @Monto, @FechaHora
+
 GO
+
