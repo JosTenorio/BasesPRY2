@@ -122,7 +122,7 @@
     <Build Include="Logins\ApplicationLogin2.sql" />
     <Build Include="Users\ApplicationUser2.sql" />
     <Build Include="Procedures\PubLoginAdmSis.sql" />
-    <Build Include="Procedures\PubLoginAgente.sql" />
+    <Build Include="Procedures\PubLoginAgnTe.sql" />
     <Build Include="Procedures\SisUpdateUserRoles.sql" />
     <Build Include="Types\TableTypeListaAsientos.sql" />
     <Build Include="Logins\ApplicationLogin3.sql" />
@@ -134,6 +134,8 @@
     <Build Include="Procedures\PubReadCompraResumen.sql" />
     <Build Include="Procedures\SisCreateCompraResumen.sql" />
     <Build Include="Procedures\AgnTeCreateCompraEfectivo.sql" />
+    <Build Include="Procedures\AdmTeCreateEmpleadoAgnTe.sql" />
+    <Build Include="Procedures\AdmSisCreateEmpleadoAdmTe.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />

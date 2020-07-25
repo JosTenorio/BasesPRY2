@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="85"
-  DTS:VersionGUID="{24E7162A-0F47-4429-B9B3-5C24AA1837E6}">
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{7079D5D7-153F-4407-A1AE-BEF20DF1E706}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -5536,7 +5536,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E02BA336-C7DA-4B32-A7D8-0FA371E0DF29}"
-          SQLTask:SqlStatementSource="INSERT INTO dbo.Empleados&#xA;SELECT AgentesTemp.cedula, AgentesTemp.nombre, AgentesTemp.fechaNac, AgentesTemp.direccion, AgentesTemp.sexo, AgentesTemp.email, AgentesTemp.telCasa, AgentesTemp.telCelular, AgentesTemp.telOtro, AgentesTemp.usuario, &#xA;                  AgentesTemp.password, 2 AS Expr1, Teatros.Id&#xA;FROM     dbo.AgentesTemp, dbo.Teatros&#xA;WHERE  AgentesTemp.nombre_teatro = Teatros.Nombre" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="INSERT INTO dbo.Empleados&#xA;SELECT AgentesTemp.cedula, AgentesTemp.nombre, AgentesTemp.fechaNac, AgentesTemp.direccion, AgentesTemp.sexo, AgentesTemp.email, AgentesTemp.telCasa, AgentesTemp.telCelular, AgentesTemp.telOtro, AgentesTemp.usuario, &#xA;                  AgentesTemp.password, 1 AS Expr1, Teatros.Id&#xA;FROM     dbo.AgentesTemp, dbo.Teatros&#xA;WHERE  AgentesTemp.nombre_teatro = Teatros.Nombre" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -5706,7 +5706,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E02BA336-C7DA-4B32-A7D8-0FA371E0DF29}"
-          SQLTask:SqlStatementSource="INSERT INTO dbo.Empleados&#xA;SELECT AdminsTeatrosTemp.cedula, AdminsTeatrosTemp.nombre, AdminsTeatrosTemp.fechaNac, AdminsTeatrosTemp.direccion, AdminsTeatrosTemp.sexo, AdminsTeatrosTemp.email, AdminsTeatrosTemp.telCasa, &#xA;                  AdminsTeatrosTemp.telCelular, AdminsTeatrosTemp.telOtro, AdminsTeatrosTemp.usuario, AdminsTeatrosTemp.password, 1 AS Expr1, Teatros.Id&#xA;FROM     dbo.AdminsTeatrosTemp, dbo.Teatros&#xA;WHERE  AdminsTeatrosTemp.nombre_teatro = Teatros.Nombre" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="INSERT INTO dbo.Empleados&#xA;SELECT AdminsTeatrosTemp.cedula, AdminsTeatrosTemp.nombre, AdminsTeatrosTemp.fechaNac, AdminsTeatrosTemp.direccion, AdminsTeatrosTemp.sexo, AdminsTeatrosTemp.email, AdminsTeatrosTemp.telCasa, &#xA;                  AdminsTeatrosTemp.telCelular, AdminsTeatrosTemp.telOtro, AdminsTeatrosTemp.usuario, AdminsTeatrosTemp.password, 2 AS Expr1, Teatros.Id&#xA;FROM     dbo.AdminsTeatrosTemp, dbo.Teatros&#xA;WHERE  AdminsTeatrosTemp.nombre_teatro = Teatros.Nombre" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -6951,7 +6951,7 @@
     design-time-name="Package\Importación de Agentes">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="148.8,41.6"
           Id="Package\Importación de Agentes\Source - Query"
@@ -6983,9 +6983,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7007,9 +7005,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

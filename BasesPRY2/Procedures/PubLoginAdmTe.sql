@@ -7,7 +7,7 @@ AS
 	(
 		SELECT 'True'
 		FROM Empleados
-		WHERE Empleados.Tipo = 1
+		WHERE Empleados.Tipo = 2
 		AND Empleados.Usuario = @AdminLogin
 		AND Empleados.Contrasena = @Password
 	)

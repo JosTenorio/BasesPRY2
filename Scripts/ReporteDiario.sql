@@ -3,8 +3,11 @@ GO
 
 /****** Object:  Job [ReporteDiario]    Script Date: 24/7/2020 13:46:04 ******/
 BEGIN TRANSACTION
-DECLARE @LoginName nvarchar(100)
-SET @LoginName = 'JOS-PC\JOS'
+
+--Ingresar login personal
+DECLARE @LoginName nvarchar(50)
+SET @LoginName = 'Jota-PC\Jota'
+
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
 /****** Object:  JobCategory [Data Collector]    Script Date: 24/7/2020 13:46:04 ******/
