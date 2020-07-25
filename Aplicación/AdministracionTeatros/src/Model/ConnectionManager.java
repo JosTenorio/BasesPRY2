@@ -1,6 +1,7 @@
 
 package Model;
 
+import java.sql.Types;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -51,28 +52,34 @@ public class ConnectionManager {
     }
     
     public static int executePubLoginAdmSis (String username, String password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call PubLoginAdmSis(?, ?)}");
+       CallableStatement cstmt = connection.prepareCall("{? = call PubLoginAdmSis(?, ?)}");
        cstmt.setString(1, username);
        cstmt.setString(2, password);
-       int result = cstmt.executeQuery().getInt(1);
+       cstmt.registerOutParameter(1, Types.INTEGER);
+       cstmt.executeQuery();
+       int result = cstmt.getInt(1);
        cstmt.close();
        return result;
     } 
     
     public static int executePubLoginAdmTe (String username, String password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call PubLoginAdmTe(?, ?)}");
-       cstmt.setString(1, username);
-       cstmt.setString(1, username);
-       int result = cstmt.executeQuery().getInt(1);
+       CallableStatement cstmt = connection.prepareCall("{? = call PubLoginAdmTe(?, ?)}");
+       cstmt.registerOutParameter(1, Types.INTEGER);
+       cstmt.setString(2, username);
+       cstmt.setString(3, password);
+       cstmt.execute();
+       int result = cstmt.getInt(1);
        cstmt.close();
        return result;
     }
     
-    public static int executePubLoginAgente (String username, String password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call PubLoginAgente(?, ?)}");
+    public static int executePubLoginAgnTe (String username, String password) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{? = call PubLoginAgnTe(?, ?)}");
        cstmt.setString(1, username);
-       cstmt.setString(1, username);
-       int result = cstmt.executeQuery().getInt(1);
+       cstmt.setString(2, password);
+       cstmt.registerOutParameter(1, Types.INTEGER);
+       cstmt.executeQuery();
+       int result = cstmt.getInt(1);
        cstmt.close();
        return result;
     } 
@@ -83,6 +90,13 @@ public class ConnectionManager {
        cstmt.setString(2, Descripcion);
        cstmt.executeQuery();
        cstmt.close();
+    }
+    
+     public static ResultSet executeAdmTeReadTipos () throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmTeReadTipos}");
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
     }
     
     public static ResultSet executePubReadAsientosPresentaciones (int IdPresentacion , int IdBloque) throws SQLException {

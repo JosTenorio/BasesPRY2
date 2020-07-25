@@ -1,6 +1,7 @@
 ﻿/*
 This scripts creates a logon trigger that only allows one connection per application login
 */
+ALTER DATABASE BasesPRY2 SET TRUSTWORTHY ON
 USE master;  
 GO  
 CREATE LOGIN LoginAuditor WITH PASSWORD = 'ElGalloDeDatos24';  

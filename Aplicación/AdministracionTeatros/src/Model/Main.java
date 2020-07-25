@@ -16,13 +16,22 @@ public class Main {
             
             //ConnectionManager.logIn("192.168.0.5", "sa", "2019064588");
             ConnectionManager.InitialLogIn("25.79.234.220");
-            //ConnectionManager.executePubLoginAdmTe("nangulo","ped7Kie");
-            try {
-                int x = System.in.read();
-            } catch (IOException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            /*
+            if (ConnectionManager.executePubLoginAdmTe("nangulo","ped7Kie") == 1) {
+                System.out.println("Logueado como administrador");
             }
-            ConnectionManager.executeAdmTeCreateObra ("Pepe", "Danza");
+            else {
+                System.out.println("Login fallido");
+            }
+            */
+            while (true) {
+                try {
+                    int x = System.in.read();
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                ConnectionManager.executeAdmTeReadTipos();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
