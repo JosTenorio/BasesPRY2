@@ -6,7 +6,7 @@ GO
 GRANT EXECUTE ON OBJECT::PubLoginAdmSis
     TO InitialRole;  
 GO 
-GRANT EXECUTE ON OBJECT::PubLoginAgente
+GRANT EXECUTE ON OBJECT::PubLoginAgnTe
     TO InitialRole;  
 GO 
 GRANT EXECUTE ON OBJECT::PubCreateCompraTarjeta 

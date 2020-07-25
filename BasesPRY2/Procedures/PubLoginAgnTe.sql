@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[PubLoginAgente]
+﻿CREATE PROCEDURE [dbo].[PubLoginAgnTe]
 	@AdminLogin nvarchar (20),
 	@Password nvarchar (20)
 WITH EXECUTE AS OWNER
@@ -7,7 +7,7 @@ AS
 	(
 		SELECT 'True'
 		FROM Empleados
-		WHERE Empleados.Tipo = 2
+		WHERE Empleados.Tipo = 1
 		AND Empleados.Usuario = @AdminLogin
 		AND Empleados.Contrasena = @Password
 	)

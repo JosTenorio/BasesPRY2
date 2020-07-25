@@ -3,8 +3,11 @@ GO
 
 /****** Object:  Job [ActualizaciónRoles]    Script Date: 24/7/2020 13:45:43 ******/
 BEGIN TRANSACTION
-DECLARE @LoginName nvarchar (80)
-SET @LoginName = 'JOS-PC\JOS'
+
+--Ingresar login personal
+DECLARE @LoginName nvarchar(50)
+SET @LoginName = 'Jota-PC\Jota'
+
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
 /****** Object:  JobCategory [Data Collector]    Script Date: 24/7/2020 13:45:43 ******/
@@ -16,7 +19,7 @@ IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 END
 
 DECLARE @jobId BINARY(16)
-EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'ActualizaciónRoles', 
+EXEC @ReturnCode =  msdb.dbo.sp_add_job @job_name=N'ActualizacionRoles', 
 		@enabled=1, 
 		@notify_level_eventlog=0, 
 		@notify_level_email=0, 
