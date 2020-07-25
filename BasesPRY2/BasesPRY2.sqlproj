@@ -136,6 +136,12 @@
     <Build Include="Procedures\AgnTeCreateCompraEfectivo.sql" />
     <Build Include="Procedures\AdmTeCreateEmpleadoAgnTe.sql" />
     <Build Include="Procedures\AdmSisCreateEmpleadoAdmTe.sql" />
+    <Build Include="Procedures\AgnTeReadProducciones.sql" />
+    <Build Include="Procedures\AgnTeReadCompraResumen.sql" />
+    <Build Include="Procedures\AgnTeReadAsientosPresentaciones.sql" />
+    <Build Include="Procedures\AgnTeReadPresentaciones.sql" />
+    <Build Include="Procedures\AgnTeReadBloquesProducciones.sql" />
+    <Build Include="Procedures\AgnTeCreateCompraTarjeta.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />

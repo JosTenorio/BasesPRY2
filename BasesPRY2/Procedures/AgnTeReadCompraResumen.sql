@@ -1,8 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[AgnTeCreateCompraEfectivo]
+﻿CREATE PROCEDURE [dbo].[AgnTeReadCompraResumen]
 	@IdsAsientosPresentaciones ListaAsientos READONLY,
-	@Nombre NVARCHAR(50),
-	@Telefono NCHAR(8),
-	@Correo NVARCHAR(80) = NULL,
 	@User NVARCHAR(20),
 	@Password NVARCHAR(20)
 AS
@@ -79,28 +76,6 @@ AS
 		WHERE bp.IdBloque = @IdBloque AND bp.IdProduccion = @IdProduccion
 	) * @CantidadAsientos
 
-	DECLARE @FechaHora DATETIME
-	DECLARE @IdCliente INT
-	DECLARE @IdRegistro INT
-
-	BEGIN TRAN Compra
-
-	EXEC SisCreateCliente @Nombre, @Telefono, @Correo, @IdCliente OUTPUT
-
-	SET @FechaHora = GETDATE()
-
-	EXEC SisCreateRegistroPago @FechaHora, NULL, @CantidadAsientos, @Monto, 0, @IdCliente, @IdRegistro OUTPUT
-
-	UPDATE AsientosPresentaciones
-	SET IdRegistroPago = @IdRegistro, EstaOcupado = 1
-	WHERE Id IN 
-	(
-		SELECT i.IdAsientoPresentacion
-		FROM @IdsAsientosPresentaciones i
-	)
-
-	COMMIT TRAN Compra
-	EXEC SisCreateCompraResumen @IdsAsientosPresentaciones, @IdProduccion, @IdPresentacion, @IdBloque, @Monto, @FechaHora
-
+	EXEC SisCreateCompraResumen @IdsAsientosPresentaciones, @IdProduccion, @IdPresentacion, @IdBloque, @Monto
 GO
 
