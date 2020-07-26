@@ -1,6 +1,8 @@
 
 package Model;
 
+import com.microsoft.sqlserver.jdbc.SQLServerCallableStatement;
+import com.microsoft.sqlserver.jdbc.SQLServerDataTable;
 import java.math.BigDecimal;
 import java.sql.Types;
 import java.sql.Connection;
@@ -14,6 +16,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -284,6 +287,47 @@ public class ConnectionManager {
        cstmt.executeQuery();
        cstmt.close();
     }
+    
+    public static void executeAgnTeCreateCompraEfectivo (ArrayList<Integer> Ids, String Nombre, String Telefono, String Correo,
+       String User, String Password) throws SQLException {
+       SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call AgnTeCreateCompraEfectivo (?,?,?,?,?,?)}");
+       SQLServerDataTable ListaAsientos = new SQLServerDataTable();
+       ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
+       for (int Id: Ids) {
+           ListaAsientos.addRow(Id);
+       }
+       cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
+       cstmt.setString(2, Nombre);
+       cstmt.setString(3, Telefono);
+       cstmt.setString(4, Correo);
+       cstmt.setString(5, User);
+       cstmt.setString(6, Password);
+       cstmt.executeQuery();
+       cstmt.close();
+    }
+    
+    public static void executeAgnTeCreateCompraTarjeta (ArrayList<Integer> Ids, String Nombre, String Telefono, String Correo,
+       String Tarjeta, String Expira, String CVV, String User, String Password) throws SQLException {
+       SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call AgnTeCreateCompraTarjeta (?,?,?,?,?,?,?,?,?)}");
+       SQLServerDataTable ListaAsientos = new SQLServerDataTable();
+       ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
+       for (int Id: Ids) {
+           ListaAsientos.addRow(Id);
+       }
+       cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
+       cstmt.setString(2, Nombre);
+       cstmt.setString(3, Telefono);
+       cstmt.setString(4, Correo);
+       cstmt.setString(5, Tarjeta);
+       cstmt.setDate(6, java.sql.Date.valueOf(Expira));
+       cstmt.setString(5, CVV);
+       cstmt.setString(8, User);
+       cstmt.setString(9, Password);
+       cstmt.executeQuery();
+       cstmt.close();
+    }
+    
+    
     
     public static ResultSet executePubReadAsientosPresentaciones (int IdPresentacion , int IdBloque) throws SQLException {
        CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateObra(?, ?)}");
