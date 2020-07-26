@@ -12,14 +12,11 @@ AS
 		WHERE IdBloque = @IdBloque
 		ORDER BY Fila DESC
 	)
+
 	IF @Fila IS NOT NULL
-	BEGIN
 		SET @Fila = NCHAR(ASCII(@Fila) + 1)
-	END
 	ELSE
-	BEGIN
 		SET @Fila = 'A'
-	END
 
 	DECLARE @Columna INT
 	SET @Columna = 1

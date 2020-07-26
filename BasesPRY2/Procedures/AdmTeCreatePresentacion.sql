@@ -25,9 +25,13 @@ AS
 		FROM Producciones p
 		WHERE p.Id = @IdProduccion
 	) = @IdTeatro 
-	AND @FechaHoraInicio >= GETDATE()
 	BEGIN
 		INSERT INTO Presentaciones (FechaHoraInicio, IdProduccion)
 		VALUES (@FechaHoraInicio, @IdProduccion)
+	END
+
+	ELSE
+	BEGIN;
+		THROW 51000, '[CustomError] El estado de la produccion no permite agregar presentaciones', 1
 	END
 GO

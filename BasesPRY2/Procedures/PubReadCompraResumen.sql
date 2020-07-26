@@ -24,8 +24,8 @@ AS
 		)
 	END TRY
 
-	BEGIN CATCH
-		RETURN
+	BEGIN CATCH;
+		THROW 51000, '[CustomError] Los asientos no pertenecen a un mismo bloque o presentacion', 1
 	END CATCH
 
 	DECLARE @IdProduccion INT
@@ -46,7 +46,11 @@ AS
 		FROM @IdsAsientosPresentaciones i INNER JOIN AsientosPresentaciones a ON i.IdAsientoPresentacion = a.Id
 		WHERE a.EstaOcupado = 1
 	) 
-	OR EXISTS
+	BEGIN;
+		THROW 51000, '[CustomError] Se han elegido asientos invalidos', 1
+	END
+
+	IF EXISTS
 	(
 		SELECT 'True'
 		FROM Producciones p
@@ -57,7 +61,9 @@ AS
 			WHERE e.Nombre = 'Abierta'
 		)
 	)
-	RETURN
+	BEGIN;
+		THROW 51000, '[CustomError] La presentacion es invalida', 1
+	END
 
 	DECLARE @Monto DECIMAL(18, 2)
 	SET @Monto = 

@@ -29,8 +29,8 @@ AS
 		)
 	END TRY
 
-	BEGIN CATCH
-		RETURN
+	BEGIN CATCH;
+		THROW 51000, '[CustomError] Los asientos no pertenecen a un mismo bloque o presentacion', 1
 	END CATCH
 
 	DECLARE @IdProduccion INT
@@ -53,7 +53,12 @@ AS
 		SELECT 'True'
 		FROM @IdsAsientosPresentaciones i INNER JOIN AsientosPresentaciones a ON i.IdAsientoPresentacion = a.Id
 		WHERE a.EstaOcupado = 1
-	) OR EXISTS
+	) 
+	BEGIN;
+		THROW 51000, '[CustomError] Se han elegido asientos invalidos', 1
+	END
+	
+	IF EXISTS
 	(
 		SELECT 'True'
 		FROM Producciones p
@@ -69,7 +74,9 @@ AS
 		FROM Producciones p
 		WHERE p.IdTeatro = @IdTeatro
 	)
-	RETURN
+	BEGIN;
+		THROW 51000, '[CustomError] La presentacion es invalida', 1
+	END
 
 	DECLARE @Monto DECIMAL(18, 2)
 	SET @Monto = 
@@ -83,24 +90,29 @@ AS
 	DECLARE @IdCliente INT
 	DECLARE @IdRegistro INT
 
-	BEGIN TRAN Compra
+	BEGIN TRY
+		BEGIN TRAN Compra
 
-	EXEC SisCreateCliente @Nombre, @Telefono, @Correo, @IdCliente OUTPUT
+		EXEC SisCreateCliente @Nombre, @Telefono, @Correo, @IdCliente OUTPUT
 
-	SET @FechaHora = GETDATE()
+		SET @FechaHora = GETDATE()
 
-	EXEC SisCreateRegistroPago @FechaHora, NULL, @CantidadAsientos, @Monto, 0, @IdCliente, @IdRegistro OUTPUT
+		EXEC SisCreateRegistroPago @FechaHora, NULL, @CantidadAsientos, @Monto, 0, @IdCliente, @IdRegistro OUTPUT
 
-	UPDATE AsientosPresentaciones
-	SET IdRegistroPago = @IdRegistro, EstaOcupado = 1
-	WHERE Id IN 
-	(
-		SELECT i.IdAsientoPresentacion
-		FROM @IdsAsientosPresentaciones i
-	)
+		UPDATE AsientosPresentaciones
+		SET IdRegistroPago = @IdRegistro, EstaOcupado = 1
+		WHERE Id IN 
+		(
+			SELECT i.IdAsientoPresentacion
+			FROM @IdsAsientosPresentaciones i
+		)
 
-	COMMIT TRAN Compra
-	EXEC SisCreateCompraResumen @IdsAsientosPresentaciones, @IdProduccion, @IdPresentacion, @IdBloque, @Monto, @FechaHora
+		COMMIT TRAN Compra
+		EXEC SisCreateCompraResumen @IdsAsientosPresentaciones, @IdProduccion, @IdPresentacion, @IdBloque, @Monto, @FechaHora
+	END TRY
 
+	BEGIN CATCH;
+		THROW 51000, '[CustomError] La transaccion fue rechazada', 1
+	END CATCH
 GO
 

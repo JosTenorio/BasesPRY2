@@ -13,5 +13,5 @@ AS
 	END AS Tipo, ISNULL(t.Nombre, 'No Aplica') AS Teatro
 	FROM Empleados e LEFT OUTER JOIN Teatros t ON e.IdTeatro = t.Id
 	WHERE e.Tipo = ISNULL(@Tipo, e.Tipo)
-	ORDER BY e.Tipo, e.Nombre
+	ORDER BY e.Tipo, t.Id, e.Nombre
 GO

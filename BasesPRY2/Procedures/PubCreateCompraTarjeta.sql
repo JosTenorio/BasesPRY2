@@ -30,8 +30,8 @@ AS
 		)
 	END TRY
 
-	BEGIN CATCH
-		RETURN
+	BEGIN CATCH;
+		THROW 51000, '[CustomError] Los asientos no pertenecen a un mismo bloque o presentacion', 1
 	END CATCH
 
 	DECLARE @IdProduccion INT
@@ -51,8 +51,12 @@ AS
 		SELECT 'True'
 		FROM @IdsAsientosPresentaciones i INNER JOIN AsientosPresentaciones a ON i.IdAsientoPresentacion = a.Id
 		WHERE a.EstaOcupado = 1
-	) 
-	OR EXISTS
+	)
+	BEGIN;
+		THROW 51000, '[CustomError] Se han elegido asientos invalidos', 1
+	END
+
+	IF EXISTS
 	(
 		SELECT 'True'
 		FROM Producciones p
@@ -63,7 +67,9 @@ AS
 			WHERE e.Nombre = 'Abierta'
 		)
 	)
-	RETURN
+	BEGIN;
+		THROW 51000, '[CustomError] La presentacion es invalida', 1
+	END
 
 	DECLARE @Monto DECIMAL(18, 2)
 	SET @Monto = 
@@ -79,27 +85,36 @@ AS
 	DECLARE @IdCliente INT
 	DECLARE @IdRegistro INT
 
-	BEGIN TRAN Compra
+	BEGIN TRY
+		BEGIN TRAN Compra
 
-	EXEC SisGetCodigoAprobacion @Nombre, @Tarjeta, @Expira, @CVV, @Monto, @Codigo OUTPUT, @FechaHora OUTPUT, @Aprobado OUTPUT
+		EXEC SisGetCodigoAprobacion @Nombre, @Tarjeta, @Expira, @CVV, @Monto, @Codigo OUTPUT, @FechaHora OUTPUT, @Aprobado OUTPUT
 
-	EXEC SisCreateCliente @Nombre, @Telefono, @Correo, @IdCliente OUTPUT
+		EXEC SisCreateCliente @Nombre, @Telefono, @Correo, @IdCliente OUTPUT
 
-	EXEC SisCreateRegistroPago @FechaHora, @Codigo, @CantidadAsientos, @Monto, 1, @IdCliente, @IdRegistro OUTPUT
+		EXEC SisCreateRegistroPago @FechaHora, @Codigo, @CantidadAsientos, @Monto, 1, @IdCliente, @IdRegistro OUTPUT
 
-	UPDATE AsientosPresentaciones
-	SET IdRegistroPago = @IdRegistro, EstaOcupado = 1
-	WHERE Id IN 
-	(
-		SELECT i.IdAsientoPresentacion
-		FROM @IdsAsientosPresentaciones i
-	)
+		UPDATE AsientosPresentaciones
+		SET IdRegistroPago = @IdRegistro, EstaOcupado = 1
+		WHERE Id IN 
+		(
+			SELECT i.IdAsientoPresentacion
+			FROM @IdsAsientosPresentaciones i
+		)
 
-	IF @Aprobado = 1
-	BEGIN
-		COMMIT TRAN Compra
-		EXEC SisCreateCompraResumen @IdsAsientosPresentaciones, @IdProduccion, @IdPresentacion, @IdBloque, @Monto, @FechaHora
-	END
-	ELSE
-		ROLLBACK TRAN Compra
+		IF @Aprobado = 1
+		BEGIN
+			COMMIT TRAN Compra
+			EXEC SisCreateCompraResumen @IdsAsientosPresentaciones, @IdProduccion, @IdPresentacion, @IdBloque, @Monto, @FechaHora
+		END
+		ELSE
+		BEGIN
+			ROLLBACK TRAN Compra;
+			THROW 51000, '[CustomError] La transaccion fue rechazada', 1
+		END
+	END TRY
+
+	BEGIN CATCH;
+		THROW 51000, '[CustomError] La transaccion fue rechazada', 1
+	END CATCH
 GO

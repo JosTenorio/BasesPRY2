@@ -22,4 +22,9 @@ AS
 		)
 		ORDER BY bp.Precio
 	END
+
+	ELSE
+	BEGIN;
+		THROW 51000, '[CustomError] La produccion es invalida', 1
+	END
 GO

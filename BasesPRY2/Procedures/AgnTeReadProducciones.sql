@@ -44,4 +44,9 @@ AS
 		)
 		ORDER BY v.Obra, v.Tipo, v.Teatro
 	END
+
+	ELSE
+	BEGIN;
+		THROW 51000, '[CustomError] Alguna de las fechas de busqueda es invalida', 1
+	END
 GO

@@ -36,4 +36,9 @@ AS
 		INSERT INTO BloquesProducciones (IdProduccion, IdBloque, Precio)
 		VALUES (@IdProduccion, @IdBloque, @Precio)
 	END
+
+	ELSE
+	BEGIN;
+		THROW 51000, '[CustomError] El estado de la produccion no permite agregar precios', 1
+	END
 GO

@@ -27,4 +27,9 @@ AS
 		)
 		ORDER BY asi.Fila, asi.Columna
 	END
+
+	ELSE
+	BEGIN;
+		THROW 51000, '[CustomError] La presentacion es invalida', 1
+	END
 GO

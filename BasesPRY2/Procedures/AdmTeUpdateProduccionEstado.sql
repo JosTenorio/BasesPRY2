@@ -35,4 +35,9 @@ AS
 		SET IdEstado = @IdEstado
 		WHERE Id = @IdProduccion
 	END
+
+	ELSE
+	BEGIN;
+		THROW 51000, '[CustomError] La produccion requiere presentaciones para actualizarse al estado ingresado', 1
+	END
 GO
