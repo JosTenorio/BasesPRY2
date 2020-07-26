@@ -1,6 +1,7 @@
 
 package Model;
 
+import java.math.BigDecimal;
 import java.sql.Types;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -115,7 +116,7 @@ public class ConnectionManager {
         cstmt.setString(9, TelCelular);
         cstmt.setString(10, TelCasa);
         cstmt.setString(11, TelOtro);
-        cstmt.setInt(1, IdTeatro);
+        cstmt.setInt(12, IdTeatro);
         cstmt.executeQuery();
         cstmt.close();
     }
@@ -131,7 +132,49 @@ public class ConnectionManager {
        cstmt.setString (6, TelAdmin);
        cstmt.executeQuery();
        cstmt.close();
-    } 
+    }
+    
+    public static ResultSet executeAdmSisReadAsientos (int IdBloque) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadAsientos (?)}");
+       cstmt.setInt (1, IdBloque );
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static ResultSet executeAdmSisReadBloques (int IdTeatro) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadBloques (?)}");
+       cstmt.setInt (1, IdTeatro);
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static ResultSet executeAdmSisReadEmpleados (int Tipo) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadEmpleados (?)}");
+       cstmt.setInt (1, Tipo);
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static ResultSet executeAdmSisReadRegistroPagos () throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadRegistroPagos ()}");
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static void executeAdmTeCreateBloqueProduccion(int IdProduccion, int IdBloque, float Precio,
+    String User, String Password) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateBloqueProduccion (?,?,?,?,?)}");
+       cstmt.setInt(1, IdProduccion);
+       cstmt.setInt(2, IdBloque);
+       cstmt.setBigDecimal(3, java.sql.Types.DECIMAL);
+       cstmt.executeQuery();
+       cstmt.close();
+    }
+    
     
     
     public static void executeAdmTeCreateObra (String Nombre, String Descripcion, int IdTipo) throws SQLException {
