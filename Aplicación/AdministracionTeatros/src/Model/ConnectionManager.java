@@ -327,7 +327,67 @@ public class ConnectionManager {
        cstmt.close();
     }
     
+    public static ResultSet executeAgnTeReadAsientosPresentaciones (int IdPresentacion , int IdBloque,
+            String User, String Password) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AgnTeReadAsientosPresentaciones(?,?,?,?)}");
+       cstmt.setInt(1, IdPresentacion);
+       cstmt.setInt(2, IdBloque);
+       cstmt.setString (3, User);
+       cstmt.setString (4, Password);
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
     
+    public static ResultSet executeAgnTeReadBloquesProducciones (int IdProduccion, String User, String Password) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AgnTeReadBloquesProducciones(?,?,?)}");
+       cstmt.setInt(1, IdProduccion);
+       cstmt.setString (2, User);
+       cstmt.setString (3, Password);
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static ResultSet executeAgnTeReadCompraResumen (ArrayList<Integer> Ids, String User, String Password) throws SQLException {
+       SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call AgnTeReadCompraResumen (?,?,?)}");
+       SQLServerDataTable ListaAsientos = new SQLServerDataTable();
+       ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
+       for (int Id: Ids) {
+           ListaAsientos.addRow(Id);
+       }
+       cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
+       cstmt.setString(2, User);
+       cstmt.setString(3, Password);
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static ResultSet executeAgnTeReadPresentaciones (int IdProduccion,String FechaHoraInicio, 
+       String FechaHoraFin, String User, String Password) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AgnTeReadPresentaciones(?, ?,?,?,?)}");
+       cstmt.setInt(1, IdProduccion);
+       cstmt.setTimestamp(2, Timestamp.valueOf(FechaHoraInicio));
+       cstmt.setTimestamp(3, Timestamp.valueOf(FechaHoraFin));
+       cstmt.setString(4, User);
+       cstmt.setString(5, Password);
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static ResultSet executeAgnTeReadProducciones (String FechaHoraInicio, 
+       String FechaHoraFin, String User, String Password) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AgnTeReadProducciones(?,?,?,?)}");
+       cstmt.setTimestamp(1, Timestamp.valueOf(FechaHoraInicio));
+       cstmt.setTimestamp(2, Timestamp.valueOf(FechaHoraFin));
+       cstmt.setString(3, User);
+       cstmt.setString(4, Password);
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
     
     public static ResultSet executePubReadAsientosPresentaciones (int IdPresentacion , int IdBloque) throws SQLException {
        CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateObra(?, ?)}");
