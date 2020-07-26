@@ -1,18 +1,21 @@
 ﻿CREATE ROLE [TheaterAdmin]
 GO
-GRANT EXECUTE ON OBJECT::AdmTeCreateTipo 
-	TO TheaterAdmin
-GO
 GRANT EXECUTE ON OBJECT::AdmTeCreateBloqueProduccion 
 	TO TheaterAdmin
 GO
-GRANT EXECUTE ON OBJECT::AdmTeCreateProduccion
+GRANT EXECUTE ON OBJECT::AdmTeCreateEmpleadoAgnTe
+	TO TheaterAdmin
+GO
+GRANT EXECUTE ON OBJECT::AdmTeCreateObra
 	TO TheaterAdmin
 GO
 GRANT EXECUTE ON OBJECT::AdmTeCreatePresentacion
 	TO TheaterAdmin
 GO
-GRANT EXECUTE ON OBJECT::AdmTeCreateObra
+GRANT EXECUTE ON OBJECT::AdmTeCreateProduccion
+	TO TheaterAdmin
+GO
+GRANT EXECUTE ON OBJECT::AdmTeCreateTipo 
 	TO TheaterAdmin
 GO
 GRANT EXECUTE ON OBJECT::AdmTeReadBloques

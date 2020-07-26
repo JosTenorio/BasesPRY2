@@ -1,13 +1,13 @@
 ﻿CREATE ROLE [InitialRole]
 GO
 GRANT EXECUTE ON OBJECT::PubLoginAdmTe 
-    TO InitialRole;  
+    TO InitialRole 
 GO 
 GRANT EXECUTE ON OBJECT::PubLoginAdmSis
-    TO InitialRole;  
+    TO InitialRole 
 GO 
 GRANT EXECUTE ON OBJECT::PubLoginAgnTe
-    TO InitialRole;  
+    TO InitialRole  
 GO 
 GRANT EXECUTE ON OBJECT::PubCreateCompraTarjeta 
 	TO InitialRole
@@ -16,6 +16,9 @@ GRANT EXECUTE ON OBJECT::PubReadAsientosPresentaciones
 	TO InitialRole
 GO
 GRANT EXECUTE ON OBJECT::PubReadBloquesProducciones
+	TO InitialRole
+GO
+GRANT EXECUTE ON OBJECT::PubReadCompraResumen
 	TO InitialRole
 GO
 GRANT EXECUTE ON OBJECT::PubReadPresentaciones 
