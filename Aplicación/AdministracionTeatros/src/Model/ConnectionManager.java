@@ -3,6 +3,12 @@ package Model;
 
 import com.microsoft.sqlserver.jdbc.SQLServerCallableStatement;
 import com.microsoft.sqlserver.jdbc.SQLServerDataTable;
+import java.awt.Frame;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Types;
 import java.sql.Connection;
@@ -11,39 +17,87 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.CallableStatement;
-import java.util.Date;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import javax.swing.JFileChooser;
 
 
 public class ConnectionManager {
-    public static Connection connection = null;
-    private static String Ip = "";
-    private static String Username = "";
-    private static String Password = "";
+    private static Connection connection = null;
+    public static String Ip = "";
+    public static String Username = "";
+    public static String Password = "";
     
-    public static void LogIn(String ip){
-        Ip = ip;
-        Password = "ElGalloDeDatos25";
-        Username = "ApplicationLogin";
+    public static boolean connect(){
+        if (!loadLoginData ()){
+            return false;
+        }
         for (int i = 1; i <= 5; i++){
             Username += Integer.toString (i);
             try {
-                connect();
-                return;
+                obtainConnection();
+                return true;
             } catch (SQLException ex) {
-                System.out.println (ex.getMessage());
                 Username = Username.substring(0, Username.length() - 1);
             }  
         }
-        infoBox ("Hay muchos usuarios conectados en este momento, intente de nuevo más tarde", "Ingreso denegado");
+        infoBox ("Hay muchos usuarios conectados en este momento o los datos"
+                + "de login son incorrectos, intente de nuevo más tarde", "Ingreso denegado");
+        return false;
     }
     
-    public static void connect() throws SQLException {
+    private static boolean loadLoginData () {
+        JFileChooser chooser= new JFileChooser();
+        Frame frame = new Frame("Favor seleccionar el archivo de datos de login");
+        int width = 10;
+        int height = 10;
+        frame.setSize(width, height);
+        frame.setVisible(true);
+        int choice = chooser.showOpenDialog(frame);
+        if (choice != JFileChooser.APPROVE_OPTION){
+            infoBox ("El archivo indicado no corresponde a un archivo de datos de login", "Error");
+            frame.dispose();
+            return false;
+        }
+        File LoginFile = chooser.getSelectedFile();
+        if (!"txt".equals(getExtension (LoginFile))){
+            infoBox ("El archivo indicado no corresponde a un archivo de datos de login", "Error");
+            frame.dispose();
+            return false;
+        }
+        BufferedReader br;  
+        try {
+            br = new BufferedReader(new FileReader(LoginFile));
+        } catch (FileNotFoundException ex) {
+            infoBox ("El archivo indicado no corresponde a un archivo de datos de login", "Error");
+            frame.dispose();
+            return false;
+        }
+        try {
+            Ip = br.readLine().substring(7);
+            Username = br.readLine().substring(13);
+            Password = br.readLine().substring (13);
+        } catch (IOException ex) {
+            infoBox ("El archivo indicado no corresponde a un archivo de datos de login", "Error");
+            frame.dispose();
+            return false;
+        }
+        frame.dispose();
+        return true;
+    }
+    
+    private static String getExtension(File f) {
+        String ext = null;
+        String s = f.getName();
+        int i = s.lastIndexOf('.');
+        if (i > 0 &&  i < s.length() - 1) {
+            ext = s.substring(i+1).toLowerCase();
+        }
+        return ext;
+    }
+    
+    
+    private static void obtainConnection() throws SQLException {
         String url = "jdbc:sqlserver://" + Ip  + ";databaseName=BasesPRY2;user=" + Username + ";password=" + Password;
         connection = DriverManager.getConnection(url);
     }
