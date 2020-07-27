@@ -31,4 +31,19 @@ public class Utilities {
         }
         return table;
     }
+    
+    public static String[] convertToRow(ResultSet rs) {
+        String[] row = null;
+        try {
+            rs.next();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
+            row = new String[columnCount];
+            for (int i = 1; i <= columnCount; i++)
+                row[i-1] = String.valueOf(rs.getObject(i));
+        } catch (SQLException ex) {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return row;
+    }
 }

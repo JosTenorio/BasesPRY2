@@ -3,6 +3,7 @@ package Model;
 
 import com.microsoft.sqlserver.jdbc.SQLServerCallableStatement;
 import com.microsoft.sqlserver.jdbc.SQLServerDataTable;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.awt.Frame;
 import java.io.BufferedReader;
 import java.io.File;
@@ -451,17 +452,21 @@ public class ConnectionManager {
        cstmt.close();
     }
     
-    public static ResultSet executePubReadCompraResumen (ArrayList<Integer> Ids) throws SQLException {
-       SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call PubReadCompraResumen(?)}");
-       SQLServerDataTable ListaAsientos = new SQLServerDataTable();
-       ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
-       for (int Id: Ids) {
-           ListaAsientos.addRow(Id);
-       }
-       cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static String[] execPubReadCompraResumen (ArrayList<Integer> Ids) {
+        CachedRowSet crs = null;
+        try (SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call PubReadCompraResumen(?)}")) {
+            SQLServerDataTable ListaAsientos = new SQLServerDataTable();
+            ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
+            for (int Id: Ids) {
+                ListaAsientos.addRow(Id);
+            }    cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToRow(crs);
     }
     
     public static ArrayList<String[]> execPubReadAsientosPresentaciones (int IdPresentacion , int IdBloque) {
