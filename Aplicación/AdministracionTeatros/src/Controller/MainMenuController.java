@@ -21,11 +21,10 @@ public class MainMenuController implements ActionListener{
     }
     
     private void init(){
-        display.jButton_Client.addActionListener(this);
-        display.jButton_Order.addActionListener(this);
-        display.jButton_Part.addActionListener(this);
-        display.jButton_Provider.addActionListener(this);
-        display.jButton_Auto.addActionListener(this);
+        display.jButton_Public.addActionListener(this);
+        display.jButton_AdmTe.addActionListener(this);
+        display.jButton_AdmSis.addActionListener(this);
+        display.jButton_AgnTe.addActionListener(this);
         display.setResizable(false);
         display.setLocationRelativeTo(null);
     }
@@ -34,19 +33,16 @@ public class MainMenuController implements ActionListener{
         display.setVisible(visible);
     }
             
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(display.jButton_Client))
-            ClientMenuController.getInstance().makeVisible(true);
-        if (e.getSource().equals(display.jButton_Part))
-            PartMenuController.getInstance().makeVisible(true);
-        if (e.getSource().equals(display.jButton_Provider))
-            ProviderMenuController.getInstance().makeVisible(true);
-        if (e.getSource().equals(display.jButton_Auto))
-            AutoMenuController.getInstance().makeVisible(true);
-        if (e.getSource().equals(display.jButton_Order))
-            OrderMenuController.getInstance().makeVisible(true);
+        if (e.getSource().equals(display.jButton_Public))
+            PubProductionMenuController.getInstance().makeVisible(true);
+        //if (e.getSource().equals(display.jButton_AdmTe))
+
+        //if (e.getSource().equals(display.jButton_AdmSis))
+
+        //if (e.getSource().equals(display.jButton_AgnTe))
+
         display.setVisible(false);
     }
     

@@ -17,9 +17,9 @@ AS
 		AND v.Estado IN ('Abierta', 'Anunciada')
 	)
 	BEGIN
-		SELECT ap.Id, asi.Fila, asi.Columna, ap.EstaOcupado
+		SELECT ap.Id, asi.Fila, asi.Columna
 		FROM AsientosPresentaciones ap INNER JOIN Asientos asi ON ap.IdAsiento = asi.Id
-		WHERE ap.IdPresentacion = @IdPresentacion AND ap.IdAsiento IN
+		WHERE ap.IdPresentacion = @IdPresentacion AND ap.EstaOcupado  = 0 AND ap.IdAsiento IN
 		(
 			SELECT a.Id
 			FROM Asientos a INNER JOIN Bloques b ON a.IdBloque = b.Id

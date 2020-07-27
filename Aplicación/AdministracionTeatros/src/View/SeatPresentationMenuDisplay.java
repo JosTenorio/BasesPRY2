@@ -2,36 +2,34 @@
 package View;
 
 import javax.swing.JLabel;
-import javax.swing.JPopupMenu;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-public class PartMenuDisplay extends javax.swing.JFrame {
+public class SeatPresentationMenuDisplay extends javax.swing.JFrame {
     
     public DefaultTableModel tableModel;
-    public JPopupMenu popUpMenu;
+    private final int ColumnAmount = 2;
 
-    public PartMenuDisplay() {
+    public SeatPresentationMenuDisplay() {
         initComponents();
-        this.tableModel = (DefaultTableModel) jTable_Parts.getModel();
-        popUpMenu = new JPopupMenu();
+        this.tableModel = (DefaultTableModel) jTable_Seats.getModel();
         initTable();
     }
     
     public void filterSearch(){
-        String query = jTextField_SearchParts.getText();
+        String query = jTextField_Search.getText();
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
-        jTable_Parts.setRowSorter(sorter);
+        jTable_Seats.setRowSorter(sorter);
         sorter.setRowFilter(RowFilter.regexFilter("(?i)" + query));
     }
     
     private void initTable(){
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
         renderer.setHorizontalAlignment(JLabel.CENTER);
-        for (int i = 0; i < 3; i++)
-            jTable_Parts.getColumnModel().getColumn(i).setCellRenderer(renderer);
+        for (int i = 0; i < ColumnAmount; i++)
+            jTable_Seats.getColumnModel().getColumn(i).setCellRenderer(renderer);
     }
     
     /**
@@ -46,31 +44,31 @@ public class PartMenuDisplay extends javax.swing.JFrame {
         jPanel_BG = new javax.swing.JPanel();
         jPanel_Header = new javax.swing.JPanel();
         jLabel_Title = new javax.swing.JLabel();
-        jButton_NewPart = new javax.swing.JButton();
+        jButton_Confirm = new javax.swing.JButton();
         jButton_Back = new javax.swing.JButton();
-        jTextField_SearchParts = new javax.swing.JTextField();
+        jTextField_Search = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_Parts = new javax.swing.JTable();
+        jTable_Seats = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel_BG.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel_Header.setBackground(new java.awt.Color(153, 0, 0));
+        jPanel_Header.setBackground(new java.awt.Color(0, 51, 204));
 
         jLabel_Title.setFont(new java.awt.Font("Gill Sans MT", 1, 42)); // NOI18N
         jLabel_Title.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Title.setText("VENTA DE REPUESTOS");
+        jLabel_Title.setText("ELECCION DE ASIENTO");
 
         javax.swing.GroupLayout jPanel_HeaderLayout = new javax.swing.GroupLayout(jPanel_Header);
         jPanel_Header.setLayout(jPanel_HeaderLayout);
         jPanel_HeaderLayout.setHorizontalGroup(
             jPanel_HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_HeaderLayout.createSequentialGroup()
-                .addContainerGap(268, Short.MAX_VALUE)
-                .addComponent(jLabel_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE)
+                .addComponent(jLabel_Title)
+                .addContainerGap(277, Short.MAX_VALUE))
         );
         jPanel_HeaderLayout.setVerticalGroup(
             jPanel_HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,37 +78,38 @@ public class PartMenuDisplay extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jButton_NewPart.setBackground(new java.awt.Color(153, 0, 0));
-        jButton_NewPart.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
-        jButton_NewPart.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_NewPart.setText("AGREGAR PARTE");
+        jButton_Confirm.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_Confirm.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_Confirm.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Confirm.setText("CONFIRMAR");
+        jButton_Confirm.setToolTipText("");
 
-        jButton_Back.setBackground(new java.awt.Color(153, 0, 0));
+        jButton_Back.setBackground(new java.awt.Color(0, 51, 204));
         jButton_Back.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
         jButton_Back.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Back.setText("REGRESAR");
 
-        jTextField_SearchParts.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        jTextField_SearchParts.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextField_Search.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        jTextField_Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField_SearchPartsKeyReleased(evt);
+                jTextField_SearchKeyReleased(evt);
             }
         });
 
-        jTable_Parts.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        jTable_Parts.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_Seats.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        jTable_Seats.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Fabricante", "Marca"
+                "Fila", "Columna"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -121,7 +120,8 @@ public class PartMenuDisplay extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable_Parts);
+        jTable_Seats.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTable_Seats);
 
         javax.swing.GroupLayout jPanel_BGLayout = new javax.swing.GroupLayout(jPanel_BG);
         jPanel_BG.setLayout(jPanel_BGLayout);
@@ -135,9 +135,9 @@ public class PartMenuDisplay extends javax.swing.JFrame {
                     .addGroup(jPanel_BGLayout.createSequentialGroup()
                         .addComponent(jButton_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_SearchParts, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton_NewPart)))
+                        .addComponent(jButton_Confirm)))
                 .addContainerGap())
         );
         jPanel_BGLayout.setVerticalGroup(
@@ -146,9 +146,9 @@ public class PartMenuDisplay extends javax.swing.JFrame {
                 .addComponent(jPanel_Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_NewPart, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(jButton_Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
                     .addComponent(jButton_Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField_SearchParts))
+                    .addComponent(jTextField_Search))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
                 .addContainerGap())
@@ -168,18 +168,18 @@ public class PartMenuDisplay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField_SearchPartsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_SearchPartsKeyReleased
+    private void jTextField_SearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_SearchKeyReleased
         filterSearch();
-    }//GEN-LAST:event_jTextField_SearchPartsKeyReleased
+    }//GEN-LAST:event_jTextField_SearchKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton_Back;
-    public javax.swing.JButton jButton_NewPart;
+    public javax.swing.JButton jButton_Confirm;
     private javax.swing.JLabel jLabel_Title;
     private javax.swing.JPanel jPanel_BG;
     private javax.swing.JPanel jPanel_Header;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTable jTable_Parts;
-    public javax.swing.JTextField jTextField_SearchParts;
+    public javax.swing.JTable jTable_Seats;
+    public javax.swing.JTextField jTextField_Search;
     // End of variables declaration//GEN-END:variables
 }
