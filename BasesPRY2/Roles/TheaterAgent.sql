@@ -21,3 +21,6 @@ GO
 GRANT EXECUTE ON OBJECT::AgnTeReadProducciones
 	TO TheaterAgent
 GO
+GRANT EXECUTE ON TYPE::ListaAsientos 
+	to TheaterAgent
+GO

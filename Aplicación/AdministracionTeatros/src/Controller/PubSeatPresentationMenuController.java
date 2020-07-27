@@ -48,12 +48,13 @@ public class PubSeatPresentationMenuController implements ActionListener{
     }
     
     public void updateTableData(){
+        display.jLabel_Amount.setText("");
         display.tableModel.setRowCount(0);
         seatList = ConnectionManager.execPubReadAsientosPresentaciones(presentationId, blockId);
         for (String[] row : seatList)
             display.tableModel.addRow(Arrays.copyOfRange(row, 1, row.length));
         display.jTable_Seats.setModel(display.tableModel);
-    }       
+    } 
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -62,8 +63,12 @@ public class PubSeatPresentationMenuController implements ActionListener{
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Confirm)){
-            PubPurchasePreviewController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
-            display.setVisible(false);
+            if (!selectedSeatIds.isEmpty()){
+                PubPurchasePreviewController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
+                display.setVisible(false);
+            }
+            else
+                Utilities.infoBox("No se selecciono ningun item", "Error");
         }
         if (e.getSource().equals(display.jButton_Buy)){
             if (selectedSeatIds.size() <= 8){

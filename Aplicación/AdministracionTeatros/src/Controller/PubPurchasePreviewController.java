@@ -51,7 +51,7 @@ public class PubPurchasePreviewController implements ActionListener{
         display.jLabel_Cost.setText(purchasePreview[3]);
         display.jLabel_Block.setText(purchasePreview[4]);
         display.jLabel_Seats.setText(purchasePreview[5]);
-    }       
+    }      
 
     @Override
     public void actionPerformed(ActionEvent e) {

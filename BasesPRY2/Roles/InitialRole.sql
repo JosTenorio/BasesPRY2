@@ -27,3 +27,6 @@ GO
 GRANT EXECUTE ON OBJECT::PubReadProducciones
 	TO InitialRole
 GO
+GRANT EXECUTE ON TYPE::ListaAsientos 
+	to InitialRole
+GO
