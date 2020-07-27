@@ -106,37 +106,52 @@ public class ConnectionManager {
         connection = DriverManager.getConnection(url);
     }
     
-    public static int executePubLoginAdmSis (String username, String password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{? = call PubLoginAdmSis(?, ?)}");
-       cstmt.registerOutParameter(1, Types.INTEGER);
-       cstmt.setString(2, username);
-       cstmt.setString(3, password);
-       cstmt.executeQuery();
-       int result = cstmt.getInt(1);
-       cstmt.close();
-       return result;
+    public static boolean execPubLoginAdmSis (String username, String password) {
+        try (CallableStatement cstmt = connection.prepareCall("{? = call PubLoginAdmSis(?, ?)}")) {
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            cstmt.setString(2, username);
+            cstmt.setString(3, password);
+            ResultSet rs = cstmt.executeQuery();
+            if (rs.next() && rs.getInt(1) == 1){
+                cstmt.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     } 
     
-    public static int executePubLoginAdmTe (String username, String password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{? = call PubLoginAdmTe(?, ?)}");
-       cstmt.registerOutParameter(1, Types.INTEGER);
-       cstmt.setString(2, username);
-       cstmt.setString(3, password);
-       cstmt.execute();
-       int result = cstmt.getInt(1);
-       cstmt.close();
-       return result;
+    public static boolean execPubLoginAdmTe (String username, String password) {
+        try (CallableStatement cstmt = connection.prepareCall("{? = call PubLoginAdmTe(?, ?)}")) {
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            cstmt.setString(2, username);
+            cstmt.setString(3, password);
+            ResultSet rs = cstmt.executeQuery();
+            if (rs.next() && rs.getInt(1) == 1){
+                cstmt.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
-    public static int executePubLoginAgnTe (String username, String password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{? = call PubLoginAgnTe(?, ?)}");
-       cstmt.registerOutParameter(1, Types.INTEGER);
-       cstmt.setString(2, username);
-       cstmt.setString(3, password);
-       cstmt.executeQuery();
-       int result = cstmt.getInt(1);
-       cstmt.close();
-       return result;
+    public static boolean execPubLoginAgnTe (String username, String password) {
+        try (CallableStatement cstmt = connection.prepareCall("{? = call PubLoginAgnTe(?, ?)}")) {
+            cstmt.registerOutParameter(1, Types.INTEGER);
+            cstmt.setString(2, username);
+            cstmt.setString(3, password);
+            ResultSet rs = cstmt.executeQuery();
+            if (rs.next() && rs.getInt(1) == 1){
+                cstmt.close();
+                return true;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     } 
     
     public static ResultSet executeAdmSisReadTeatros () throws SQLException {
@@ -423,15 +438,27 @@ public class ConnectionManager {
        return rs;
     }
     
-    public static ResultSet executeAgnTeReadProducciones (String FechaHoraInicio, String FechaHoraFin, String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AgnTeReadProducciones(?,?,?,?)}");
-       cstmt.setTimestamp(1, Timestamp.valueOf(FechaHoraInicio));
-       cstmt.setTimestamp(2, Timestamp.valueOf(FechaHoraFin));
-       cstmt.setString(3, User);
-       cstmt.setString(4, Password);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> execAgnTeReadProducciones (String FechaHoraInicio, String FechaHoraFin, String User, String Password) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AgnTeReadProducciones(?,?,?,?)}")) {
+            if (FechaHoraInicio == null)
+                cstmt.setNull(1, Types.DATE);
+            else
+                cstmt.setTimestamp(1, Timestamp.valueOf(FechaHoraInicio));
+            if (FechaHoraFin == null)
+                cstmt.setNull(2, Types.DATE);
+            else
+                cstmt.setTimestamp(2, Timestamp.valueOf(FechaHoraFin));
+            cstmt.setString(3, User);
+            cstmt.setString(4, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
     public static String[] execPubCreateCompraTarjeta (ArrayList<Integer> Ids, String Nombre, String Telefono, String Correo, String Tarjeta, String Expira, String CVV) {
@@ -451,6 +478,7 @@ public class ConnectionManager {
             ResultSet rs = cstmt.executeQuery();
             crs = RowSetProvider.newFactory().createCachedRowSet();
             crs.populate(rs);
+            cstmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -468,6 +496,7 @@ public class ConnectionManager {
             ResultSet rs = cstmt.executeQuery();
             crs = RowSetProvider.newFactory().createCachedRowSet();
             crs.populate(rs);
+            cstmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -482,6 +511,7 @@ public class ConnectionManager {
             ResultSet rs = cstmt.executeQuery();
             crs = RowSetProvider.newFactory().createCachedRowSet();
             crs.populate(rs);
+            cstmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -495,6 +525,7 @@ public class ConnectionManager {
             ResultSet rs = cstmt.executeQuery();
             crs = RowSetProvider.newFactory().createCachedRowSet();
             crs.populate(rs);
+            cstmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -516,6 +547,7 @@ public class ConnectionManager {
             ResultSet rs = cstmt.executeQuery();
             crs = RowSetProvider.newFactory().createCachedRowSet();
             crs.populate(rs);
+            cstmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
         }

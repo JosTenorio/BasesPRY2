@@ -43,7 +43,10 @@ public class PubProductionMenuController implements ActionListener{
     
     public void updateTableData(){
         display.tableModel.setRowCount(0);
-        productionList = ConnectionManager.execPubReadProducciones(startTime, endTime);
+        if (Utilities.LOGINTYPE == 0)
+            productionList = ConnectionManager.execPubReadProducciones(startTime, endTime);
+        if (Utilities.LOGINTYPE == 1)
+            productionList = ConnectionManager.execAgnTeReadProducciones(startTime, endTime, Utilities.USERNAME, Utilities.PASSWORD);
         for (String[] row : productionList)
             display.tableModel.addRow(Arrays.copyOfRange(row, 1, row.length));
         display.jTable_Productions.setModel(display.tableModel);

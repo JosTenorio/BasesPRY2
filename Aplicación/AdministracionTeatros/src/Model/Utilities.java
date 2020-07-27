@@ -9,6 +9,16 @@ import java.sql.ResultSetMetaData;
 
 public class Utilities {
     
+    public static String USERNAME;
+    public static String PASSWORD;
+    public static int LOGINTYPE = 0;
+    
+    public static void setCredentials(String user, String password, int loginType){
+        USERNAME = user;
+        PASSWORD = password;
+        LOGINTYPE = loginType;
+    }
+    
     public static void infoBox(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
     }

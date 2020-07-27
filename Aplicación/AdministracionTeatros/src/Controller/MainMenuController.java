@@ -37,12 +37,12 @@ public class MainMenuController implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Public))
             PubProductionMenuController.getInstance().makeVisible(true);
-        //if (e.getSource().equals(display.jButton_AdmTe))
-
-        //if (e.getSource().equals(display.jButton_AdmSis))
-
-        //if (e.getSource().equals(display.jButton_AgnTe))
-
+        if (e.getSource().equals(display.jButton_AgnTe))
+            LoginMenuController.getInstance().makeVisible(true, 1);
+        if (e.getSource().equals(display.jButton_AdmTe))
+            LoginMenuController.getInstance().makeVisible(true, 2);
+        if (e.getSource().equals(display.jButton_AdmSis))
+            LoginMenuController.getInstance().makeVisible(true, 3);
         display.setVisible(false);
     }
     

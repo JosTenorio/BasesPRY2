@@ -98,6 +98,18 @@ public class PurchaseCardDisplay extends javax.swing.JFrame {
         jLabel_Info2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel_Info2.setText("TELEFONO:");
 
+        jTextField_Name.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jTextField_Security.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jTextField_Phone.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jTextField_Mail.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jTextField_Card.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
+        jTextField_Expiration.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel_BGLayout = new javax.swing.GroupLayout(jPanel_BG);
         jPanel_BG.setLayout(jPanel_BGLayout);
         jPanel_BGLayout.setHorizontalGroup(
