@@ -125,6 +125,13 @@ AS
 	END TRY
 
 	BEGIN CATCH;
-		THROW 51000, '[CustomError] La transaccion fue rechazada', 1
+		IF @Aprobado = 0
+		BEGIN;
+			THROW 51000, '[CustomError] La transaccion fue rechazada', 1
+		END
+		ELSE
+		BEGIN;
+			THROW
+		END
 	END CATCH
 GO

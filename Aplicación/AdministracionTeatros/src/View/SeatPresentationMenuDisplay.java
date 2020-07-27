@@ -131,6 +131,7 @@ public class SeatPresentationMenuDisplay extends javax.swing.JFrame {
         jButton_Buy.setText("AGREGAR");
         jButton_Buy.setToolTipText("");
 
+        jLabel_Amount.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel_Amount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel_BGLayout = new javax.swing.GroupLayout(jPanel_BG);

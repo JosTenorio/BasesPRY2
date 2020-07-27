@@ -60,6 +60,7 @@ public class PubPurchasePreviewController implements ActionListener{
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Confirm)){
+            PubPurchaseCardController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
             display.setVisible(false);
         }
     }

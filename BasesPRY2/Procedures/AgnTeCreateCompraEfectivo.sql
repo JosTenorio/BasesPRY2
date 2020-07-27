@@ -112,7 +112,7 @@ AS
 	END TRY
 
 	BEGIN CATCH;
-		THROW 51000, '[CustomError] La transaccion fue rechazada', 1
+		THROW
 	END CATCH
 GO
 
