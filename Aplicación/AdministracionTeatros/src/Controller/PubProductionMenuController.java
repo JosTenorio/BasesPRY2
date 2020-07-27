@@ -30,6 +30,7 @@ public class PubProductionMenuController implements ActionListener{
     private void init(){
         display.jButton_Confirm.addActionListener(this);
         display.jButton_Back.addActionListener(this);
+        display.jButton_SearchDate.addActionListener(this);
         display.setResizable(false);
         display.setLocationRelativeTo(null);
     }
@@ -59,10 +60,22 @@ public class PubProductionMenuController implements ActionListener{
                 int selectedIndex = display.jTable_Productions.getSelectedRow();
                 int productionId = Integer.valueOf(productionList.get(selectedIndex)[0]);
                 PubPresentationMenuController.getInstance().makeVisible(true, productionId);
+                display.setVisible(false);
             }
             catch(Exception ex){
                 Utilities.infoBox("No se selecciono ningun item", "Error");
             }
+        }
+        if (e.getSource().equals(display.jButton_SearchDate)){
+            if (!"".equals(display.jTextField_DateStart.getText()))
+                startTime = display.jTextField_DateStart.getText() + ":00";
+            else
+                startTime = null;
+            if (!"".equals(display.jTextField_DateEnd.getText()))
+                endTime = display.jTextField_DateEnd.getText() + ":00";
+            else
+                endTime = null;
+            updateTableData();
         }
     }
 }

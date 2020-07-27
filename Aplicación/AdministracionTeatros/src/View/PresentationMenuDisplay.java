@@ -47,8 +47,13 @@ public class PresentationMenuDisplay extends javax.swing.JFrame {
         jButton_Confirm = new javax.swing.JButton();
         jButton_Back = new javax.swing.JButton();
         jTextField_Search = new javax.swing.JTextField();
+        jLabel_StartDate = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable_Presentations = new javax.swing.JTable();
+        jTextField_DateStart = new javax.swing.JTextField();
+        jTextField_DateEnd = new javax.swing.JTextField();
+        jLabel_EndDate = new javax.swing.JLabel();
+        jButton_SearchDate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +101,9 @@ public class PresentationMenuDisplay extends javax.swing.JFrame {
             }
         });
 
+        jLabel_StartDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_StartDate.setText("FECHA INICIO (YYYY-MM-DD HH:MM)");
+
         jTable_Presentations.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
         jTable_Presentations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,6 +131,29 @@ public class PresentationMenuDisplay extends javax.swing.JFrame {
         jTable_Presentations.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable_Presentations);
 
+        jTextField_DateStart.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        jTextField_DateStart.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField_DateStartKeyReleased(evt);
+            }
+        });
+
+        jTextField_DateEnd.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        jTextField_DateEnd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField_DateEndKeyReleased(evt);
+            }
+        });
+
+        jLabel_EndDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_EndDate.setText("FECHA INICIO (YYYY-MM-DD HH:MM)");
+
+        jButton_SearchDate.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_SearchDate.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_SearchDate.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_SearchDate.setText("FILTRAR");
+        jButton_SearchDate.setToolTipText("");
+
         javax.swing.GroupLayout jPanel_BGLayout = new javax.swing.GroupLayout(jPanel_BG);
         jPanel_BG.setLayout(jPanel_BGLayout);
         jPanel_BGLayout.setHorizontalGroup(
@@ -136,6 +167,16 @@ public class PresentationMenuDisplay extends javax.swing.JFrame {
                         .addComponent(jButton_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel_StartDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField_DateStart))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel_EndDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField_DateEnd))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton_SearchDate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton_Confirm)))
                 .addContainerGap())
@@ -146,11 +187,21 @@ public class PresentationMenuDisplay extends javax.swing.JFrame {
                 .addComponent(jPanel_Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton_Confirm, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                        .addComponent(jButton_SearchDate, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE))
                     .addComponent(jButton_Back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField_Search))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                    .addComponent(jTextField_Search)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BGLayout.createSequentialGroup()
+                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_StartDate)
+                            .addComponent(jLabel_EndDate))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField_DateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_DateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -172,14 +223,27 @@ public class PresentationMenuDisplay extends javax.swing.JFrame {
         filterSearch();
     }//GEN-LAST:event_jTextField_SearchKeyReleased
 
+    private void jTextField_DateStartKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_DateStartKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_DateStartKeyReleased
+
+    private void jTextField_DateEndKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_DateEndKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_DateEndKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton_Back;
     public javax.swing.JButton jButton_Confirm;
+    public javax.swing.JButton jButton_SearchDate;
+    private javax.swing.JLabel jLabel_EndDate;
+    private javax.swing.JLabel jLabel_StartDate;
     private javax.swing.JLabel jLabel_Title;
     private javax.swing.JPanel jPanel_BG;
     private javax.swing.JPanel jPanel_Header;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTable_Presentations;
+    public javax.swing.JTextField jTextField_DateEnd;
+    public javax.swing.JTextField jTextField_DateStart;
     public javax.swing.JTextField jTextField_Search;
     // End of variables declaration//GEN-END:variables
 }

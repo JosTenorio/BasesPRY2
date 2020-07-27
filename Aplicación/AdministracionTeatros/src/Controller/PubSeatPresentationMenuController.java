@@ -63,6 +63,7 @@ public class PubSeatPresentationMenuController implements ActionListener{
         }
         if (e.getSource().equals(display.jButton_Confirm)){
             //ClientInformationController.getInstance().makeVisible(true, true);
+            //display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Buy)){
             if (selectedSeatIds.size() <= 8){

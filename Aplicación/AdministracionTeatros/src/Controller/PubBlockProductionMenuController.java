@@ -61,6 +61,7 @@ public class PubBlockProductionMenuController implements ActionListener{
                 int selectedIndex = display.jTable_Blocks.getSelectedRow();
                 int blockId = Integer.valueOf(blockList.get(selectedIndex)[0]);
                 PubSeatPresentationMenuController.getInstance().makeVisible(true, blockId, presentationId, productionId);
+                display.setVisible(false);
             }
             catch(Exception ex){
                 Utilities.infoBox("No se selecciono ningun item", "Error");
