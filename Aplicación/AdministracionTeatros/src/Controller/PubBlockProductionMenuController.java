@@ -2,6 +2,7 @@
 package Controller;
 
 import Model.ConnectionManager;
+import Model.Utilities;
 import View.BlockProductionMenuDisplay;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,9 +57,14 @@ public class PubBlockProductionMenuController implements ActionListener{
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Confirm)){
-            int selectedIndex = display.jTable_Blocks.getSelectedRow();
-            int blockId = Integer.valueOf(blockList.get(selectedIndex)[0]);
-            PubSeatPresentationMenuController.getInstance().makeVisible(true, blockId, presentationId, productionId);
+            try{
+                int selectedIndex = display.jTable_Blocks.getSelectedRow();
+                int blockId = Integer.valueOf(blockList.get(selectedIndex)[0]);
+                PubSeatPresentationMenuController.getInstance().makeVisible(true, blockId, presentationId, productionId);
+            }
+            catch(Exception ex){
+                Utilities.infoBox("No se selecciono ningun item", "Error");
+            }
         }
     }
 }

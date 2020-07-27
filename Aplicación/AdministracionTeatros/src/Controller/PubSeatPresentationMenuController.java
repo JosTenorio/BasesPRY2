@@ -2,6 +2,7 @@
 package Controller;
 
 import Model.ConnectionManager;
+import Model.Utilities;
 import View.SeatPresentationMenuDisplay;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ public class PubSeatPresentationMenuController implements ActionListener{
     private int blockId;
     private int presentationId;
     private int productionId;
+    private ArrayList<Integer> selectedSeatIds;
     
     private PubSeatPresentationMenuController(){
         init();
@@ -30,6 +32,7 @@ public class PubSeatPresentationMenuController implements ActionListener{
     private void init(){
         display.jButton_Confirm.addActionListener(this);
         display.jButton_Back.addActionListener(this);
+        display.jButton_Buy.addActionListener(this);
         display.setResizable(false);
         display.setLocationRelativeTo(null);
     }
@@ -38,6 +41,7 @@ public class PubSeatPresentationMenuController implements ActionListener{
         this.blockId = blockId;
         this.presentationId = presentationId;
         this.productionId = productionId;
+        this.selectedSeatIds = new ArrayList<>();
         display.setVisible(visible);
         if (visible == true)
             updateTableData();
@@ -59,6 +63,21 @@ public class PubSeatPresentationMenuController implements ActionListener{
         }
         if (e.getSource().equals(display.jButton_Confirm)){
             //ClientInformationController.getInstance().makeVisible(true, true);
+        }
+        if (e.getSource().equals(display.jButton_Buy)){
+            if (selectedSeatIds.size() <= 8){
+                try{
+                    int selectedIndex = display.jTable_Seats.getSelectedRow();
+                    int seatId = Integer.valueOf(seatList.get(selectedIndex)[0]);
+                    if (!selectedSeatIds.contains(seatId)){
+                        selectedSeatIds.add(seatId);
+                        display.jLabel_Amount.setText(String.valueOf(selectedSeatIds.size()));
+                    }
+                }
+                catch(Exception ex){
+                    Utilities.infoBox("No se selecciono ningun item", "Error");
+                }
+            }
         }
     }
 }
