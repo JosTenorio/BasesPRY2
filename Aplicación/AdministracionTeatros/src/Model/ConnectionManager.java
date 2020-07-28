@@ -186,43 +186,67 @@ public class ConnectionManager {
        return rs;
     }
     
-    public static void executeAdmSisCreateAsiento (int IdBloque, int Cantidad) throws SQLException {
-        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateAsiento(?,?)}");
-        cstmt.setInt(1, IdBloque);
-        cstmt.setInt(2, Cantidad);
-        cstmt.executeQuery();
-        cstmt.close();
+    public static void execAdmSisCreateAsiento (int IdBloque, int Cantidad) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateAsiento(?,?)}")) {
+            cstmt.setInt(1, IdBloque);
+            cstmt.setInt(2, Cantidad);
+            cstmt.execute();
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public static ResultSet executeAdmSisReadAsientos (int IdBloque) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadAsientos (?)}");
-       cstmt.setInt (1, IdBloque );
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> execAdmSisReadAsientos (int IdBloque) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmSisReadAsientos (?)}")) {
+            cstmt.setInt (1, IdBloque );
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
-    public static void executeAdmSisCreateBloque (int IdTeatro, String Nombre ) throws SQLException {
-        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateBloque(?,?)}");
-        cstmt.setInt(1, IdTeatro);
-        cstmt.setString(2, Nombre);
-        cstmt.executeQuery();
-        cstmt.close();
+    public static void execAdmSisCreateBloque (int IdTeatro, String Nombre ) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateBloque(?,?)}")) {
+            cstmt.setInt(1, IdTeatro);
+            cstmt.setString(2, Nombre);
+            cstmt.execute();
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public static ResultSet executeAdmSisReadBloques (int IdTeatro) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadBloques (?)}");
-       cstmt.setInt (1, IdTeatro);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> execAdmSisReadBloques (int IdTeatro) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmSisReadBloques (?)}")) {
+            cstmt.setInt (1, IdTeatro);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
-    public static ResultSet executeAdmSisReadTeatros () throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadTeatros()}");
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> execAdmSisReadTeatros () {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmSisReadTeatros()}")) {
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
     public static void execAdmSisCreateTeatro (String Nombre, String Direccion, String Correo, String Link, String TelBoleteria, String TelAdmin) {
@@ -234,6 +258,7 @@ public class ConnectionManager {
             cstmt.setString (5, TelBoleteria);
             cstmt.setString (6, TelAdmin);
             cstmt.execute();
+            cstmt.close();
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -261,6 +286,7 @@ public class ConnectionManager {
             cstmt.setString(12, User);
             cstmt.setString(13, Password);
             cstmt.execute();
+            cstmt.close();
         } catch (SQLException ex) {
             ErrorManager.errorAdmTeCreateEmpleadoAgnTe(ex);
         }

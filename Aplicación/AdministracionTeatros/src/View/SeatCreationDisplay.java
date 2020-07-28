@@ -5,33 +5,43 @@ import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class PresentationCreationDisplay extends javax.swing.JFrame {
+public class SeatCreationDisplay extends javax.swing.JFrame {
     
     public DefaultTableModel tableModel1;
     public DefaultTableModel tableModel2;
-    private final int ColumnAmount1 = 2;
-    private final int ColumnAmount2 = 1;
+    public DefaultTableModel tableModel3;
+    private final int ColumnAmount1 = 1;
+    private final int ColumnAmount2 = 2;
 
-    public PresentationCreationDisplay() {
+    public SeatCreationDisplay() {
         initComponents();
-        this.tableModel1 = (DefaultTableModel) jTable_Productions.getModel();
+        this.tableModel1 = (DefaultTableModel) jTable_Theaters.getModel();
         initTable1();
-        this.tableModel2 = (DefaultTableModel) jTable_Presentations.getModel();
+        this.tableModel2 = (DefaultTableModel) jTable_Blocks.getModel();
         initTable2();
+        this.tableModel3 = (DefaultTableModel) jTable_Seats.getModel();
+        initTable3();
     }
     
     private void initTable1(){
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
         renderer.setHorizontalAlignment(JLabel.CENTER);
         for (int i = 0; i < ColumnAmount1; i++)
-            jTable_Productions.getColumnModel().getColumn(i).setCellRenderer(renderer);
+            jTable_Theaters.getColumnModel().getColumn(i).setCellRenderer(renderer);
     }
     
     private void initTable2(){
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
         renderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < ColumnAmount1; i++)
+            jTable_Blocks.getColumnModel().getColumn(i).setCellRenderer(renderer);
+    }
+    
+    private void initTable3(){
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(JLabel.CENTER);
         for (int i = 0; i < ColumnAmount2; i++)
-            jTable_Presentations.getColumnModel().getColumn(i).setCellRenderer(renderer);
+            jTable_Seats.getColumnModel().getColumn(i).setCellRenderer(renderer);
     }
     
     /**
@@ -48,13 +58,19 @@ public class PresentationCreationDisplay extends javax.swing.JFrame {
         jLabel_Title = new javax.swing.JLabel();
         jButton_Back = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_Productions = new javax.swing.JTable();
+        jTable_Theaters = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable_Presentations = new javax.swing.JTable();
-        jLabel_Date = new javax.swing.JLabel();
-        jTextField_Date = new javax.swing.JTextField();
-        jButton_ViewProd = new javax.swing.JButton();
-        jButton_AddPres = new javax.swing.JButton();
+        jTable_Blocks = new javax.swing.JTable();
+        jButton_ViewTheater = new javax.swing.JButton();
+        jButton_AddBlock = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable_Seats = new javax.swing.JTable();
+        jButton_ViewBlock = new javax.swing.JButton();
+        jTextField_Block = new javax.swing.JTextField();
+        jLabel_Block = new javax.swing.JLabel();
+        jTextField_SeatAmount = new javax.swing.JTextField();
+        jLabel_SeatAmount = new javax.swing.JLabel();
+        jButton_AddSeats = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,7 +81,7 @@ public class PresentationCreationDisplay extends javax.swing.JFrame {
         jLabel_Title.setFont(new java.awt.Font("Gill Sans MT", 1, 42)); // NOI18N
         jLabel_Title.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Title.setText("AGREGAR PRESENTACION");
+        jLabel_Title.setText("AGREGAR ASIENTOS");
 
         javax.swing.GroupLayout jPanel_HeaderLayout = new javax.swing.GroupLayout(jPanel_Header);
         jPanel_Header.setLayout(jPanel_HeaderLayout);
@@ -89,40 +105,13 @@ public class PresentationCreationDisplay extends javax.swing.JFrame {
         jButton_Back.setForeground(new java.awt.Color(255, 255, 255));
         jButton_Back.setText("REGRESAR");
 
-        jTable_Productions.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        jTable_Productions.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_Theaters.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        jTable_Theaters.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Obra", "Estado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable_Productions.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(jTable_Productions);
-
-        jTable_Presentations.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
-        jTable_Presentations.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Presentacion"
+                "Teatro"
             }
         ) {
             Class[] types = new Class [] {
@@ -140,31 +129,100 @@ public class PresentationCreationDisplay extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable_Presentations.getTableHeader().setReorderingAllowed(false);
-        jScrollPane3.setViewportView(jTable_Presentations);
+        jTable_Theaters.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTable_Theaters);
 
-        jLabel_Date.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel_Date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Date.setText("FECHA PRESENTACION (YYYY-MM-DD HH:MM)");
+        jTable_Blocks.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        jTable_Blocks.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jTextField_Date.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jTextField_Date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_DateActionPerformed(evt);
+            },
+            new String [] {
+                "Bloque"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jTable_Blocks.getTableHeader().setReorderingAllowed(false);
+        jScrollPane3.setViewportView(jTable_Blocks);
 
-        jButton_ViewProd.setBackground(new java.awt.Color(0, 51, 204));
-        jButton_ViewProd.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
-        jButton_ViewProd.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_ViewProd.setText("INSPECCIONAR");
-        jButton_ViewProd.setToolTipText("");
+        jButton_ViewTheater.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_ViewTheater.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_ViewTheater.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_ViewTheater.setText("INSPECCIONAR");
+        jButton_ViewTheater.setToolTipText("");
 
-        jButton_AddPres.setBackground(new java.awt.Color(0, 51, 204));
-        jButton_AddPres.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
-        jButton_AddPres.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_AddPres.setText("AGREGAR");
-        jButton_AddPres.setToolTipText("");
+        jButton_AddBlock.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_AddBlock.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_AddBlock.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_AddBlock.setText("AGREGAR");
+        jButton_AddBlock.setToolTipText("");
+
+        jTable_Seats.setFont(new java.awt.Font("Gill Sans MT", 0, 18)); // NOI18N
+        jTable_Seats.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Fila", "Cantidad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable_Seats.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(jTable_Seats);
+
+        jButton_ViewBlock.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_ViewBlock.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_ViewBlock.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_ViewBlock.setText("INSPECCIONAR");
+        jButton_ViewBlock.setToolTipText("");
+
+        jTextField_Block.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTextField_Block.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel_Block.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel_Block.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Block.setText("NOMBRE:");
+
+        jTextField_SeatAmount.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTextField_SeatAmount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel_SeatAmount.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel_SeatAmount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_SeatAmount.setText("CANTIDAD:");
+
+        jButton_AddSeats.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_AddSeats.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_AddSeats.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_AddSeats.setText("AGREGAR");
+        jButton_AddSeats.setToolTipText("");
 
         javax.swing.GroupLayout jPanel_BGLayout = new javax.swing.GroupLayout(jPanel_BG);
         jPanel_BG.setLayout(jPanel_BGLayout);
@@ -174,23 +232,33 @@ public class PresentationCreationDisplay extends javax.swing.JFrame {
             .addGroup(jPanel_BGLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_BGLayout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addComponent(jButton_ViewProd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel_Date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField_Date, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_AddPres))
+                    .addComponent(jButton_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel_BGLayout.createSequentialGroup()
                         .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel_BGLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(94, 94, 94)
+                                .addComponent(jButton_ViewTheater)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel_BGLayout.createSequentialGroup()
+                                .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField_Block)
+                                    .addComponent(jLabel_Block, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_AddBlock)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_ViewBlock))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BGLayout.createSequentialGroup()
+                                .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField_SeatAmount)
+                                    .addComponent(jLabel_SeatAmount, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_AddSeats)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_BGLayout.setVerticalGroup(
@@ -201,17 +269,30 @@ public class PresentationCreationDisplay extends javax.swing.JFrame {
                 .addComponent(jButton_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_AddPres, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BGLayout.createSequentialGroup()
-                        .addComponent(jLabel_Date)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField_Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton_ViewProd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                    .addGroup(jPanel_BGLayout.createSequentialGroup()
+                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_ViewTheater, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton_ViewBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton_AddBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BGLayout.createSequentialGroup()
+                                .addComponent(jLabel_Block, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_Block, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel_BGLayout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_AddSeats, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_BGLayout.createSequentialGroup()
+                                .addComponent(jLabel_SeatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_SeatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,22 +309,24 @@ public class PresentationCreationDisplay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField_DateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_DateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_DateActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton jButton_AddPres;
+    public javax.swing.JButton jButton_AddBlock;
+    public javax.swing.JButton jButton_AddSeats;
     public javax.swing.JButton jButton_Back;
-    public javax.swing.JButton jButton_ViewProd;
-    private javax.swing.JLabel jLabel_Date;
+    public javax.swing.JButton jButton_ViewBlock;
+    public javax.swing.JButton jButton_ViewTheater;
+    private javax.swing.JLabel jLabel_Block;
+    private javax.swing.JLabel jLabel_SeatAmount;
     private javax.swing.JLabel jLabel_Title;
     private javax.swing.JPanel jPanel_BG;
     private javax.swing.JPanel jPanel_Header;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    public javax.swing.JTable jTable_Presentations;
-    public javax.swing.JTable jTable_Productions;
-    public javax.swing.JTextField jTextField_Date;
+    private javax.swing.JScrollPane jScrollPane4;
+    public javax.swing.JTable jTable_Blocks;
+    public javax.swing.JTable jTable_Seats;
+    public javax.swing.JTable jTable_Theaters;
+    public javax.swing.JTextField jTextField_Block;
+    public javax.swing.JTextField jTextField_SeatAmount;
     // End of variables declaration//GEN-END:variables
 }

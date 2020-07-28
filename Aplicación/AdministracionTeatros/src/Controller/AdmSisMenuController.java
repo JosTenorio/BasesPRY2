@@ -41,8 +41,8 @@ public class AdmSisMenuController implements ActionListener{
             MainMenuController.getInstance().makeVisible(true);
         if (e.getSource().equals(display.jButton_NewTheater))
             CreateTheaterController.getInstance().makeVisible(true);
-        //if (e.getSource().equals(display.jButton_NewSeats))
-
+        if (e.getSource().equals(display.jButton_NewSeats))
+            CreateSeatsController.getInstance().makeVisible(true);
         //if (e.getSource().equals(display.jButton_PaymentHistory))
 
         //if (e.getSource().equals(display.jButton_Employees))
