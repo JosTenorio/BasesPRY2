@@ -47,7 +47,7 @@ public class ReadPurchaseConfirmController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Confirm)){
-            ReadProductionMenuController.getInstance().makeVisible(true);
+            ReadProductionController.getInstance().makeVisible(true);
             display.setVisible(false);
         }
     }

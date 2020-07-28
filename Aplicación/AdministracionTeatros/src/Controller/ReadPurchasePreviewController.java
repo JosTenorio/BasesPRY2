@@ -64,7 +64,7 @@ public class ReadPurchasePreviewController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Back)){
-            ReadSeatPresentationMenuController.getInstance().makeVisible(true, blockId, presentationId, productionId);
+            ReadSeatPresentationController.getInstance().makeVisible(true, blockId, presentationId, productionId);
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_PayCard)){

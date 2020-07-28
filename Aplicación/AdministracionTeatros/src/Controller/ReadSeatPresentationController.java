@@ -9,23 +9,23 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ReadSeatPresentationMenuController implements ActionListener{
+public class ReadSeatPresentationController implements ActionListener{
     
     private static final SeatPresentationMenuDisplay display = new SeatPresentationMenuDisplay();
-    private static ReadSeatPresentationMenuController firstInstance = null;
+    private static ReadSeatPresentationController firstInstance = null;
     private ArrayList<String[]> seatList;
     private int blockId;
     private int presentationId;
     private int productionId;
     private ArrayList<Integer> selectedSeatIds;
     
-    private ReadSeatPresentationMenuController(){
+    private ReadSeatPresentationController(){
         init();
     }
     
-    public static ReadSeatPresentationMenuController getInstance(){
+    public static ReadSeatPresentationController getInstance(){
         if (firstInstance == null)
-            firstInstance = new ReadSeatPresentationMenuController();
+            firstInstance = new ReadSeatPresentationController();
         return firstInstance;
     }
     
@@ -62,7 +62,7 @@ public class ReadSeatPresentationMenuController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Back)){
-            ReadBlockProductionMenuController.getInstance().makeVisible(true, productionId, presentationId);
+            ReadBlockProductionController.getInstance().makeVisible(true, productionId, presentationId);
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Confirm)){

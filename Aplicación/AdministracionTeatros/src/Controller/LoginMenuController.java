@@ -64,10 +64,10 @@ public class LoginMenuController implements ActionListener{
                 Utilities.setCredentials(user, pass, loginType);
                 switch(loginType){
                     case 1:
-                        ReadProductionMenuController.getInstance().makeVisible(true);
+                        ReadProductionController.getInstance().makeVisible(true);
                         break;
                     case 2:
-                        
+                        AdmTeMenuController.getInstance().makeVisible(true);
                         break;
                     case 3:  
                         
