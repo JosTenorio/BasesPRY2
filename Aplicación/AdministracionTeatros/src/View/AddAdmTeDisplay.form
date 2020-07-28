@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel_BG" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel_BG" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel_BG">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanel_Header" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jButton_Back" min="-2" pref="110" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jButton_Confirm" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel_Info3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info4" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info5" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info6" alignment="0" min="-2" pref="253" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jTextField_Name" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="jTextField_Ced" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="jTextField_Birth" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="jTextField_Dir" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="jTextField_Mail" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="jTextField_Sex" min="-2" pref="300" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jLabel_Info8" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info7" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info9" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info10" alignment="0" min="-2" pref="210" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jTextField_PhoneCel" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="jTextField_PhoneHome" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="jTextField_PhoneOther" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="jTextField_User" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                      <Component id="jTextField_Pass" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jPanel_Header" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jButton_Confirm" pref="43" max="32767" attributes="0"/>
+                      <Component id="jButton_Back" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_Info" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextField_Name" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_Info2" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextField_Ced" alignment="3" pref="42" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_Info3" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextField_Birth" alignment="3" pref="42" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel_Info4" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextField_Dir" alignment="0" pref="43" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_Info1" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextField_PhoneCel" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_Info7" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextField_PhoneHome" alignment="3" pref="42" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_Info8" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="jTextField_PhoneOther" alignment="3" pref="42" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTextField_User" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="jLabel_Info9" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel_Info5" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextField_Sex" alignment="3" pref="42" max="32767" attributes="0"/>
+                      <Component id="jLabel_Info10" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextField_Pass" alignment="3" pref="42" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel_Info6" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="jTextField_Mail" alignment="3" pref="42" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel_Header">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="33" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel_Title" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace pref="21" max="32767" attributes="0"/>
+                      <Component id="jLabel_Title" min="-2" pref="105" max="-2" attributes="0"/>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel_Title">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Gill Sans MT" size="42" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="CREAR ADMIN DE TEATRO"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JButton" name="jButton_Confirm">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="33" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Gill Sans MT" size="12" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="CONFIRMAR"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton_Back">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="33" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Gill Sans MT" size="12" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="REGRESAR"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="NOMBRE:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="DIRECCION"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info6">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="CORREO:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info5">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="SEXO (M/F)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="NACIMIENTO (YYYY-MM-DD)"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="CEDULA:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_Name">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_Mail">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_Ced">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_Birth">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_Dir">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_Sex">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="TELEFONO CEL:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info7">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="TELEFONO CASA:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_PhoneHome">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_PhoneCel">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info8">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="TELEFONO OTRO:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_PhoneOther">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info9">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="USUARIO:"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_User">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_Info10">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="text" type="java.lang.String" value="CONTRASENA:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField_Pass">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="14" style="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

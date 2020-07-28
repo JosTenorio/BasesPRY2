@@ -47,8 +47,8 @@ public class AdmSisMenuController implements ActionListener{
             ReadPurchaseHistoryController.getInstance().makeVisible(true);
         if (e.getSource().equals(display.jButton_Employees))
             ReadEmployeesController.getInstance().makeVisible(true);
-        //if (e.getSource().equals(display.jButton_NewAdmin))
-
+        if (e.getSource().equals(display.jButton_NewAdmin))
+            ReadTheaterController.getInstance().makeVisible(true);
         display.setVisible(false);
     }
     
