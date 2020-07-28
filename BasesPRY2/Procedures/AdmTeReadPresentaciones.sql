@@ -16,7 +16,7 @@ AS
 	) = @IdTeatro 
 
 	BEGIN
-		SELECT pre.Id, pre.FechaHoraInicio
+		SELECT pre.Id, CONVERT(NVARCHAR, pre.FechaHoraInicio)
 		FROM Presentaciones pre INNER JOIN Producciones pro ON pre.IdProduccion = pro.Id
 		WHERE pro.Id = @IdProduccion
 		ORDER BY pre.FechaHoraInicio

@@ -8,7 +8,7 @@ AS
 	BEGIN
 		SELECT v.Id, v.Obra + ' (' + v.Tipo + ')' AS Obra, v.Teatro, v.Estado, CONVERT(NVARCHAR, v.FechaHoraInicio), CONVERT(NVARCHAR, v.FechaHoraFin), v.Descripcion
 		FROM VwProduccionesPublicas v
-		WHERE v.FechaHoraInicio IS NOT NULL AND v.FechaHoraInicio BETWEEN @FechaHoraInicio AND @FechaHoraFin
+		WHERE v.FechaHoraInicio IS NOT NULL AND NOT (v.FechaHoraInicio > @FechaHoraFin OR v.FechaHoraFin < @FechaHoraInicio)
 		ORDER BY v.Obra, v.Tipo, v.Teatro
 	END
 
