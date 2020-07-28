@@ -153,29 +153,6 @@ public class ConnectionManager {
         return false;
     } 
     
-    public static ResultSet executeAdmSisReadTeatros () throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadTeatros()}");
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
-    public static void executeAdmSisCreateAsiento (int IdBloque, int Cantidad) throws SQLException {
-        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateAsiento(?,?)}");
-        cstmt.setInt(1, IdBloque);
-        cstmt.setInt(2, Cantidad);
-        cstmt.executeQuery();
-        cstmt.close();
-    }
-    
-    public static void executeAdmSisCreateBloque (int IdTeatro,String Nombre ) throws SQLException {
-        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateBloque(?,?)}");
-        cstmt.setInt(1, IdTeatro);
-        cstmt.setString(2, Nombre);
-        cstmt.executeQuery();
-        cstmt.close();
-    }
-    
     public static void executeAdmSisCreateEmpleadoAdmTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, int IdTeatro) throws SQLException {
         CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateEmpleadoAdmTe(?,?,?,?,?,?,?,?,?,?,?,?)}");
         cstmt.setString(1, Cedula);
@@ -194,34 +171,6 @@ public class ConnectionManager {
         cstmt.close();
     }
     
-    public static void executeAdmSisCreateTeatro (String Nombre, String Direccion, String Correo, String Link, String TelBoleteria, String TelAdmin) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateTeatro (?,?,?,?,?,?)}");
-       cstmt.setString (1, Nombre);
-       cstmt.setString (2, Direccion);
-       cstmt.setString (3, Correo);
-       cstmt.setString (4, Link);
-       cstmt.setString (5, TelBoleteria);
-       cstmt.setString (6, TelAdmin);
-       cstmt.executeQuery();
-       cstmt.close();
-    }
-    
-    public static ResultSet executeAdmSisReadAsientos (int IdBloque) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadAsientos (?)}");
-       cstmt.setInt (1, IdBloque );
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
-    public static ResultSet executeAdmSisReadBloques (int IdTeatro) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadBloques (?)}");
-       cstmt.setInt (1, IdTeatro);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
     public static ResultSet executeAdmSisReadEmpleados (int Tipo) throws SQLException {
        CallableStatement cstmt = connection.prepareCall("{call AdmSisReadEmpleados (?)}");
        cstmt.setInt (1, Tipo);
@@ -235,6 +184,57 @@ public class ConnectionManager {
        ResultSet rs = cstmt.executeQuery();
        cstmt.close();
        return rs;
+    }
+    
+    public static void executeAdmSisCreateAsiento (int IdBloque, int Cantidad) throws SQLException {
+        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateAsiento(?,?)}");
+        cstmt.setInt(1, IdBloque);
+        cstmt.setInt(2, Cantidad);
+        cstmt.executeQuery();
+        cstmt.close();
+    }
+    
+    public static ResultSet executeAdmSisReadAsientos (int IdBloque) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadAsientos (?)}");
+       cstmt.setInt (1, IdBloque );
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static void executeAdmSisCreateBloque (int IdTeatro,String Nombre ) throws SQLException {
+        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateBloque(?,?)}");
+        cstmt.setInt(1, IdTeatro);
+        cstmt.setString(2, Nombre);
+        cstmt.executeQuery();
+        cstmt.close();
+    }
+    
+    public static ResultSet executeAdmSisReadBloques (int IdTeatro) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadBloques (?)}");
+       cstmt.setInt (1, IdTeatro);
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static ResultSet executeAdmSisReadTeatros () throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadTeatros()}");
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static void executeAdmSisCreateTeatro (String Nombre, String Direccion, String Correo, String Link, String TelBoleteria, String TelAdmin) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateTeatro (?,?,?,?,?,?)}");
+       cstmt.setString (1, Nombre);
+       cstmt.setString (2, Direccion);
+       cstmt.setString (3, Correo);
+       cstmt.setString (4, Link);
+       cstmt.setString (5, TelBoleteria);
+       cstmt.setString (6, TelAdmin);
+       cstmt.executeQuery();
+       cstmt.close();
     }
     
     public static void execAdmTeCreateEmpleadoAgnTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, String User, String Password) {
