@@ -3,8 +3,8 @@
 AS
 	SET NOCOUNT ON
 
-	SELECT a.Id, a.Fila, a.Columna
+	SELECT 0, a.Fila, COUNT(a.Columna) AS Cantidad
 	FROM Asientos a
 	WHERE a.IdBloque = @IdBloque
-	ORDER BY a.Fila, a.Columna
+	GROUP BY a.Fila
 GO
