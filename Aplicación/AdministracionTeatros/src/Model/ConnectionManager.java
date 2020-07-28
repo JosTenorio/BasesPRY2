@@ -237,23 +237,31 @@ public class ConnectionManager {
        return rs;
     }
     
-    public static void executeAdmTeCreateEmpleadoAgnTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, String User, String Password) throws SQLException {
-        CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateEmpleadoAgnTe(?,?,?,?,?,?,?,?,?,?,?,?, ?)}");
-        cstmt.setString(1, Cedula);
-        cstmt.setString(2, Nombre);
-        cstmt.setDate(3, java.sql.Date.valueOf(FechaNacimiento));
-        cstmt.setString(4, Direccion);
-        cstmt.setString(5, Sexo);
-        cstmt.setString(6, Correo);
-        cstmt.setString(7, Usuario);
-        cstmt.setString(8, Contrasena);
-        cstmt.setString(9, TelCelular);
-        cstmt.setString(10, TelCasa);
-        cstmt.setString(11, TelOtro);
-        cstmt.setString(12, User);
-        cstmt.setString(13, Password);
-        cstmt.executeQuery();
-        cstmt.close();
+    public static void execAdmTeCreateEmpleadoAgnTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, String User, String Password) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateEmpleadoAgnTe(?,?,?,?,?,?,?,?,?,?,?,?, ?)}")) {
+            cstmt.setString(1, Cedula);
+            cstmt.setString(2, Nombre);
+            cstmt.setDate(3, java.sql.Date.valueOf(FechaNacimiento));
+            cstmt.setString(4, Direccion);
+            cstmt.setString(5, Sexo);
+            cstmt.setString(6, Correo);
+            cstmt.setString(7, Usuario);
+            cstmt.setString(8, Contrasena);
+            cstmt.setString(9, TelCelular);
+            if ("".equals(TelCasa))
+                cstmt.setNull(10, Types.NCHAR);
+            else
+                cstmt.setString(10, TelCasa); 
+            if ("".equals(TelOtro))
+                cstmt.setNull(11, Types.NCHAR);
+            else
+                cstmt.setString(11, TelOtro);
+            cstmt.setString(12, User);
+            cstmt.setString(13, Password);
+            cstmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
      public static void execAdmTeUpdateProduccionEstado (int IdProduccion, int IdEstado, String User, String Password) {

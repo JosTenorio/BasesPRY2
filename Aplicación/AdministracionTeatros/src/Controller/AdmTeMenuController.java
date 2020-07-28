@@ -47,8 +47,8 @@ public class AdmTeMenuController implements ActionListener{
             UpdateProductionController.getInstance().makeVisible(true);
         if (e.getSource().equals(display.jButton_NewPrice))
             CreateBlockProductionController.getInstance().makeVisible(true);
-        //if (e.getSource().equals(display.jButton_NewAgent))
-
+        if (e.getSource().equals(display.jButton_NewAgent))
+            CreateAgnTeController.getInstance().makeVisible(true);
         display.setVisible(false);
     }
     
