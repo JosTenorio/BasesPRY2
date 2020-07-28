@@ -256,21 +256,29 @@ public class ConnectionManager {
         cstmt.close();
     }
     
-     public static void executeAdmTeUpdateProduccionEstado (int IdProduccion, int IdEstado, String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeUpdateProduccionEstado (?,?,?,?)}");
-       cstmt.setInt(1, IdProduccion);
-       cstmt.setInt(2, IdEstado);
-       cstmt.setString(3, User);
-       cstmt.setString(4, Password);
-       cstmt.executeQuery();
-       cstmt.close();
+     public static void execAdmTeUpdateProduccionEstado (int IdProduccion, int IdEstado, String User, String Password) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeUpdateProduccionEstado (?,?,?,?)}")) {
+            cstmt.setInt(1, IdProduccion);
+            cstmt.setInt(2, IdEstado);
+            cstmt.setString(3, User);
+            cstmt.setString(4, Password);
+            cstmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
      
-    public static ResultSet executeAdmTeReadEstados () throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeReadEstados ()}");
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> execAdmTeReadEstados () {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeReadEstados ()}")) {
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
     public static void execAdmTeCreateBloqueProduccion(int IdProduccion, int IdBloque, float Precio, String User, String Password) {
