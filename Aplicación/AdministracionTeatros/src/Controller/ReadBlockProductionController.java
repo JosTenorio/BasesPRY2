@@ -9,21 +9,21 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ReadBlockProductionMenuController implements ActionListener{
+public class ReadBlockProductionController implements ActionListener{
     
     private static final BlockProductionMenuDisplay display = new BlockProductionMenuDisplay();
-    private static ReadBlockProductionMenuController firstInstance = null;
+    private static ReadBlockProductionController firstInstance = null;
     private ArrayList<String[]> blockList;
     private int productionId;
     private int presentationId;
     
-    private ReadBlockProductionMenuController(){
+    private ReadBlockProductionController(){
         init();
     }
     
-    public static ReadBlockProductionMenuController getInstance(){
+    public static ReadBlockProductionController getInstance(){
         if (firstInstance == null)
-            firstInstance = new ReadBlockProductionMenuController();
+            firstInstance = new ReadBlockProductionController();
         return firstInstance;
     }
     
@@ -56,14 +56,14 @@ public class ReadBlockProductionMenuController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Back)){
-            ReadPresentationMenuController.getInstance().makeVisible(true, productionId);
+            ReadPresentationController.getInstance().makeVisible(true, productionId);
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Confirm)){
             try{
                 int selectedIndex = display.jTable_Blocks.getSelectedRow();
                 int blockId = Integer.valueOf(blockList.get(selectedIndex)[0]);
-                ReadSeatPresentationMenuController.getInstance().makeVisible(true, blockId, presentationId, productionId);
+                ReadSeatPresentationController.getInstance().makeVisible(true, blockId, presentationId, productionId);
                 display.setVisible(false);
             }
             catch(Exception ex){

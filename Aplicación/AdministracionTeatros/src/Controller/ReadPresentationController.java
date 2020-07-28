@@ -9,22 +9,22 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ReadPresentationMenuController implements ActionListener{
+public class ReadPresentationController implements ActionListener{
     
     private static final PresentationMenuDisplay display = new PresentationMenuDisplay();
-    private static ReadPresentationMenuController firstInstance = null;
+    private static ReadPresentationController firstInstance = null;
     private ArrayList<String[]> presentationList;
     private String startTime = null;
     private String endTime = null;
     private int productionId;
     
-    private ReadPresentationMenuController(){
+    private ReadPresentationController(){
         init();
     }
     
-    public static ReadPresentationMenuController getInstance(){
+    public static ReadPresentationController getInstance(){
         if (firstInstance == null)
-            firstInstance = new ReadPresentationMenuController();
+            firstInstance = new ReadPresentationController();
         return firstInstance;
     }
     
@@ -57,14 +57,14 @@ public class ReadPresentationMenuController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Back)){
-            ReadProductionMenuController.getInstance().makeVisible(true);
+            ReadProductionController.getInstance().makeVisible(true);
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Confirm)){
             try{
                 int selectedIndex = display.jTable_Presentations.getSelectedRow();
                 int presentationId = Integer.valueOf(presentationList.get(selectedIndex)[0]);
-                ReadBlockProductionMenuController.getInstance().makeVisible(true, productionId, presentationId);
+                ReadBlockProductionController.getInstance().makeVisible(true, productionId, presentationId);
                 display.setVisible(false);
             }
             catch(Exception ex){

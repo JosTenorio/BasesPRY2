@@ -3,7 +3,6 @@ package Model;
 
 import com.microsoft.sqlserver.jdbc.SQLServerCallableStatement;
 import com.microsoft.sqlserver.jdbc.SQLServerDataTable;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.awt.Frame;
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,7 +16,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.CallableStatement;
-import java.sql.SQLTimeoutException;
 import java.sql.Timestamp;
 import javax.sql.rowset.*; 
 import java.util.ArrayList;
@@ -155,29 +153,6 @@ public class ConnectionManager {
         return false;
     } 
     
-    public static ResultSet executeAdmSisReadTeatros () throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadTeatros()}");
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
-    public static void executeAdmSisCreateAsiento (int IdBloque, int Cantidad) throws SQLException {
-        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateAsiento(?,?)}");
-        cstmt.setInt(1, IdBloque);
-        cstmt.setInt(2, Cantidad);
-        cstmt.executeQuery();
-        cstmt.close();
-    }
-    
-    public static void executeAdmSisCreateBloque (int IdTeatro,String Nombre ) throws SQLException {
-        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateBloque(?,?)}");
-        cstmt.setInt(1, IdTeatro);
-        cstmt.setString(2, Nombre);
-        cstmt.executeQuery();
-        cstmt.close();
-    }
-    
     public static void executeAdmSisCreateEmpleadoAdmTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, int IdTeatro) throws SQLException {
         CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateEmpleadoAdmTe(?,?,?,?,?,?,?,?,?,?,?,?)}");
         cstmt.setString(1, Cedula);
@@ -196,34 +171,6 @@ public class ConnectionManager {
         cstmt.close();
     }
     
-    public static void executeAdmSisCreateTeatro (String Nombre, String Direccion, String Correo, String Link, String TelBoleteria, String TelAdmin) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateTeatro (?,?,?,?,?,?)}");
-       cstmt.setString (1, Nombre);
-       cstmt.setString (2, Direccion);
-       cstmt.setString (3, Correo);
-       cstmt.setString (4, Link);
-       cstmt.setString (5, TelBoleteria);
-       cstmt.setString (6, TelAdmin);
-       cstmt.executeQuery();
-       cstmt.close();
-    }
-    
-    public static ResultSet executeAdmSisReadAsientos (int IdBloque) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadAsientos (?)}");
-       cstmt.setInt (1, IdBloque );
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
-    public static ResultSet executeAdmSisReadBloques (int IdTeatro) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadBloques (?)}");
-       cstmt.setInt (1, IdTeatro);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
     public static ResultSet executeAdmSisReadEmpleados (int Tipo) throws SQLException {
        CallableStatement cstmt = connection.prepareCall("{call AdmSisReadEmpleados (?)}");
        cstmt.setInt (1, Tipo);
@@ -239,119 +186,241 @@ public class ConnectionManager {
        return rs;
     }
     
-    public static void executeAdmTeCreateBloqueProduccion(int IdProduccion, int IdBloque, float Precio, String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateBloqueProduccion (?,?,?,?,?)}");
-       cstmt.setInt(1, IdProduccion);
-       cstmt.setInt(2, IdBloque);
-       BigDecimal PrecioBigDecimal = new BigDecimal(Float.toString(Precio));
-       cstmt.setBigDecimal(3,PrecioBigDecimal);
-       cstmt.setString (4, User);
-       cstmt.setString (5, Password);
-       cstmt.executeQuery();
-       cstmt.close();
-    }
-    
-    public static void executeAdmTeCreateEmpleadoAgnTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, String User, String Password) throws SQLException {
-        CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateEmpleadoAgnTe(?,?,?,?,?,?,?,?,?,?,?,?, ?)}");
-        cstmt.setString(1, Cedula);
-        cstmt.setString(2, Nombre);
-        cstmt.setDate(3, java.sql.Date.valueOf(FechaNacimiento));
-        cstmt.setString(4, Direccion);
-        cstmt.setString(5, Sexo);
-        cstmt.setString(6, Correo);
-        cstmt.setString(7, Usuario);
-        cstmt.setString(8, Contrasena);
-        cstmt.setString(9, TelCelular);
-        cstmt.setString(10, TelCasa);
-        cstmt.setString(11, TelOtro);
-        cstmt.setString(12, User);
-        cstmt.setString(13, Password);
+    public static void executeAdmSisCreateAsiento (int IdBloque, int Cantidad) throws SQLException {
+        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateAsiento(?,?)}");
+        cstmt.setInt(1, IdBloque);
+        cstmt.setInt(2, Cantidad);
         cstmt.executeQuery();
         cstmt.close();
     }
     
-    public static void executeAdmTeCreateObra (String Nombre, String Descripcion, int IdTipo) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateObra(?, ?, ?)}");
-       cstmt.setString(1, Nombre);
-       cstmt.setString(2, Descripcion);
-       cstmt.setInt (3, IdTipo);
+    public static ResultSet executeAdmSisReadAsientos (int IdBloque) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadAsientos (?)}");
+       cstmt.setInt (1, IdBloque );
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static void executeAdmSisCreateBloque (int IdTeatro,String Nombre ) throws SQLException {
+        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateBloque(?,?)}");
+        cstmt.setInt(1, IdTeatro);
+        cstmt.setString(2, Nombre);
+        cstmt.executeQuery();
+        cstmt.close();
+    }
+    
+    public static ResultSet executeAdmSisReadBloques (int IdTeatro) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadBloques (?)}");
+       cstmt.setInt (1, IdTeatro);
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static ResultSet executeAdmSisReadTeatros () throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadTeatros()}");
+       ResultSet rs = cstmt.executeQuery();
+       cstmt.close();
+       return rs;
+    }
+    
+    public static void executeAdmSisCreateTeatro (String Nombre, String Direccion, String Correo, String Link, String TelBoleteria, String TelAdmin) throws SQLException {
+       CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateTeatro (?,?,?,?,?,?)}");
+       cstmt.setString (1, Nombre);
+       cstmt.setString (2, Direccion);
+       cstmt.setString (3, Correo);
+       cstmt.setString (4, Link);
+       cstmt.setString (5, TelBoleteria);
+       cstmt.setString (6, TelAdmin);
        cstmt.executeQuery();
        cstmt.close();
     }
     
-    public static void executeAdmTeCreatePresentacion (int IdProduccion , String FechaHoraInicio, String User, String Password ) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeCreatePresentacion(?, ?, ?, ?)}");
-       cstmt.setInt(1, IdProduccion);
-       cstmt.setTimestamp(2, Timestamp.valueOf(FechaHoraInicio));
-       cstmt.setString(3, User);
-       cstmt.setString(4, Password);
-       cstmt.executeQuery();
-       cstmt.close();
+    public static void execAdmTeCreateEmpleadoAgnTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, String User, String Password) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateEmpleadoAgnTe(?,?,?,?,?,?,?,?,?,?,?,?, ?)}")) {
+            cstmt.setString(1, Cedula);
+            cstmt.setString(2, Nombre);
+            cstmt.setDate(3, java.sql.Date.valueOf(FechaNacimiento));
+            cstmt.setString(4, Direccion);
+            cstmt.setString(5, Sexo);
+            cstmt.setString(6, Correo);
+            cstmt.setString(7, Usuario);
+            cstmt.setString(8, Contrasena);
+            cstmt.setString(9, TelCelular);
+            if ("".equals(TelCasa))
+                cstmt.setNull(10, Types.NCHAR);
+            else
+                cstmt.setString(10, TelCasa); 
+            if ("".equals(TelOtro))
+                cstmt.setNull(11, Types.NCHAR);
+            else
+                cstmt.setString(11, TelOtro);
+            cstmt.setString(12, User);
+            cstmt.setString(13, Password);
+            cstmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public static void executeAdmTeCreateProduccion (int IdObra, String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateProduccion(?, ?, ?)}");
-       cstmt.setInt(1, IdObra);
-       cstmt.setString(2, User);
-       cstmt.setString(3, Password);
-       cstmt.executeQuery();
-       cstmt.close();
-    }
-    
-    public static void executeAdmTeCreateTipo (String Nombre) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateTipo(?)}");
-       cstmt.setString(1, Nombre);
-       cstmt.executeQuery();
-       cstmt.close();  
-    }
-    
-    public static ResultSet executeAdmTeReadBloques (String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeReadBloques (?,?)}");
-       cstmt.setString(1, User);
-       cstmt.setString(2, Password);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
-    public static ResultSet executeAdmTeReadEstados () throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeReadEstados ()}");
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
-    public static ResultSet executeAdmTeReadObras () throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeReadObras ()}");
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
-    public static ResultSet executeAdmTeReadProducciones (String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeReadProducciones (?,?)}");
-       cstmt.setString(1, User);
-       cstmt.setString(2, Password);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
-    }
-    
-     public static ResultSet executeAdmTeReadTipos () throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeReadTipos ()}");
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+     public static void execAdmTeUpdateProduccionEstado (int IdProduccion, int IdEstado, String User, String Password) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeUpdateProduccionEstado (?,?,?,?)}")) {
+            cstmt.setInt(1, IdProduccion);
+            cstmt.setInt(2, IdEstado);
+            cstmt.setString(3, User);
+            cstmt.setString(4, Password);
+            cstmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
      
-    public static void executeAdmTeUpdateProduccionEstado (int IdProduccion, int IdEstado, String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeUpdateProduccionEstado (?,?,?,?)}");
-       cstmt.setInt(1, IdProduccion);
-       cstmt.setInt(2, IdEstado);
-       cstmt.setString(3, User);
-       cstmt.setString(4, Password);
-       cstmt.executeQuery();
-       cstmt.close();
+    public static ArrayList<String[]> execAdmTeReadEstados () {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeReadEstados ()}")) {
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
+    }
+    
+    public static void execAdmTeCreateBloqueProduccion(int IdProduccion, int IdBloque, float Precio, String User, String Password) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateBloqueProduccion (?,?,?,?,?)}")) {
+            cstmt.setInt(1, IdProduccion);
+            cstmt.setInt(2, IdBloque);
+            BigDecimal PrecioBigDecimal = new BigDecimal(Float.toString(Precio));
+            cstmt.setBigDecimal(3,PrecioBigDecimal);
+            cstmt.setString(4, User);
+            cstmt.setString(5, Password);
+            cstmt.execute();
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static ArrayList<String[]> execAdmTeReadBloques (String User, String Password) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeReadBloques (?,?)}")) {
+            cstmt.setString(1, User);
+            cstmt.setString(2, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
+    }
+    
+    public static void execAdmTeCreatePresentacion (int IdProduccion, String FechaHoraInicio, String User, String Password ) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeCreatePresentacion(?,?,?,?)}")) {
+            cstmt.setInt(1, IdProduccion);
+            cstmt.setTimestamp(2, Timestamp.valueOf(FechaHoraInicio));
+            cstmt.setString(3, User);
+            cstmt.setString(4, Password);
+            cstmt.execute();
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static ArrayList<String[]> execAdmTeReadPresentaciones (int IdProduccion, String User, String Password) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeReadPresentaciones (?,?,?)}")) {
+            cstmt.setInt(1, IdProduccion);
+            cstmt.setString(2, User);
+            cstmt.setString(3, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
+    }
+    
+    public static ArrayList<String[]> execAdmTeReadProducciones (String User, String Password) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeReadProducciones (?,?)}")) {
+            cstmt.setString(1, User);
+            cstmt.setString(2, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
+    }
+    
+    public static void execAdmTeCreateProduccion (int IdObra, String User, String Password) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateProduccion(?, ?, ?)}")) {
+            cstmt.setInt(1, IdObra);
+            cstmt.setString(2, User);
+            cstmt.setString(3, Password);
+            cstmt.execute();
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void execAdmTeCreateObra (String Nombre, String Descripcion, int IdTipo) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateObra(?, ?, ?)}")) {
+            cstmt.setString(1, Nombre);
+            cstmt.setString(2, Descripcion);
+            cstmt.setInt (3, IdTipo);
+            cstmt.execute();
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static ArrayList<String[]> execAdmTeReadObras () {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeReadObras ()}")) {
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
+    }
+    
+    public static void execAdmTeCreateTipo (String Nombre) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateTipo(?)}")) {
+            cstmt.setString(1, Nombre);
+            cstmt.execute();
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+    
+     public static ArrayList<String[]> execAdmTeReadTipos () {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeReadTipos ()}")) {
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
     public static String[] execAgnTeCreateCompraEfectivo (ArrayList<Integer> Ids, String Nombre, String Telefono, String Correo, String User, String Password) {

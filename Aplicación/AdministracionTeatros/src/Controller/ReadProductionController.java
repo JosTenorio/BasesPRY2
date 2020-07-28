@@ -9,21 +9,21 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ReadProductionMenuController implements ActionListener{
+public class ReadProductionController implements ActionListener{
     
     private static final ProductionMenuDisplay display = new ProductionMenuDisplay();
-    private static ReadProductionMenuController firstInstance = null;
+    private static ReadProductionController firstInstance = null;
     private ArrayList<String[]> productionList;
     private String startTime = null;
     private String endTime = null;
     
-    private ReadProductionMenuController(){
+    private ReadProductionController(){
         init();
     }
     
-    public static ReadProductionMenuController getInstance(){
+    public static ReadProductionController getInstance(){
         if (firstInstance == null)
-            firstInstance = new ReadProductionMenuController();
+            firstInstance = new ReadProductionController();
         return firstInstance;
     }
     
@@ -62,7 +62,7 @@ public class ReadProductionMenuController implements ActionListener{
             try{
                 int selectedIndex = display.jTable_Productions.getSelectedRow();
                 int productionId = Integer.valueOf(productionList.get(selectedIndex)[0]);
-                ReadPresentationMenuController.getInstance().makeVisible(true, productionId);
+                ReadPresentationController.getInstance().makeVisible(true, productionId);
                 display.setVisible(false);
             }
             catch(Exception ex){
