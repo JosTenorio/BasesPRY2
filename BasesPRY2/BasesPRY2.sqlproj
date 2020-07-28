@@ -65,6 +65,7 @@
     <Folder Include="Logins" />
     <Folder Include="Users" />
     <Folder Include="Types" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Asientos.sql" />
@@ -146,14 +147,12 @@
     <Build Include="Procedures\AdmSisReadRegistroPagos.sql" />
     <Build Include="Procedures\AdmSisReadEmpleados.sql" />
     <Build Include="Procedures\AdmTeReadPresentaciones.sql" />
+    <PostDeploy Include="Scripts\Script.PostPublicationScript.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BasesPRY2.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Tipos.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="Script.TrgServerLogon.sql" />
   </ItemGroup>
 </Project>
