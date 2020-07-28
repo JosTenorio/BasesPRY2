@@ -171,7 +171,7 @@ public class ConnectionManager {
         cstmt.close();
     }
     
-    public static ArrayList<String[]> executeAdmSisReadEmpleados (int Tipo) {
+    public static ArrayList<String[]> execAdmSisReadEmpleados (int Tipo) {
         CachedRowSet crs = null;
         try (CallableStatement cstmt = connection.prepareCall("{call AdmSisReadEmpleados (?)}")) {
             if (Tipo == 0)
@@ -188,7 +188,7 @@ public class ConnectionManager {
        return Utilities.convertToTable(crs);
     }
     
-    public static ArrayList<String[]> executeAdmSisReadRegistroPagos () {
+    public static ArrayList<String[]> execAdmSisReadRegistroPagos () {
         CachedRowSet crs = null;
         try (CallableStatement cstmt = connection.prepareCall("{call AdmSisReadRegistroPagos ()}")) {
             ResultSet rs = cstmt.executeQuery();

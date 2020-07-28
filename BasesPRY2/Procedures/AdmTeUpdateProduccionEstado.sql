@@ -38,6 +38,6 @@ AS
 
 	ELSE
 	BEGIN;
-		THROW 51000, '[CustomError] La produccion requiere presentaciones para actualizarse al estado ingresado', 1
+		THROW 51000, '[CustomError] La produccion requiere presentaciones y precios para actualizarse al estado ingresado', 1
 	END
 GO
