@@ -27,6 +27,9 @@ GO
 GRANT EXECUTE ON OBJECT::AdmTeReadObras
 	TO TheaterAdmin
 GO
+GRANT EXECUTE ON OBJECT::AdmTeReadPresentaciones
+	TO TheaterAdmin
+GO
 GRANT EXECUTE ON OBJECT::AdmTeReadProducciones
 	TO TheaterAdmin
 GO
