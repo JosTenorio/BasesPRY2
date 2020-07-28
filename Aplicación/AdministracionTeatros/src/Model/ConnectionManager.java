@@ -273,25 +273,34 @@ public class ConnectionManager {
        return rs;
     }
     
-    public static void executeAdmTeCreateBloqueProduccion(int IdProduccion, int IdBloque, float Precio, String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateBloqueProduccion (?,?,?,?,?)}");
-       cstmt.setInt(1, IdProduccion);
-       cstmt.setInt(2, IdBloque);
-       BigDecimal PrecioBigDecimal = new BigDecimal(Float.toString(Precio));
-       cstmt.setBigDecimal(3,PrecioBigDecimal);
-       cstmt.setString (4, User);
-       cstmt.setString (5, Password);
-       cstmt.executeQuery();
-       cstmt.close();
+    public static void execAdmTeCreateBloqueProduccion(int IdProduccion, int IdBloque, float Precio, String User, String Password) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeCreateBloqueProduccion (?,?,?,?,?)}")) {
+            cstmt.setInt(1, IdProduccion);
+            cstmt.setInt(2, IdBloque);
+            BigDecimal PrecioBigDecimal = new BigDecimal(Float.toString(Precio));
+            cstmt.setBigDecimal(3,PrecioBigDecimal);
+            cstmt.setString(4, User);
+            cstmt.setString(5, Password);
+            cstmt.execute();
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public static ResultSet executeAdmTeReadBloques (String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmTeReadBloques (?,?)}");
-       cstmt.setString(1, User);
-       cstmt.setString(2, Password);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> execAdmTeReadBloques (String User, String Password) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmTeReadBloques (?,?)}")) {
+            cstmt.setString(1, User);
+            cstmt.setString(2, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
     public static void execAdmTeCreatePresentacion (int IdProduccion, String FechaHoraInicio, String User, String Password ) {

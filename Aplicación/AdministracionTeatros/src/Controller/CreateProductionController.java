@@ -27,7 +27,7 @@ public class CreateProductionController implements ActionListener{
     }
     
     private void init(){
-        display.jButton_Confirm.addActionListener(this);
+        display.jButton_AddProd.addActionListener(this);
         display.jButton_Back.addActionListener(this);
         display.jButton_AddShow.addActionListener(this);
         display.jButton_AddType.addActionListener(this);
@@ -65,7 +65,7 @@ public class CreateProductionController implements ActionListener{
             AdmTeMenuController.getInstance().makeVisible(true);
             display.setVisible(false);
         }
-        if (e.getSource().equals(display.jButton_Confirm)){
+        if (e.getSource().equals(display.jButton_AddProd)){
             try{
                 int selectedIndex = display.jTable_Shows.getSelectedRow();
                 int showId = Integer.valueOf(showList.get(selectedIndex)[0]);
