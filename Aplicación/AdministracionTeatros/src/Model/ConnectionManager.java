@@ -31,12 +31,9 @@ public class ConnectionManager {
     public static String Password = "";
     
     public static boolean connect(){
-        Ip = "25.12.222.208";
-        Username = "ApplicationLogin";
-        Password = "ElGalloDeDatos25";
-//        if (!loadLoginData ()){
-//            return false;
-//        }
+       if (!loadLoginData ()){
+            return false;
+        }
         for (int i = 1; i <= 5; i++){
             Username += Integer.toString (i);
             try {

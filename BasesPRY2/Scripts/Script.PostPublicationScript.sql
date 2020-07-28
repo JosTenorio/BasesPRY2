@@ -76,7 +76,7 @@ GO
 BEGIN TRANSACTION
 
 DECLARE @LoginName nvarchar(50)
-SET @LoginName = 'Jota-PC\Jota' -- Esta variable debe contener nombre del login administrador del sistema usado para crear la base de datos
+SET @LoginName = 'JOS-PC\JOS' -- Esta variable debe contener nombre del login administrador del sistema usado para crear la base de datos
 
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
@@ -158,7 +158,7 @@ BEGIN TRANSACTION
 
 
 DECLARE @LoginName nvarchar(50)
-SET @LoginName = 'Jota-PC\Jota' -- Esta variable debe contener nombre del login administrador del sistema usado para crear la base de datos
+SET @LoginName = 'JOS-PC\JOS' -- Esta variable debe contener nombre del login administrador del sistema usado para crear la base de datos
 
 DECLARE @ReturnCode INT
 SELECT @ReturnCode = 0
