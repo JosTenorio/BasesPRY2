@@ -36,7 +36,7 @@ public class MainMenuController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Public))
-            PubProductionMenuController.getInstance().makeVisible(true);
+            ReadProductionMenuController.getInstance().makeVisible(true);
         if (e.getSource().equals(display.jButton_AgnTe))
             LoginMenuController.getInstance().makeVisible(true, 1);
         if (e.getSource().equals(display.jButton_AdmTe))

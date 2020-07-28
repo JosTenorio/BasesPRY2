@@ -9,21 +9,21 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class PubBlockProductionMenuController implements ActionListener{
+public class ReadBlockProductionMenuController implements ActionListener{
     
     private static final BlockProductionMenuDisplay display = new BlockProductionMenuDisplay();
-    private static PubBlockProductionMenuController firstInstance = null;
+    private static ReadBlockProductionMenuController firstInstance = null;
     private ArrayList<String[]> blockList;
     private int productionId;
     private int presentationId;
     
-    private PubBlockProductionMenuController(){
+    private ReadBlockProductionMenuController(){
         init();
     }
     
-    public static PubBlockProductionMenuController getInstance(){
+    public static ReadBlockProductionMenuController getInstance(){
         if (firstInstance == null)
-            firstInstance = new PubBlockProductionMenuController();
+            firstInstance = new ReadBlockProductionMenuController();
         return firstInstance;
     }
     
@@ -44,7 +44,10 @@ public class PubBlockProductionMenuController implements ActionListener{
     
     public void updateTableData(){
         display.tableModel.setRowCount(0);
-        blockList = ConnectionManager.execPubReadBloquesProducciones(productionId);
+        if (Utilities.LOGINTYPE == 0)
+            blockList = ConnectionManager.execPubReadBloquesProducciones(productionId);
+        if (Utilities.LOGINTYPE == 1)
+            blockList = ConnectionManager.execAgnTeReadBloquesProducciones(productionId, Utilities.USERNAME, Utilities.PASSWORD);
         for (String[] row : blockList)
             display.tableModel.addRow(Arrays.copyOfRange(row, 1, row.length));
         display.jTable_Blocks.setModel(display.tableModel);
@@ -53,14 +56,14 @@ public class PubBlockProductionMenuController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Back)){
-            PubPresentationMenuController.getInstance().makeVisible(true, productionId);
+            ReadPresentationMenuController.getInstance().makeVisible(true, productionId);
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Confirm)){
             try{
                 int selectedIndex = display.jTable_Blocks.getSelectedRow();
                 int blockId = Integer.valueOf(blockList.get(selectedIndex)[0]);
-                PubSeatPresentationMenuController.getInstance().makeVisible(true, blockId, presentationId, productionId);
+                ReadSeatPresentationMenuController.getInstance().makeVisible(true, blockId, presentationId, productionId);
                 display.setVisible(false);
             }
             catch(Exception ex){

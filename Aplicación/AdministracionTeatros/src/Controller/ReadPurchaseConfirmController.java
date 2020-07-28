@@ -5,19 +5,19 @@ import View.PurchaseConfirmDisplay;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PubPurchaseConfirmController implements ActionListener{
+public class ReadPurchaseConfirmController implements ActionListener{
     
     private static final PurchaseConfirmDisplay display = new PurchaseConfirmDisplay();
-    private static PubPurchaseConfirmController firstInstance = null;
+    private static ReadPurchaseConfirmController firstInstance = null;
     private String[] purchaseResume;
     
-    private PubPurchaseConfirmController(){
+    private ReadPurchaseConfirmController(){
         init();
     }
     
-    public static PubPurchaseConfirmController getInstance(){
+    public static ReadPurchaseConfirmController getInstance(){
         if (firstInstance == null)
-            firstInstance = new PubPurchaseConfirmController();
+            firstInstance = new ReadPurchaseConfirmController();
         return firstInstance;
     }
     
@@ -47,7 +47,7 @@ public class PubPurchaseConfirmController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Confirm)){
-            PubProductionMenuController.getInstance().makeVisible(true);
+            ReadProductionMenuController.getInstance().makeVisible(true);
             display.setVisible(false);
         }
     }

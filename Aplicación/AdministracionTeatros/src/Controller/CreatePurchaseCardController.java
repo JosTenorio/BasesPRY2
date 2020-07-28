@@ -2,27 +2,28 @@
 package Controller;
 
 import Model.ConnectionManager;
+import Model.Utilities;
 import View.PurchaseCardDisplay;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class PubPurchaseCardController implements ActionListener{
+public class CreatePurchaseCardController implements ActionListener{
     
     private static final PurchaseCardDisplay display = new PurchaseCardDisplay();
-    private static PubPurchaseCardController firstInstance = null;
+    private static CreatePurchaseCardController firstInstance = null;
     private ArrayList<Integer> selectedSeatIds;
     private int blockId;
     private int presentationId;
     private int productionId;
     
-    private PubPurchaseCardController(){
+    private CreatePurchaseCardController(){
         init();
     }
     
-    public static PubPurchaseCardController getInstance(){
+    public static CreatePurchaseCardController getInstance(){
         if (firstInstance == null)
-            firstInstance = new PubPurchaseCardController();
+            firstInstance = new CreatePurchaseCardController();
         return firstInstance;
     }
     
@@ -52,7 +53,7 @@ public class PubPurchaseCardController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Back)){
-            PubPurchasePreviewController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
+            ReadPurchasePreviewController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Confirm)){
@@ -62,9 +63,13 @@ public class PubPurchaseCardController implements ActionListener{
             String card = display.jTextField_Card.getText();
             String expiration = display.jTextField_Expiration.getText();
             String security = display.jTextField_Security.getText();
-            String[] purchaseConfirm = ConnectionManager.execPubCreateCompraTarjeta(selectedSeatIds, name, phone, mail, card, expiration, security);
+            String[] purchaseConfirm = new String[0];
+            if (Utilities.LOGINTYPE == 0)
+                purchaseConfirm = ConnectionManager.execPubCreateCompraTarjeta(selectedSeatIds, name, phone, mail, card, expiration, security);
+            if (Utilities.LOGINTYPE == 1)
+                purchaseConfirm = ConnectionManager.execAgnTeCreateCompraTarjeta(selectedSeatIds, name, phone, mail, card, expiration, security, Utilities.USERNAME, Utilities.PASSWORD);            
             if (purchaseConfirm.length > 0){
-                PubPurchaseConfirmController.getInstance().makeVisible(true, purchaseConfirm);
+                ReadPurchaseConfirmController.getInstance().makeVisible(true, purchaseConfirm);
                 display.setVisible(false);
             }
         }

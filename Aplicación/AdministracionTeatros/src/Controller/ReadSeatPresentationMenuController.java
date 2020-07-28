@@ -9,23 +9,23 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class PubSeatPresentationMenuController implements ActionListener{
+public class ReadSeatPresentationMenuController implements ActionListener{
     
     private static final SeatPresentationMenuDisplay display = new SeatPresentationMenuDisplay();
-    private static PubSeatPresentationMenuController firstInstance = null;
+    private static ReadSeatPresentationMenuController firstInstance = null;
     private ArrayList<String[]> seatList;
     private int blockId;
     private int presentationId;
     private int productionId;
     private ArrayList<Integer> selectedSeatIds;
     
-    private PubSeatPresentationMenuController(){
+    private ReadSeatPresentationMenuController(){
         init();
     }
     
-    public static PubSeatPresentationMenuController getInstance(){
+    public static ReadSeatPresentationMenuController getInstance(){
         if (firstInstance == null)
-            firstInstance = new PubSeatPresentationMenuController();
+            firstInstance = new ReadSeatPresentationMenuController();
         return firstInstance;
     }
     
@@ -50,7 +50,10 @@ public class PubSeatPresentationMenuController implements ActionListener{
     public void updateTableData(){
         display.jLabel_Amount.setText("");
         display.tableModel.setRowCount(0);
-        seatList = ConnectionManager.execPubReadAsientosPresentaciones(presentationId, blockId);
+        if (Utilities.LOGINTYPE == 0)
+            seatList = ConnectionManager.execPubReadAsientosPresentaciones(presentationId, blockId);
+        if (Utilities.LOGINTYPE == 1)
+            seatList = ConnectionManager.execAgnTeReadAsientosPresentaciones(presentationId, blockId, Utilities.USERNAME, Utilities.PASSWORD);
         for (String[] row : seatList)
             display.tableModel.addRow(Arrays.copyOfRange(row, 1, row.length));
         display.jTable_Seats.setModel(display.tableModel);
@@ -59,12 +62,12 @@ public class PubSeatPresentationMenuController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Back)){
-            PubBlockProductionMenuController.getInstance().makeVisible(true, productionId, presentationId);
+            ReadBlockProductionMenuController.getInstance().makeVisible(true, productionId, presentationId);
             display.setVisible(false);
         }
         if (e.getSource().equals(display.jButton_Confirm)){
             if (!selectedSeatIds.isEmpty()){
-                PubPurchasePreviewController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
+                ReadPurchasePreviewController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
                 display.setVisible(false);
             }
             else

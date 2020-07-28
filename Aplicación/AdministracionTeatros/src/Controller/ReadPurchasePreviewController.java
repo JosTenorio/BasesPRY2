@@ -2,32 +2,34 @@
 package Controller;
 
 import Model.ConnectionManager;
+import Model.Utilities;
 import View.PurchasePreviewDisplay;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class PubPurchasePreviewController implements ActionListener{
+public class ReadPurchasePreviewController implements ActionListener{
     
     private static final PurchasePreviewDisplay display = new PurchasePreviewDisplay();
-    private static PubPurchasePreviewController firstInstance = null;
+    private static ReadPurchasePreviewController firstInstance = null;
     private ArrayList<Integer> selectedSeatIds;
     private int blockId;
     private int presentationId;
     private int productionId;
     
-    private PubPurchasePreviewController(){
+    private ReadPurchasePreviewController(){
         init();
     }
     
-    public static PubPurchasePreviewController getInstance(){
+    public static ReadPurchasePreviewController getInstance(){
         if (firstInstance == null)
-            firstInstance = new PubPurchasePreviewController();
+            firstInstance = new ReadPurchasePreviewController();
         return firstInstance;
     }
     
     private void init(){
-        display.jButton_Confirm.addActionListener(this);
+        display.jButton_PayCard.addActionListener(this);
+        display.jButton_PayCash.addActionListener(this);
         display.jButton_Back.addActionListener(this);
         display.setResizable(false);
         display.setLocationRelativeTo(null);
@@ -38,13 +40,19 @@ public class PubPurchasePreviewController implements ActionListener{
         this.presentationId = presentationId;
         this.blockId = blockId;
         this.selectedSeatIds = selectedSeatIds;
+        if (Utilities.LOGINTYPE == 0)
+            display.jButton_PayCash.setEnabled(false);
         display.setVisible(visible);
         if (visible == true)
             updateTableData();
     }
     
     public void updateTableData(){
-        String[] purchasePreview = ConnectionManager.execPubReadCompraResumen(selectedSeatIds);
+        String[] purchasePreview = new String[6];
+        if (Utilities.LOGINTYPE == 0)
+            purchasePreview = ConnectionManager.execPubReadCompraResumen(selectedSeatIds);
+        if (Utilities.LOGINTYPE == 1)
+            purchasePreview = ConnectionManager.execAgnTeReadCompraResumen(selectedSeatIds, Utilities.USERNAME, Utilities.PASSWORD);        
         display.jLabel_Theater.setText(purchasePreview[0]);
         display.jLabel_Show.setText(purchasePreview[1]);
         display.jLabel_Time.setText(purchasePreview[2]);
@@ -56,11 +64,15 @@ public class PubPurchasePreviewController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(display.jButton_Back)){
-            PubSeatPresentationMenuController.getInstance().makeVisible(true, blockId, presentationId, productionId);
+            ReadSeatPresentationMenuController.getInstance().makeVisible(true, blockId, presentationId, productionId);
             display.setVisible(false);
         }
-        if (e.getSource().equals(display.jButton_Confirm)){
-            PubPurchaseCardController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
+        if (e.getSource().equals(display.jButton_PayCard)){
+            CreatePurchaseCardController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
+            display.setVisible(false);
+        }
+        if (e.getSource().equals(display.jButton_PayCash)){
+            CreatePurchaseCashController.getInstance().makeVisible(true, blockId, presentationId, productionId, selectedSeatIds);
             display.setVisible(false);
         }
     }

@@ -17,6 +17,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.CallableStatement;
+import java.sql.SQLTimeoutException;
 import java.sql.Timestamp;
 import javax.sql.rowset.*; 
 import java.util.ArrayList;
@@ -353,89 +354,135 @@ public class ConnectionManager {
        cstmt.close();
     }
     
-    public static void executeAgnTeCreateCompraEfectivo (ArrayList<Integer> Ids, String Nombre, String Telefono, String Correo, String User, String Password) throws SQLException {
-       SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call AgnTeCreateCompraEfectivo (?,?,?,?,?,?)}");
-       SQLServerDataTable ListaAsientos = new SQLServerDataTable();
-       ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
-       for (int Id: Ids) {
-           ListaAsientos.addRow(Id);
-       }
-       cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
-       cstmt.setString(2, Nombre);
-       cstmt.setString(3, Telefono);
-       cstmt.setString(4, Correo);
-       cstmt.setString(5, User);
-       cstmt.setString(6, Password);
-       cstmt.executeQuery();
-       cstmt.close();
+    public static String[] execAgnTeCreateCompraEfectivo (ArrayList<Integer> Ids, String Nombre, String Telefono, String Correo, String User, String Password) {
+        CachedRowSet crs = null;
+        try (SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call AgnTeCreateCompraEfectivo (?,?,?,?,?,?)}")) {
+            SQLServerDataTable ListaAsientos = new SQLServerDataTable();
+            ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
+            for (int Id: Ids) {
+                ListaAsientos.addRow(Id);
+            }
+            cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
+            cstmt.setString(2, Nombre);
+            cstmt.setString(3, Telefono);
+            if ("".equals(Correo))
+                cstmt.setNull(4, Types.NVARCHAR);
+            else
+                cstmt.setString(4, Correo);
+            cstmt.setString(5, User);
+            cstmt.setString(6, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Utilities.convertToRow(crs);
     }
     
-    public static void executeAgnTeCreateCompraTarjeta (ArrayList<Integer> Ids, String Nombre, String Telefono, String Correo, String Tarjeta, String Expira, String CVV, String User, String Password) throws SQLException {
-       SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call AgnTeCreateCompraTarjeta (?,?,?,?,?,?,?,?,?)}");
-       SQLServerDataTable ListaAsientos = new SQLServerDataTable();
-       ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
-       for (int Id: Ids) {
-           ListaAsientos.addRow(Id);
-       }
-       cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
-       cstmt.setString(2, Nombre);
-       cstmt.setString(3, Telefono);
-       cstmt.setString(4, Correo);
-       cstmt.setString(5, Tarjeta);
-       cstmt.setDate(6, java.sql.Date.valueOf(Expira));
-       cstmt.setString(7, CVV);
-       cstmt.setString(8, User);
-       cstmt.setString(9, Password);
-       cstmt.executeQuery();
-       cstmt.close();
+    public static String[] execAgnTeCreateCompraTarjeta (ArrayList<Integer> Ids, String Nombre, String Telefono, String Correo, String Tarjeta, String Expira, String CVV, String User, String Password) {
+        CachedRowSet crs = null;
+        try (SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call AgnTeCreateCompraTarjeta (?,?,?,?,?,?,?,?,?)}")) {
+            SQLServerDataTable ListaAsientos = new SQLServerDataTable();
+            ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
+            for (int Id: Ids) {
+                ListaAsientos.addRow(Id);
+            }
+            cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
+            cstmt.setString(2, Nombre);
+            cstmt.setString(3, Telefono);
+            cstmt.setString(4, Correo);
+            cstmt.setString(5, Tarjeta);
+            cstmt.setDate(6, java.sql.Date.valueOf(Expira));
+            cstmt.setString(7, CVV);
+            cstmt.setString(8, User);
+            cstmt.setString(9, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Utilities.convertToRow(crs);
     }
     
-    public static ResultSet executeAgnTeReadAsientosPresentaciones (int IdPresentacion , int IdBloque, String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AgnTeReadAsientosPresentaciones(?,?,?,?)}");
-       cstmt.setInt(1, IdPresentacion);
-       cstmt.setInt(2, IdBloque);
-       cstmt.setString (3, User);
-       cstmt.setString (4, Password);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static String[] execAgnTeReadCompraResumen (ArrayList<Integer> Ids, String User, String Password) {
+        CachedRowSet crs = null;
+        try (SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call AgnTeReadCompraResumen (?,?,?)}")) {
+            SQLServerDataTable ListaAsientos = new SQLServerDataTable();
+            ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
+            for (int Id: Ids) {
+                ListaAsientos.addRow(Id);
+            }    cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
+            cstmt.setString(2, User);
+            cstmt.setString(3, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToRow(crs);
     }
     
-    public static ResultSet executeAgnTeReadBloquesProducciones (int IdProduccion, String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AgnTeReadBloquesProducciones(?,?,?)}");
-       cstmt.setInt(1, IdProduccion);
-       cstmt.setString (2, User);
-       cstmt.setString (3, Password);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> execAgnTeReadAsientosPresentaciones (int IdPresentacion , int IdBloque, String User, String Password) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AgnTeReadAsientosPresentaciones(?,?,?,?)}")) {
+            cstmt.setInt(1, IdPresentacion);
+            cstmt.setInt(2, IdBloque);
+            cstmt.setString(3, User);
+            cstmt.setString(4, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
-    public static ResultSet executeAgnTeReadCompraResumen (ArrayList<Integer> Ids, String User, String Password) throws SQLException {
-       SQLServerCallableStatement cstmt = (SQLServerCallableStatement) connection.prepareCall("{call AgnTeReadCompraResumen (?,?,?)}");
-       SQLServerDataTable ListaAsientos = new SQLServerDataTable();
-       ListaAsientos.addColumnMetadata ("IdAsientoPresentacion", java.sql.Types.INTEGER);
-       for (int Id: Ids) {
-           ListaAsientos.addRow(Id);
-       }
-       cstmt.setStructured (1,"dbo.ListaAsientos",ListaAsientos);
-       cstmt.setString(2, User);
-       cstmt.setString(3, Password);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> execAgnTeReadBloquesProducciones (int IdProduccion, String User, String Password) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AgnTeReadBloquesProducciones(?,?,?)}")) {
+            cstmt.setInt(1, IdProduccion);
+            cstmt.setString(2, User);
+            cstmt.setString(3, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
-    public static ResultSet executeAgnTeReadPresentaciones (int IdProduccion,String FechaHoraInicio, String FechaHoraFin, String User, String Password) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AgnTeReadPresentaciones(?, ?,?,?,?)}");
-       cstmt.setInt(1, IdProduccion);
-       cstmt.setTimestamp(2, Timestamp.valueOf(FechaHoraInicio));
-       cstmt.setTimestamp(3, Timestamp.valueOf(FechaHoraFin));
-       cstmt.setString(4, User);
-       cstmt.setString(5, Password);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> execAgnTeReadPresentaciones (int IdProduccion, String FechaHoraInicio, String FechaHoraFin, String User, String Password) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AgnTeReadPresentaciones(?,?,?,?,?)}")) {
+            cstmt.setInt(1, IdProduccion);
+            if (FechaHoraInicio == null)
+                cstmt.setNull(2, Types.DATE);
+            else
+                cstmt.setTimestamp(2, Timestamp.valueOf(FechaHoraInicio));
+            if (FechaHoraFin == null)
+                cstmt.setNull(3, Types.DATE);
+            else
+                cstmt.setTimestamp(3, Timestamp.valueOf(FechaHoraFin));
+            cstmt.setString(4, User);
+            cstmt.setString(5, Password);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
     public static ArrayList<String[]> execAgnTeReadProducciones (String FechaHoraInicio, String FechaHoraFin, String User, String Password) {
@@ -505,7 +552,7 @@ public class ConnectionManager {
     
     public static ArrayList<String[]> execPubReadAsientosPresentaciones (int IdPresentacion , int IdBloque) {
         CachedRowSet crs = null;
-        try (CallableStatement cstmt = connection.prepareCall("{call PubReadAsientosPresentaciones(?, ?)}")) {
+        try (CallableStatement cstmt = connection.prepareCall("{call PubReadAsientosPresentaciones(?,?)}")) {
             cstmt.setInt(1, IdPresentacion);
             cstmt.setInt(2, IdBloque);
             ResultSet rs = cstmt.executeQuery();
