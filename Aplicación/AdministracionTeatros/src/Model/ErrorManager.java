@@ -391,6 +391,27 @@ public class ErrorManager {
         if (message.contains("[CustomError]")){
             infoBox (message.replace("[CustomError]", ""), "Operacion no realizada");
         }
+        else if (message.contains("UnTeatros_Nombre")){
+            infoBox ("El nombre de teatro indicado ya se encuentra registrado en el sistema", "Operacion no realizada");        
+        }
+        else if (message.contains("UnTeatros_Correo")){
+            infoBox ("El correo electrónico indicado ya se encuentra a nombre de otro teatro registrado", "Operacion no realizada");        
+        }
+        else if (message.contains("UnTeatros_Link")){
+            infoBox ("El sitio web indicado ya se encuentra a nombre de otro teatro registrado", "Operacion no realizada");        
+        }
+        else if (message.contains("UnTeatros_TelAdmin")){
+            infoBox ("El teléfono de la administración indicado ya se encuentra a nombre de otro teatro registrado", "Operacion no realizada");        
+        }
+        else if (message.contains("CkTeatros_Nombre")){
+            infoBox ("El nombre del teatro a registrar no puede estar vacío", "Operacion no realizada");        
+        }
+        else if (message.contains("CkTeatros_TelBoleteria")){
+            infoBox ("El teléfono de boletería indicado es inválido", "Operacion no realizada");        
+        }
+        else if (message.contains("CkTeatros_TelAdmin")){
+            infoBox ("El teléfono de administración indicado es inválido", "Operacion no realizada");        
+        }
         else{
             infoBox (message, "Operacion no realizada");        
         }
@@ -421,6 +442,15 @@ public class ErrorManager {
         if (message.contains("[CustomError]")){
             infoBox (message.replace("[CustomError]", ""), "Operacion no realizada");
         }
+        else if (message.contains("CkBloques_Nombre")){
+            infoBox ("El nombre del bloque a agregar no puede estar vacío", "Operacion no realizada");        
+        }
+        else if (message.contains("UnBloques_NombreYIdTeatro")){
+            infoBox ("El nombre de bloque indicado ya existe en el teatro dado", "Operacion no realizada");        
+        }
+        else if (message.contains("FkBloques_IdTeatro")){
+            infoBox ("El identificador de teatro dado no corresponde a ningún teatro registrado", "Operacion no realizada");        
+        }
         else{
             infoBox (message, "Operacion no realizada");        
         }
@@ -440,6 +470,18 @@ public class ErrorManager {
         String message = exception.getMessage();
         if (message.contains("[CustomError]")){
             infoBox (message.replace("[CustomError]", ""), "Operacion no realizada");
+        }
+        else if (message.contains("UnAsientos_FilaYColumnaYIdBloque")){
+            infoBox ("El asiento indicado ya existe", "Operacion no realizada");        
+        }
+        else if (message.contains("FkAsientos_IdBloque")){
+            infoBox ("El identificador de bloque indicado no corresponde a ningún bloque registrado", "Operacion no realizada");        
+        }
+        else if (message.contains("CkAsientos_Columna")){
+            infoBox ("El número de asiento debe ser mayor que cero", "Operacion no realizada");        
+        }
+        else if (message.contains("CkAsientos_Fila")){
+            infoBox ("El nombre de fila indicado es inválido o no corresponde a ninguna fila registrada", "Operacion no realizada");        
         }
         else{
             infoBox (message, "Operacion no realizada");        
@@ -470,6 +512,42 @@ public class ErrorManager {
         String message = exception.getMessage();
         if (message.contains("[CustomError]")){
             infoBox (message.replace("[CustomError]", ""), "Operacion no realizada");
+        }
+        else if (message.contains("UnEmpleados_Cedula")){
+            infoBox ("La cédula indicada ya esta registrada en la base de datos", "Operacion no realizada");        
+        }
+        else if (message.contains("UnEmpleados_TelCelular")){
+            infoBox ("El teléfono celular indicado ya se encuentra registrado a nombre de otro usuario", "Operacion no realizada");        
+        }
+        else if (message.contains("UnEmpleados_Usuario")){
+            infoBox ("El usuario provisto para el nuevo administrador ya esta en uso en el sistema", "Operacion no realizada");        
+        }
+        else if (message.contains("FkEmpleados_IdTeatro")){
+            infoBox ("El identificador de teatro indicado no corresponde a ningún teatro registrado", "Operacion no realizada");        
+        }
+        else if (message.contains("CkEmpleados_Cedula")){
+            infoBox ("La cédula indicada no es válida (9 dígitos)", "Operacion no realizada");        
+        }
+        else if (message.contains("CkEmpleados_Sexo")){
+            infoBox ("El sexo del nuevo administrador se debe indicar como masculino (M) o femenino (F)", "Operacion no realizada");        
+        }
+        else if (message.contains("CkEmpleados_Correo")){
+            infoBox ("El correo indicado no es válido", "Operacion no realizada");        
+        }
+        else if (message.contains("CkEmpleados_TelCasa")){
+            infoBox ("El teléfono de casa indicado no es válido", "Operacion no realizada");        
+        }
+        else if (message.contains("CkEmpleados_TelCelular")){
+            infoBox ("El teléfono celular indicado no es válido", "Operacion no realizada");        
+        }
+        else if (message.contains("CkEmpleados_TelOtro")){
+            infoBox ("El teléfono alternativo indicado no es válido", "Operacion no realizada");        
+        }
+        else if (message.contains("CkEmpleados_Nombre")){
+            infoBox ("El nombre del nuevo usuario del sistema no puede estar vacío", "Operacion no realizada");        
+        }
+        else if (message.contains("CkEmpleados_Tipo")){
+            infoBox ("El nuevo usuario debe ser asignado el rol de agente o administrador de teatro", "Operacion no realizada");        
         }
         else{
             infoBox (message, "Operacion no realizada");        
