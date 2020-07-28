@@ -153,25 +153,33 @@ public class ConnectionManager {
         return false;
     } 
     
-    public static void executeAdmSisCreateEmpleadoAdmTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, int IdTeatro) throws SQLException {
-        CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateEmpleadoAdmTe(?,?,?,?,?,?,?,?,?,?,?,?)}");
-        cstmt.setString(1, Cedula);
-        cstmt.setString(2, Nombre);
-        cstmt.setDate(3, java.sql.Date.valueOf(FechaNacimiento));
-        cstmt.setString(4, Direccion);
-        cstmt.setString(5, Sexo);
-        cstmt.setString(6, Correo);
-        cstmt.setString(7, Usuario);
-        cstmt.setString(8, Contrasena);
-        cstmt.setString(9, TelCelular);
-        cstmt.setString(10, TelCasa);
-        cstmt.setString(11, TelOtro);
-        cstmt.setInt(12, IdTeatro);
-        cstmt.executeQuery();
-        cstmt.close();
+    public static void execAdmSisCreateEmpleadoAdmTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, int IdTeatro) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateEmpleadoAdmTe(?,?,?,?,?,?,?,?,?,?,?,?)}")) {
+            cstmt.setString(1, Cedula);
+            cstmt.setString(2, Nombre);
+            cstmt.setDate(3, java.sql.Date.valueOf(FechaNacimiento));
+            cstmt.setString(4, Direccion);
+            cstmt.setString(5, Sexo);
+            cstmt.setString(6, Correo);
+            cstmt.setString(7, Usuario);
+            cstmt.setString(8, Contrasena);
+            cstmt.setString(9, TelCelular);
+            if ("".equals(TelCasa))
+                cstmt.setNull(10, Types.NCHAR);
+            else
+                cstmt.setString(10, TelCasa); 
+            if ("".equals(TelOtro))
+                cstmt.setNull(11, Types.NCHAR);
+            else
+                cstmt.setString(11, TelOtro);
+            cstmt.setInt(12, IdTeatro);
+            cstmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public static ArrayList<String[]> executeAdmSisReadEmpleados (int Tipo) {
+    public static ArrayList<String[]> execAdmSisReadEmpleados (int Tipo) {
         CachedRowSet crs = null;
         try (CallableStatement cstmt = connection.prepareCall("{call AdmSisReadEmpleados (?)}")) {
             if (Tipo == 0)
@@ -188,7 +196,7 @@ public class ConnectionManager {
        return Utilities.convertToTable(crs);
     }
     
-    public static ArrayList<String[]> executeAdmSisReadRegistroPagos () {
+    public static ArrayList<String[]> execAdmSisReadRegistroPagos () {
         CachedRowSet crs = null;
         try (CallableStatement cstmt = connection.prepareCall("{call AdmSisReadRegistroPagos ()}")) {
             ResultSet rs = cstmt.executeQuery();
