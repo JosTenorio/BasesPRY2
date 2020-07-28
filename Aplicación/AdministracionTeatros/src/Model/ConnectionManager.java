@@ -202,7 +202,7 @@ public class ConnectionManager {
        return rs;
     }
     
-    public static void executeAdmSisCreateBloque (int IdTeatro,String Nombre ) throws SQLException {
+    public static void executeAdmSisCreateBloque (int IdTeatro, String Nombre ) throws SQLException {
         CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateBloque(?,?)}");
         cstmt.setInt(1, IdTeatro);
         cstmt.setString(2, Nombre);
@@ -225,16 +225,18 @@ public class ConnectionManager {
        return rs;
     }
     
-    public static void executeAdmSisCreateTeatro (String Nombre, String Direccion, String Correo, String Link, String TelBoleteria, String TelAdmin) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateTeatro (?,?,?,?,?,?)}");
-       cstmt.setString (1, Nombre);
-       cstmt.setString (2, Direccion);
-       cstmt.setString (3, Correo);
-       cstmt.setString (4, Link);
-       cstmt.setString (5, TelBoleteria);
-       cstmt.setString (6, TelAdmin);
-       cstmt.executeQuery();
-       cstmt.close();
+    public static void execAdmSisCreateTeatro (String Nombre, String Direccion, String Correo, String Link, String TelBoleteria, String TelAdmin) {
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmSisCreateTeatro (?,?,?,?,?,?)}")) {
+            cstmt.setString (1, Nombre);
+            cstmt.setString (2, Direccion);
+            cstmt.setString (3, Correo);
+            cstmt.setString (4, Link);
+            cstmt.setString (5, TelBoleteria);
+            cstmt.setString (6, TelAdmin);
+            cstmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static void execAdmTeCreateEmpleadoAgnTe (String Cedula, String Nombre, String FechaNacimiento, String Direccion, String Sexo, String Correo, String Usuario, String Contrasena, String TelCelular, String TelCasa, String TelOtro, String User, String Password) {

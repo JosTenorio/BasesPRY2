@@ -70,7 +70,7 @@ public class LoginMenuController implements ActionListener{
                         AdmTeMenuController.getInstance().makeVisible(true);
                         break;
                     case 3:  
-                        
+                        AdmSisMenuController.getInstance().makeVisible(true);
                         break;
                 }
                 display.setVisible(false);

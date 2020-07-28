@@ -1,9 +1,9 @@
 
 package View;
 
-public class AdmTeMenuDisplay extends javax.swing.JFrame {
+public class AdmSisMenuDisplay extends javax.swing.JFrame {
 
-    public AdmTeMenuDisplay() {
+    public AdmSisMenuDisplay() {
         initComponents();
     }
     
@@ -19,11 +19,11 @@ public class AdmTeMenuDisplay extends javax.swing.JFrame {
         jPanel_BG = new javax.swing.JPanel();
         jPanel_Header = new javax.swing.JPanel();
         jLabel_Title = new javax.swing.JLabel();
-        jButton_NewProd = new javax.swing.JButton();
-        jButton_UpdProd = new javax.swing.JButton();
-        jButton_NewAgent = new javax.swing.JButton();
-        jButton_NewPres = new javax.swing.JButton();
-        jButton_NewPrice = new javax.swing.JButton();
+        jButton_NewTheater = new javax.swing.JButton();
+        jButton_PaymentHistory = new javax.swing.JButton();
+        jButton_NewAdmin = new javax.swing.JButton();
+        jButton_NewSeats = new javax.swing.JButton();
+        jButton_Employees = new javax.swing.JButton();
         jButton_Back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -35,7 +35,7 @@ public class AdmTeMenuDisplay extends javax.swing.JFrame {
         jLabel_Title.setFont(new java.awt.Font("Gill Sans MT", 1, 42)); // NOI18N
         jLabel_Title.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Title.setText("MENU ADMIN TEATRO");
+        jLabel_Title.setText("MENU ADMIN SISTEMA");
 
         javax.swing.GroupLayout jPanel_HeaderLayout = new javax.swing.GroupLayout(jPanel_Header);
         jPanel_Header.setLayout(jPanel_HeaderLayout);
@@ -54,38 +54,38 @@ public class AdmTeMenuDisplay extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jButton_NewProd.setBackground(new java.awt.Color(0, 51, 204));
-        jButton_NewProd.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
-        jButton_NewProd.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_NewProd.setText("AGREGAR PRODUCCION");
-        jButton_NewProd.setPreferredSize(new java.awt.Dimension(124, 31));
-        jButton_NewProd.addActionListener(new java.awt.event.ActionListener() {
+        jButton_NewTheater.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_NewTheater.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_NewTheater.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_NewTheater.setText("CREAR TEATRO");
+        jButton_NewTheater.setPreferredSize(new java.awt.Dimension(124, 31));
+        jButton_NewTheater.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_NewProdActionPerformed(evt);
+                jButton_NewTheaterActionPerformed(evt);
             }
         });
 
-        jButton_UpdProd.setBackground(new java.awt.Color(0, 51, 204));
-        jButton_UpdProd.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
-        jButton_UpdProd.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_UpdProd.setText("ACTUALIZAR PRODUCCION");
-        jButton_UpdProd.setPreferredSize(new java.awt.Dimension(124, 31));
+        jButton_PaymentHistory.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_PaymentHistory.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_PaymentHistory.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_PaymentHistory.setText("HISTORIAL DE PAGOS");
+        jButton_PaymentHistory.setPreferredSize(new java.awt.Dimension(124, 31));
 
-        jButton_NewAgent.setBackground(new java.awt.Color(0, 51, 204));
-        jButton_NewAgent.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
-        jButton_NewAgent.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_NewAgent.setText("AGREGAR AGENTE TEATRO");
+        jButton_NewAdmin.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_NewAdmin.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_NewAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_NewAdmin.setText("AGREGAR ADMIN TEATRO");
 
-        jButton_NewPres.setBackground(new java.awt.Color(0, 51, 204));
-        jButton_NewPres.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
-        jButton_NewPres.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_NewPres.setText("AGREGAR PRESENTACION");
-        jButton_NewPres.setPreferredSize(new java.awt.Dimension(124, 31));
+        jButton_NewSeats.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_NewSeats.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_NewSeats.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_NewSeats.setText("CREAR ASIENTOS");
+        jButton_NewSeats.setPreferredSize(new java.awt.Dimension(124, 31));
 
-        jButton_NewPrice.setBackground(new java.awt.Color(0, 51, 204));
-        jButton_NewPrice.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
-        jButton_NewPrice.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_NewPrice.setText("AGREGAR PRECIO X BLOQUE");
+        jButton_Employees.setBackground(new java.awt.Color(0, 51, 204));
+        jButton_Employees.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
+        jButton_Employees.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Employees.setText("PERSONAL");
 
         jButton_Back.setBackground(new java.awt.Color(0, 51, 204));
         jButton_Back.setFont(new java.awt.Font("Gill Sans MT", 1, 12)); // NOI18N
@@ -102,11 +102,11 @@ public class AdmTeMenuDisplay extends javax.swing.JFrame {
                     .addGroup(jPanel_BGLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel_BGLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton_NewPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_NewAgent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_UpdProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_NewPres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_NewProd, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton_Employees, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_NewAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_PaymentHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_NewSeats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_NewTheater, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel_BGLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -119,15 +119,15 @@ public class AdmTeMenuDisplay extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton_Back)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(jButton_NewProd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_NewTheater, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_NewPres, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_NewSeats, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_UpdProd, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_PaymentHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_NewPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_Employees, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton_NewAgent, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_NewAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
@@ -145,17 +145,17 @@ public class AdmTeMenuDisplay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_NewProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NewProdActionPerformed
+    private void jButton_NewTheaterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NewTheaterActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_NewProdActionPerformed
+    }//GEN-LAST:event_jButton_NewTheaterActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButton_Back;
-    public javax.swing.JButton jButton_NewAgent;
-    public javax.swing.JButton jButton_NewPres;
-    public javax.swing.JButton jButton_NewPrice;
-    public javax.swing.JButton jButton_NewProd;
-    public javax.swing.JButton jButton_UpdProd;
+    public javax.swing.JButton jButton_Employees;
+    public javax.swing.JButton jButton_NewAdmin;
+    public javax.swing.JButton jButton_NewSeats;
+    public javax.swing.JButton jButton_NewTheater;
+    public javax.swing.JButton jButton_PaymentHistory;
     private javax.swing.JLabel jLabel_Title;
     private javax.swing.JPanel jPanel_BG;
     private javax.swing.JPanel jPanel_Header;
