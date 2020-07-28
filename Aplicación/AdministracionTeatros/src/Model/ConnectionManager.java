@@ -171,19 +171,34 @@ public class ConnectionManager {
         cstmt.close();
     }
     
-    public static ResultSet executeAdmSisReadEmpleados (int Tipo) throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadEmpleados (?)}");
-       cstmt.setInt (1, Tipo);
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> executeAdmSisReadEmpleados (int Tipo) {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmSisReadEmpleados (?)}")) {
+            if (Tipo == 0)
+                cstmt.setNull(1, Types.INTEGER);
+            else
+                cstmt.setInt (1, Tipo);
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
-    public static ResultSet executeAdmSisReadRegistroPagos () throws SQLException {
-       CallableStatement cstmt = connection.prepareCall("{call AdmSisReadRegistroPagos ()}");
-       ResultSet rs = cstmt.executeQuery();
-       cstmt.close();
-       return rs;
+    public static ArrayList<String[]> executeAdmSisReadRegistroPagos () {
+        CachedRowSet crs = null;
+        try (CallableStatement cstmt = connection.prepareCall("{call AdmSisReadRegistroPagos ()}")) {
+            ResultSet rs = cstmt.executeQuery();
+            crs = RowSetProvider.newFactory().createCachedRowSet();
+            crs.populate(rs);
+            cstmt.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return Utilities.convertToTable(crs);
     }
     
     public static void execAdmSisCreateAsiento (int IdBloque, int Cantidad) {
