@@ -11,8 +11,8 @@
   DTS:LocaleID="5130"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="89"
-  DTS:VersionGUID="{289B2AE0-5FD1-4F23-8B0A-2498F56BA914}">
+  DTS:VersionBuild="90"
+  DTS:VersionGUID="{41D478B7-F666-4968-9C1B-A3172A972BFD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -33,7 +33,7 @@
       DTS:ObjectName="SourceConnectionExcel">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\JOS\Desktop\BasesPRY2\TP2 2020i - datos prueba.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\JOS\Desktop\BasesPRY2\TP2 2020i - datos prueba.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
