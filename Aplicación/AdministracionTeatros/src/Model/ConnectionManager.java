@@ -172,7 +172,7 @@ public class ConnectionManager {
             cstmt.setInt(12, IdTeatro);
             cstmt.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorManager.errorAdmSisCreateEmpleadoAdmTe(ex);
         }
     }
     
@@ -188,7 +188,7 @@ public class ConnectionManager {
             crs.populate(rs);
             cstmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorManager.errorAdmSisReadEmpleados(ex);
         }
        return Utilities.convertToTable(crs);
     }
@@ -201,7 +201,7 @@ public class ConnectionManager {
             crs.populate(rs);
             cstmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorManager.errorAdmSisReadRegistroPagos(ex);
         }
        return Utilities.convertToTable(crs);
     }
@@ -213,7 +213,7 @@ public class ConnectionManager {
             cstmt.execute();
             cstmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorManager.errorAdmSisCreateAsiento(ex);
         }
     }
     
@@ -226,7 +226,7 @@ public class ConnectionManager {
             crs.populate(rs);
             cstmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorManager.errorAdmSisReadAsientos(ex);
         }
        return Utilities.convertToTable(crs);
     }
@@ -238,7 +238,7 @@ public class ConnectionManager {
             cstmt.execute();
             cstmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorManager.errorAdmSisCreateBloque(ex);
         }
     }
     
@@ -251,7 +251,7 @@ public class ConnectionManager {
             crs.populate(rs);
             cstmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+           ErrorManager.errorAdmSisReadBloques(ex);
         }
        return Utilities.convertToTable(crs);
     }
@@ -264,7 +264,7 @@ public class ConnectionManager {
             crs.populate(rs);
             cstmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorManager.errorAdmSisReadTeatros(ex);
         }
        return Utilities.convertToTable(crs);
     }
@@ -280,7 +280,7 @@ public class ConnectionManager {
             cstmt.execute();
             cstmt.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ConnectionManager.class.getName()).log(Level.SEVERE, null, ex);
+            ErrorManager.errorAdmSisCreateTeatro(ex);
         }
     }
     
