@@ -48,7 +48,7 @@ public class ConnectionManager {
     }
     
     private static boolean loadLoginData () {
-        JFileChooser chooser= new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         Frame frame = new Frame("Favor seleccionar el archivo de datos de login");
         int width = 10;
         int height = 10;
